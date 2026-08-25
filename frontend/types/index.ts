@@ -5,6 +5,7 @@ export interface SubsystemStatus {
   policy_engine: string;
   audit_layer: string;
   evaluation_engine: string;
+  database: string;
 }
 
 export interface HealthResponse {

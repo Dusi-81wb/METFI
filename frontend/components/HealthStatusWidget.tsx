@@ -86,6 +86,12 @@ export function HealthStatusWidget() {
       status: data?.subsystems?.evaluation_engine || "pending",
       icon: BarChart3,
     },
+    {
+      name: "Database Persistence (PostgreSQL)",
+      description: "Relational persistence and transaction ledger",
+      status: data?.subsystems?.database || "pending",
+      icon: DatabaseIcon,
+    },
   ];
 
   return (

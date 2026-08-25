@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-metfi_admin}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-metfi_secure_password}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-CHANGE_ME_IN_PRODUCTION}
       POSTGRES_DB: ${POSTGRES_DB:-metfi_reconciliation}
     ports:
       - "5432:5432"
@@ -34,11 +34,11 @@ services:
     restart: unless-stopped
     environment:
       ENVIRONMENT: ${ENVIRONMENT:-development}
-      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-metfi_admin}:${POSTGRES_PASSWORD:-metfi_secure_password}@postgres:5432/${POSTGRES_DB:-metfi_reconciliation}
-      AI_PROVIDER: ${AI_PROVIDER:-gemini}
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-metfi_admin}:${POSTGRES_PASSWORD:-CHANGE_ME_IN_PRODUCTION}@postgres:5432/${POSTGRES_DB:-metfi_reconciliation}
+      AI_PROVIDER: ${AI_PROVIDER:-mock}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
-      BACKEND_CORS_ORIGINS: '["http://localhost:3000", "http://127.0.0.1:3000"]'
+      BACKEND_CORS_ORIGINS: '["http://localhost:3000", "http://127.0.0.1:3000", "http://frontend:3000"]'
     ports:
       - "8000:8000"
     depends_on:
@@ -63,7 +63,7 @@ services:
     container_name: metfi-frontend
     restart: unless-stopped
     environment:
-      NEXT_PUBLIC_API_URL: http://localhost:8000
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
     ports:
       - "3000:3000"
     depends_on:

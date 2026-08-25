@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from app.api.v1.health import HealthResponse, get_health_status
 from app.api.v1.router import api_v1_router
 from app.core.config import settings
 from app.core.logging import logger
@@ -65,7 +66,7 @@ async def root() -> JSONResponse:
     )
 
 
-@app.get("/health", tags=["Root"])
-async def root_health() -> JSONResponse:
-    """Convenience root health endpoint."""
-    return JSONResponse(content={"status": "healthy", "service": settings.PROJECT_NAME})
+@app.get("/health", response_model=HealthResponse, tags=["Root"])
+async def root_health() -> HealthResponse:
+    """Convenience root health endpoint delegating to canonical health status."""
+    return await get_health_status()
