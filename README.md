@@ -184,12 +184,26 @@ npm run dev
 
 ---
 
+### Option C: Synthetic Dataset Generation & Inspection
+```bash
+# Generate dev benchmark dataset (500 records, seed 42)
+python data/generators/cli.py --size 500 --seed 42 --dataset-id dev_500
+
+# Generate stress benchmark dataset (5,000 records, seed 1337)
+python data/generators/cli.py --size 5000 --seed 1337 --dataset-id stress_5000
+
+# Inspect dataset manifests and sample ground truth
+python data/generators/inspect_dataset.py --dataset-id dev_500
+```
+
+---
+
 ## 5. Verification & Testing
 
 Execute the complete quality test suite:
 
 ```bash
-# Run backend unit, integration, and smoke tests
+# Run backend unit, integration, and smoke tests (52+ tests)
 cd backend && uv run pytest -v
 
 # Run backend linting & formatting checks
@@ -207,7 +221,7 @@ cd frontend && npm run type-check && npm run build
 ## 6. Development Roadmap
 
 - [x] **Phase 0:** Governance, Repository Initialization & Health Smoke Test
-- [ ] **Phase 1:** Domain Schemas, Normalization, Synthetic Generator & Ground Truth Isolation
+- [x] **Phase 1:** Domain Schemas, Normalization, Synthetic Generator & Ground Truth Isolation
 - [ ] **Phase 2:** Deterministic Reconciliation Engine & Golden Fixtures
 - [ ] **Phase 3:** Bounded AI Investigation Layer & Verifier
 - [ ] **Phase 4:** Deterministic Policy Engine & Immutable Audit Trail

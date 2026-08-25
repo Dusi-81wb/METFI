@@ -67,7 +67,9 @@ Thumbs.db
 *.swo
 
 # Temporary & Data Caches
-data/generated/
+data/generated/*
+!data/generated/dev_500/
+!data/generated/stress_5000/
 evaluation/reports/*.tmp
 *.sqlite3
 *.db

@@ -1,0 +1,31 @@
+{
+  "dataset_id": "dev_500",
+  "generator_version": "1.0.0",
+  "schema_version": "1.0.0",
+  "seed": 42,
+  "record_count": 500,
+  "generation_timestamp": "2026-08-25T04:25:33.442461+00:00",
+  "source_counts": {
+    "payments": 500,
+    "settlements": 495,
+    "ledger_entries": 1000
+  },
+  "class_distribution": {
+    "EXACT_MATCH": 300,
+    "AMOUNT_MISMATCH": 50,
+    "MISSING_SETTLEMENT": 30,
+    "DUPLICATE_RECORD": 25,
+    "DATE_MISMATCH": 25,
+    "REFERENCE_MISMATCH": 20,
+    "PARTIAL_SETTLEMENT": 15,
+    "FEE_DISCREPANCY": 10,
+    "CURRENCY_MISMATCH": 12,
+    "AMBIGUOUS": 13
+  },
+  "checksums": {
+    "payments_sha256": "fc1b8d95a2d3fd4df6a711d56aa5e324aa02760e209e5b9bdd7aa5646b8e04b4",
+    "settlements_sha256": "92b435a20274b60d7441e6da194631cf05d483eaef7fe9850172e390d5641af4",
+    "ledger_sha256": "9bf7b93b7dd4620dacfa12f75a955d162af3e05f8e1c97b1afc3358e9e9ebe0e",
+    "ground_truth_sha256": "ed2f3064591383eda2a917e5f567d8094f173df3ef2ee8aa159b0727059ba58d"
+  }
+}

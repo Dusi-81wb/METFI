@@ -1,0 +1,6475 @@
+[
+  {
+    "settlement_id": "set_42_00000",
+    "payment_id": "pay_42_00000",
+    "settled_amount": "1832.45",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T01:00:00Z",
+    "fee": "37.54",
+    "fee_tax": "6.76",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00001",
+    "payment_id": "pay_42_00001",
+    "settled_amount": "9795.97",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T15:07:00Z",
+    "fee": "200.66",
+    "fee_tax": "36.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00001_DUP42",
+    "payment_id": "pay_42_00001",
+    "settled_amount": "9795.97",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T15:07:00Z",
+    "fee": "200.66",
+    "fee_tax": "36.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00002",
+    "payment_id": "pay_42_00002",
+    "settled_amount": "11435.83",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T12:14:00Z",
+    "fee": "234.25",
+    "fee_tax": "42.17",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00003",
+    "payment_id": "pay_42_00003",
+    "settled_amount": "6996.88",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:21:00Z",
+    "fee": "143.32",
+    "fee_tax": "25.80",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00004",
+    "payment_id": "pay_42_00004",
+    "settled_amount": "11612.32",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T04:28:00Z",
+    "fee": "237.86",
+    "fee_tax": "42.81",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00005",
+    "payment_id": "pay_42_00005",
+    "settled_amount": "6535.04",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:35:00Z",
+    "fee": "133.86",
+    "fee_tax": "24.09",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00006",
+    "payment_id": "pay_42_00006",
+    "settled_amount": "10984.78",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:42:00Z",
+    "fee": "219.89",
+    "fee_tax": "39.58",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00007",
+    "payment_id": "pay_42_00007",
+    "settled_amount": "8862.78",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T21:49:00Z",
+    "fee": "181.54",
+    "fee_tax": "32.68",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00008",
+    "payment_id": "pay_42_00008",
+    "settled_amount": "12667.56",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T07:56:00Z",
+    "fee": "259.48",
+    "fee_tax": "46.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00009",
+    "payment_id": "pay_42_00009",
+    "settled_amount": "7265.06",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:03:00Z",
+    "fee": "146.77",
+    "fee_tax": "26.42",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00010",
+    "payment_id": "pay_42_00010",
+    "settled_amount": "4637.65",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:10:00Z",
+    "fee": "95.00",
+    "fee_tax": "17.10",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00010_DUP21",
+    "payment_id": "pay_42_00010",
+    "settled_amount": "4637.65",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:10:00Z",
+    "fee": "95.00",
+    "fee_tax": "17.10",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00011",
+    "payment_id": "pay_42_00011",
+    "settled_amount": "10861.46",
+    "currency": "INR",
+    "settlement_timestamp": "2026-07-29T01:17:00Z",
+    "fee": "222.48",
+    "fee_tax": "40.05",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00012",
+    "payment_id": "pay_42_00012",
+    "settled_amount": "4014.22",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T08:24:00Z",
+    "fee": "82.23",
+    "fee_tax": "14.80",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00013",
+    "payment_id": "pay_42_00013",
+    "settled_amount": "14273.74",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T19:31:00Z",
+    "fee": "292.38",
+    "fee_tax": "52.63",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00014",
+    "payment_id": "pay_42_00014",
+    "settled_amount": "6490.62",
+    "currency": "USD",
+    "settlement_timestamp": "2026-08-01T17:38:00Z",
+    "fee": "132.95",
+    "fee_tax": "23.93",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00015",
+    "payment_id": "pay_42_00015",
+    "settled_amount": "3598.52",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T11:45:00Z",
+    "fee": "73.71",
+    "fee_tax": "13.27",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00017",
+    "payment_id": "pay_42_00017",
+    "settled_amount": "10777.25",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T06:59:00Z",
+    "fee": "220.76",
+    "fee_tax": "39.74",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00018",
+    "payment_id": "pay_42_00018",
+    "settled_amount": "9898.49",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T03:06:00Z",
+    "fee": "202.76",
+    "fee_tax": "36.50",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00019",
+    "payment_id": "pay_42_00019",
+    "settled_amount": "11994.34",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T04:13:00Z",
+    "fee": "245.69",
+    "fee_tax": "44.22",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00020",
+    "payment_id": "pay_42_00020",
+    "settled_amount": "12349.26",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:20:00Z",
+    "fee": "252.96",
+    "fee_tax": "45.53",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00021",
+    "payment_id": "pay_42_00021",
+    "settled_amount": "1587.66",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T21:27:00Z",
+    "fee": "27.40",
+    "fee_tax": "4.93",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00022",
+    "payment_id": "pay_42_00022",
+    "settled_amount": "1386.98",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T18:34:00Z",
+    "fee": "28.41",
+    "fee_tax": "5.11",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00023",
+    "payment_id": "pay_42_00023",
+    "settled_amount": "11398.01",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T16:41:00Z",
+    "fee": "233.47",
+    "fee_tax": "42.02",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00023_DUP52",
+    "payment_id": "pay_42_00023",
+    "settled_amount": "11398.01",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T16:41:00Z",
+    "fee": "233.47",
+    "fee_tax": "42.02",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00024",
+    "payment_id": "pay_42_00024",
+    "settled_amount": "7550.74",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T15:48:00Z",
+    "fee": "154.67",
+    "fee_tax": "27.84",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00025",
+    "payment_id": "pay_42_00025",
+    "settled_amount": "7286.26",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T12:55:00Z",
+    "fee": "298.50",
+    "fee_tax": "53.73",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00026",
+    "payment_id": "pay_42_00026",
+    "settled_amount": "192.34",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T00:02:00Z",
+    "fee": "3.94",
+    "fee_tax": "0.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00027",
+    "payment_id": "pay_42_00027",
+    "settled_amount": "12056.34",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:09:00Z",
+    "fee": "246.96",
+    "fee_tax": "44.45",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00028",
+    "payment_id": "pay_42_00028",
+    "settled_amount": "4463.36",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T06:16:00Z",
+    "fee": "91.43",
+    "fee_tax": "16.46",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00029",
+    "payment_id": "pay_42_00029",
+    "settled_amount": "10797.27",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T14:23:00Z",
+    "fee": "221.17",
+    "fee_tax": "39.81",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00030",
+    "payment_id": "pay_42_00030",
+    "settled_amount": "10052.76",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T15:30:00Z",
+    "fee": "205.92",
+    "fee_tax": "37.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00031",
+    "payment_id": "pay_42_00031",
+    "settled_amount": "10379.37",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T19:37:00Z",
+    "fee": "212.61",
+    "fee_tax": "38.27",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00032",
+    "payment_id": "pay_42_00032",
+    "settled_amount": "4259.29",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T01:44:00Z",
+    "fee": "87.25",
+    "fee_tax": "15.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00033",
+    "payment_id": "pay_42_00033",
+    "settled_amount": "5496.39",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T23:51:00Z",
+    "fee": "112.59",
+    "fee_tax": "20.27",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00034",
+    "payment_id": "pay_42_00034",
+    "settled_amount": "7620.80",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T14:58:00Z",
+    "fee": "156.10",
+    "fee_tax": "28.10",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00035",
+    "payment_id": "pay_42_00035",
+    "settled_amount": "3683.96",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T16:05:00Z",
+    "fee": "75.46",
+    "fee_tax": "13.58",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00036",
+    "payment_id": "pay_42_00036",
+    "settled_amount": "4053.52",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T16:12:00Z",
+    "fee": "83.03",
+    "fee_tax": "14.95",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00037",
+    "payment_id": "pay_42_00037",
+    "settled_amount": "7672.55",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:19:00Z",
+    "fee": "157.16",
+    "fee_tax": "28.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00038",
+    "payment_id": "pay_42_00038",
+    "settled_amount": "12366.10",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T21:26:00Z",
+    "fee": "253.30",
+    "fee_tax": "45.59",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00039",
+    "payment_id": "pay_42_00039",
+    "settled_amount": "5073.37",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:33:00Z",
+    "fee": "103.92",
+    "fee_tax": "18.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00041",
+    "payment_id": "pay_42_00041",
+    "settled_amount": "11251.05",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:47:00Z",
+    "fee": "230.46",
+    "fee_tax": "41.48",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00042",
+    "payment_id": "pay_42_00042",
+    "settled_amount": "5652.13",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:54:00Z",
+    "fee": "115.78",
+    "fee_tax": "20.84",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00043",
+    "payment_id": "pay_42_00043",
+    "settled_amount": "8191.99",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T17:01:00Z",
+    "fee": "167.80",
+    "fee_tax": "30.20",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00044",
+    "payment_id": "pay_42_00044",
+    "settled_amount": "7033.00",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:08:00Z",
+    "fee": "144.06",
+    "fee_tax": "25.93",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00044_DUP65",
+    "payment_id": "pay_42_00044",
+    "settled_amount": "7033.00",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:08:00Z",
+    "fee": "144.06",
+    "fee_tax": "25.93",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00045",
+    "payment_id": "pay_42_00045",
+    "settled_amount": "11836.65",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:15:00Z",
+    "fee": "242.46",
+    "fee_tax": "43.64",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00046",
+    "payment_id": "pay_42_00046",
+    "settled_amount": "7065.96",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T01:22:00Z",
+    "fee": "144.74",
+    "fee_tax": "26.05",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00047",
+    "payment_id": "pay_42_00047",
+    "settled_amount": "4809.05",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T00:29:00Z",
+    "fee": "93.39",
+    "fee_tax": "16.81",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00048",
+    "payment_id": "pay_42_00048",
+    "settled_amount": "8005.49",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T22:36:00Z",
+    "fee": "163.98",
+    "fee_tax": "29.52",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00049",
+    "payment_id": "pay_42_00049",
+    "settled_amount": "12861.13",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T03:43:00Z",
+    "fee": "263.44",
+    "fee_tax": "47.42",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00050",
+    "payment_id": "pay_42_00050",
+    "settled_amount": "8362.38",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T19:50:00Z",
+    "fee": "171.29",
+    "fee_tax": "30.83",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00051",
+    "payment_id": "pay_42_00051",
+    "settled_amount": "8979.46",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T15:57:00Z",
+    "fee": "183.93",
+    "fee_tax": "33.11",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00052",
+    "payment_id": "pay_42_00052",
+    "settled_amount": "12782.05",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T20:04:00Z",
+    "fee": "261.82",
+    "fee_tax": "47.13",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00053",
+    "payment_id": "pay_42_00053",
+    "settled_amount": "4845.99",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:11:00Z",
+    "fee": "102.34",
+    "fee_tax": "18.42",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00054",
+    "payment_id": "pay_42_00054",
+    "settled_amount": "5725.85",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T02:18:00Z",
+    "fee": "117.29",
+    "fee_tax": "21.11",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00055",
+    "payment_id": "pay_42_00055",
+    "settled_amount": "2027.49",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T04:25:00Z",
+    "fee": "41.53",
+    "fee_tax": "7.48",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00056",
+    "payment_id": "pay_42_00056",
+    "settled_amount": "3559.22",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T02:32:00Z",
+    "fee": "72.91",
+    "fee_tax": "13.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00057",
+    "payment_id": "pay_42_00057",
+    "settled_amount": "13417.20",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T03:39:00Z",
+    "fee": "274.83",
+    "fee_tax": "49.47",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00058",
+    "payment_id": "pay_42_00058",
+    "settled_amount": "4932.77",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T16:46:00Z",
+    "fee": "101.04",
+    "fee_tax": "18.19",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00060",
+    "payment_id": "pay_42_00060",
+    "settled_amount": "1737.99",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:00:00Z",
+    "fee": "35.60",
+    "fee_tax": "6.41",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00062",
+    "payment_id": "pay_42_00062",
+    "settled_amount": "1922.53",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T07:14:00Z",
+    "fee": "39.38",
+    "fee_tax": "7.09",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00063",
+    "payment_id": "pay_42_00063",
+    "settled_amount": "2524.48",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:21:00Z",
+    "fee": "51.71",
+    "fee_tax": "9.31",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00064",
+    "payment_id": "pay_42_00064",
+    "settled_amount": "1992.58",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T19:28:00Z",
+    "fee": "40.82",
+    "fee_tax": "7.35",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00065",
+    "payment_id": "pay_42_00065",
+    "settled_amount": "6182.80",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:35:00Z",
+    "fee": "126.65",
+    "fee_tax": "22.80",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00066",
+    "payment_id": "pay_42_00066",
+    "settled_amount": "9294.51",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T20:42:00Z",
+    "fee": "188.34",
+    "fee_tax": "33.90",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00067",
+    "payment_id": "pay_42_00067",
+    "settled_amount": "4330.33",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T00:49:00Z",
+    "fee": "88.70",
+    "fee_tax": "15.97",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00069",
+    "payment_id": "pay_42_00069",
+    "settled_amount": "309.77",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:03:00Z",
+    "fee": "12.69",
+    "fee_tax": "2.28",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00070",
+    "payment_id": "pay_42_00070",
+    "settled_amount": "1236.61",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T04:10:00Z",
+    "fee": "25.33",
+    "fee_tax": "4.56",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00071",
+    "payment_id": "pay_42_00071",
+    "settled_amount": "1854.77",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T03:17:00Z",
+    "fee": "118.85",
+    "fee_tax": "7.13",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00072",
+    "payment_id": "pay_42_00072",
+    "settled_amount": "13321.51",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-01T22:24:00Z",
+    "fee": "272.87",
+    "fee_tax": "49.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00073",
+    "payment_id": "pay_42_00073",
+    "settled_amount": "9467.29",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:31:00Z",
+    "fee": "197.00",
+    "fee_tax": "35.46",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00074",
+    "payment_id": "pay_42_00074",
+    "settled_amount": "11291.33",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-15T08:38:00Z",
+    "fee": "231.29",
+    "fee_tax": "41.63",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00075",
+    "payment_id": "pay_42_00075",
+    "settled_amount": "9664.41",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-30T08:45:00Z",
+    "fee": "197.96",
+    "fee_tax": "35.63",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00076",
+    "payment_id": "pay_42_00076",
+    "settled_amount": "510.66",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T03:52:00Z",
+    "fee": "10.46",
+    "fee_tax": "1.88",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00077",
+    "payment_id": "pay_42_00077",
+    "settled_amount": "9165.83",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T20:59:00Z",
+    "fee": "190.82",
+    "fee_tax": "34.35",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00078",
+    "payment_id": "pay_42_00078",
+    "settled_amount": "3001.20",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:06:00Z",
+    "fee": "61.48",
+    "fee_tax": "11.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00079",
+    "payment_id": "pay_42_00079",
+    "settled_amount": "7616.89",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:13:00Z",
+    "fee": "156.02",
+    "fee_tax": "28.08",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00080",
+    "payment_id": "pay_42_00080",
+    "settled_amount": "13819.48",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T07:20:00Z",
+    "fee": "283.07",
+    "fee_tax": "50.95",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00081",
+    "payment_id": "pay_42_00081",
+    "settled_amount": "10696.70",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T21:27:00Z",
+    "fee": "219.11",
+    "fee_tax": "39.44",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00082",
+    "payment_id": "pay_42_00082",
+    "settled_amount": "1506.58",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:34:00Z",
+    "fee": "30.86",
+    "fee_tax": "5.55",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00083",
+    "payment_id": "pay_42_00083",
+    "settled_amount": "13293.69",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T18:41:00Z",
+    "fee": "272.30",
+    "fee_tax": "49.01",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00084",
+    "payment_id": "pay_42_00084",
+    "settled_amount": "965.17",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:48:00Z",
+    "fee": "19.77",
+    "fee_tax": "3.56",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00084_DUP90",
+    "payment_id": "pay_42_00084",
+    "settled_amount": "965.17",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:48:00Z",
+    "fee": "19.77",
+    "fee_tax": "3.56",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00085",
+    "payment_id": "pay_42_00085",
+    "settled_amount": "12254.80",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-15T09:55:00Z",
+    "fee": "251.02",
+    "fee_tax": "45.18",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00086",
+    "payment_id": "pay_42_00086",
+    "settled_amount": "14288.31",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T01:02:00Z",
+    "fee": "290.63",
+    "fee_tax": "52.31",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00087",
+    "payment_id": "pay_42_00087",
+    "settled_amount": "8908.67",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T15:09:00Z",
+    "fee": "182.48",
+    "fee_tax": "32.85",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00088",
+    "payment_id": "pay_42_00088",
+    "settled_amount": "13557.31",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-15T10:16:00Z",
+    "fee": "277.70",
+    "fee_tax": "49.99",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00089",
+    "payment_id": "pay_42_00089",
+    "settled_amount": "8238.85",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T11:23:00Z",
+    "fee": "168.76",
+    "fee_tax": "30.38",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00090",
+    "payment_id": "pay_42_00090",
+    "settled_amount": "7404.77",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T02:30:00Z",
+    "fee": "151.68",
+    "fee_tax": "27.30",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00091",
+    "payment_id": "pay_42_00091",
+    "settled_amount": "12036.57",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T00:37:00Z",
+    "fee": "246.55",
+    "fee_tax": "44.38",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00092",
+    "payment_id": "pay_42_00092",
+    "settled_amount": "12698.81",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T06:44:00Z",
+    "fee": "260.12",
+    "fee_tax": "46.82",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00093",
+    "payment_id": "pay_42_00093",
+    "settled_amount": "13495.55",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T16:51:00Z",
+    "fee": "276.44",
+    "fee_tax": "49.76",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00094",
+    "payment_id": "pay_42_00094",
+    "settled_amount": "7241.71",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:58:00Z",
+    "fee": "148.34",
+    "fee_tax": "26.70",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00095",
+    "payment_id": "pay_42_00095",
+    "settled_amount": "6132.03",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:05:00Z",
+    "fee": "125.61",
+    "fee_tax": "22.61",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00096",
+    "payment_id": "pay_42_00096",
+    "settled_amount": "3833.58",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T00:12:00Z",
+    "fee": "78.53",
+    "fee_tax": "14.14",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00097",
+    "payment_id": "pay_42_00097",
+    "settled_amount": "6273.86",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-30T11:19:00Z",
+    "fee": "128.51",
+    "fee_tax": "23.13",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00098",
+    "payment_id": "pay_42_00098",
+    "settled_amount": "14010.36",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:26:00Z",
+    "fee": "286.98",
+    "fee_tax": "51.66",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00098_DUP11",
+    "payment_id": "pay_42_00098",
+    "settled_amount": "14010.36",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:26:00Z",
+    "fee": "286.98",
+    "fee_tax": "51.66",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00099",
+    "payment_id": "pay_42_00099",
+    "settled_amount": "6656.61",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T01:33:00Z",
+    "fee": "136.35",
+    "fee_tax": "24.54",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00100",
+    "payment_id": "pay_42_00100",
+    "settled_amount": "10067.90",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T19:40:00Z",
+    "fee": "206.23",
+    "fee_tax": "37.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00102",
+    "payment_id": "pay_42_00102",
+    "settled_amount": "672.49",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T01:54:00Z",
+    "fee": "13.78",
+    "fee_tax": "2.48",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00104",
+    "payment_id": "pay_42_00104",
+    "settled_amount": "2759.30",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T00:08:00Z",
+    "fee": "56.52",
+    "fee_tax": "10.17",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00105",
+    "payment_id": "pay_42_00105",
+    "settled_amount": "4891.18",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T11:15:00Z",
+    "fee": "98.14",
+    "fee_tax": "17.67",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00106",
+    "payment_id": "pay_42_00106",
+    "settled_amount": "6690.04",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T21:22:00Z",
+    "fee": "137.04",
+    "fee_tax": "24.67",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00107",
+    "payment_id": "pay_42_00107",
+    "settled_amount": "1360.85",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T12:29:00Z",
+    "fee": "27.88",
+    "fee_tax": "5.02",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00107_DUP73",
+    "payment_id": "pay_42_00107",
+    "settled_amount": "1360.85",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T12:29:00Z",
+    "fee": "27.88",
+    "fee_tax": "5.02",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00108",
+    "payment_id": "pay_42_00108",
+    "settled_amount": "3812.10",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T20:36:00Z",
+    "fee": "78.09",
+    "fee_tax": "14.06",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00109",
+    "payment_id": "pay_42_00109",
+    "settled_amount": "10814.81",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T14:43:00Z",
+    "fee": "220.50",
+    "fee_tax": "39.69",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00110",
+    "payment_id": "pay_42_00110",
+    "settled_amount": "5625.77",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:50:00Z",
+    "fee": "115.24",
+    "fee_tax": "20.74",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00111",
+    "payment_id": "pay_42_00111",
+    "settled_amount": "7405.98",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T06:57:00Z",
+    "fee": "151.70",
+    "fee_tax": "27.31",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00111_DUP23",
+    "payment_id": "pay_42_00111",
+    "settled_amount": "7405.98",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T06:57:00Z",
+    "fee": "151.70",
+    "fee_tax": "27.31",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00112",
+    "payment_id": "pay_42_00112",
+    "settled_amount": "6198.91",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T12:04:00Z",
+    "fee": "126.98",
+    "fee_tax": "22.86",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00113",
+    "payment_id": "pay_42_00113",
+    "settled_amount": "448.41",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:11:00Z",
+    "fee": "9.19",
+    "fee_tax": "1.65",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00114",
+    "payment_id": "pay_42_00114",
+    "settled_amount": "13521.58",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T01:18:00Z",
+    "fee": "274.92",
+    "fee_tax": "49.49",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00115",
+    "payment_id": "pay_42_00115",
+    "settled_amount": "10018.05",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:25:00Z",
+    "fee": "205.46",
+    "fee_tax": "36.98",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00116",
+    "payment_id": "pay_42_00116",
+    "settled_amount": "14549.34",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-30T13:32:00Z",
+    "fee": "298.02",
+    "fee_tax": "53.64",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00117",
+    "payment_id": "pay_42_00117",
+    "settled_amount": "11812.98",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T03:39:00Z",
+    "fee": "241.97",
+    "fee_tax": "43.55",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00118",
+    "payment_id": "pay_42_00118",
+    "settled_amount": "2907.23",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:46:00Z",
+    "fee": "59.55",
+    "fee_tax": "10.72",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00119",
+    "payment_id": "pay_42_00119",
+    "settled_amount": "8125.59",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T06:53:00Z",
+    "fee": "166.44",
+    "fee_tax": "29.96",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00120",
+    "payment_id": "pay_42_00120",
+    "settled_amount": "12040.95",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:00:00Z",
+    "fee": "246.64",
+    "fee_tax": "44.40",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00121",
+    "payment_id": "pay_42_00121",
+    "settled_amount": "12162.53",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:07:00Z",
+    "fee": "249.13",
+    "fee_tax": "44.84",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00122",
+    "payment_id": "pay_42_00122",
+    "settled_amount": "1541.97",
+    "currency": "EUR",
+    "settlement_timestamp": "2026-08-02T02:14:00Z",
+    "fee": "31.59",
+    "fee_tax": "5.69",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00123",
+    "payment_id": "pay_42_00123",
+    "settled_amount": "10861.46",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T20:21:00Z",
+    "fee": "222.48",
+    "fee_tax": "40.05",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00124",
+    "payment_id": "pay_42_00124",
+    "settled_amount": "10893.21",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T17:28:00Z",
+    "fee": "223.13",
+    "fee_tax": "40.16",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00125",
+    "payment_id": "pay_42_00125",
+    "settled_amount": "10458.22",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:35:00Z",
+    "fee": "214.22",
+    "fee_tax": "38.56",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00125_DUP93",
+    "payment_id": "pay_42_00125",
+    "settled_amount": "10458.22",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:35:00Z",
+    "fee": "214.22",
+    "fee_tax": "38.56",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00126",
+    "payment_id": "pay_42_00126",
+    "settled_amount": "1964.03",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T03:42:00Z",
+    "fee": "40.23",
+    "fee_tax": "7.24",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00127",
+    "payment_id": "pay_42_00127",
+    "settled_amount": "1954.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:49:00Z",
+    "fee": "40.04",
+    "fee_tax": "7.21",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00128",
+    "payment_id": "pay_42_00128",
+    "settled_amount": "7355.21",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:56:00Z",
+    "fee": "150.66",
+    "fee_tax": "27.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00129",
+    "payment_id": "pay_42_00129",
+    "settled_amount": "14111.54",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:03:00Z",
+    "fee": "292.13",
+    "fee_tax": "52.58",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00130",
+    "payment_id": "pay_42_00130",
+    "settled_amount": "721.96",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:10:00Z",
+    "fee": "12.74",
+    "fee_tax": "2.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00131",
+    "payment_id": "pay_42_00131",
+    "settled_amount": "1687.21",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T20:17:00Z",
+    "fee": "34.56",
+    "fee_tax": "6.22",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00132",
+    "payment_id": "pay_42_00132",
+    "settled_amount": "6467.66",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:24:00Z",
+    "fee": "132.48",
+    "fee_tax": "23.85",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00133",
+    "payment_id": "pay_42_00133",
+    "settled_amount": "10687.38",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:31:00Z",
+    "fee": "219.17",
+    "fee_tax": "39.45",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00134",
+    "payment_id": "pay_42_00134",
+    "settled_amount": "12684.40",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:38:00Z",
+    "fee": "259.82",
+    "fee_tax": "46.77",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00135",
+    "payment_id": "pay_42_00135",
+    "settled_amount": "13372.52",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T09:45:00Z",
+    "fee": "273.92",
+    "fee_tax": "49.31",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00136",
+    "payment_id": "pay_42_00136",
+    "settled_amount": "5354.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:52:00Z",
+    "fee": "109.67",
+    "fee_tax": "19.74",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00137",
+    "payment_id": "pay_42_00137",
+    "settled_amount": "2227.12",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T11:59:00Z",
+    "fee": "44.60",
+    "fee_tax": "8.03",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00139",
+    "payment_id": "pay_42_00139",
+    "settled_amount": "2767.05",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T05:13:00Z",
+    "fee": "177.30",
+    "fee_tax": "10.64",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00140",
+    "payment_id": "pay_42_00140",
+    "settled_amount": "1915.70",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T19:20:00Z",
+    "fee": "39.24",
+    "fee_tax": "7.06",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00141",
+    "payment_id": "pay_42_00141",
+    "settled_amount": "9594.11",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T18:27:00Z",
+    "fee": "196.52",
+    "fee_tax": "35.37",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00142",
+    "payment_id": "pay_42_00142",
+    "settled_amount": "4922.27",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T00:34:00Z",
+    "fee": "100.83",
+    "fee_tax": "18.15",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00143",
+    "payment_id": "pay_42_00143",
+    "settled_amount": "13652.26",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T17:41:00Z",
+    "fee": "279.65",
+    "fee_tax": "50.34",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00144",
+    "payment_id": "pay_42_00144",
+    "settled_amount": "11493.44",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T06:48:00Z",
+    "fee": "235.43",
+    "fee_tax": "42.38",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00145",
+    "payment_id": "pay_42_00145",
+    "settled_amount": "1148.73",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T12:55:00Z",
+    "fee": "23.53",
+    "fee_tax": "4.24",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00146",
+    "payment_id": "pay_42_00146",
+    "settled_amount": "9654.39",
+    "currency": "INR",
+    "settlement_timestamp": "2026-07-29T17:02:00Z",
+    "fee": "197.76",
+    "fee_tax": "35.60",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00147",
+    "payment_id": "pay_42_00147",
+    "settled_amount": "13740.63",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T04:09:00Z",
+    "fee": "281.46",
+    "fee_tax": "50.66",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00148",
+    "payment_id": "pay_42_00148",
+    "settled_amount": "14304.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T18:16:00Z",
+    "fee": "293.01",
+    "fee_tax": "52.74",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00149",
+    "payment_id": "pay_42_00149",
+    "settled_amount": "6475.21",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T15:23:00Z",
+    "fee": "414.90",
+    "fee_tax": "24.89",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00150",
+    "payment_id": "pay_42_00150",
+    "settled_amount": "6085.41",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:30:00Z",
+    "fee": "124.65",
+    "fee_tax": "22.44",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00151",
+    "payment_id": "pay_42_00151",
+    "settled_amount": "13403.04",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T07:37:00Z",
+    "fee": "274.54",
+    "fee_tax": "49.42",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00152",
+    "payment_id": "pay_42_00152",
+    "settled_amount": "13084.25",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:44:00Z",
+    "fee": "268.01",
+    "fee_tax": "48.24",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00153",
+    "payment_id": "pay_42_00153",
+    "settled_amount": "5754.16",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T04:51:00Z",
+    "fee": "117.87",
+    "fee_tax": "21.22",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00154",
+    "payment_id": "pay_42_00154",
+    "settled_amount": "5822.68",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:58:00Z",
+    "fee": "117.22",
+    "fee_tax": "21.10",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00155",
+    "payment_id": "pay_42_00155",
+    "settled_amount": "3533.97",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T17:05:00Z",
+    "fee": "226.44",
+    "fee_tax": "13.59",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00156",
+    "payment_id": "pay_42_00156",
+    "settled_amount": "12347.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T00:12:00Z",
+    "fee": "251.90",
+    "fee_tax": "45.34",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00157",
+    "payment_id": "pay_42_00157",
+    "settled_amount": "560.94",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T14:19:00Z",
+    "fee": "11.49",
+    "fee_tax": "2.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00158",
+    "payment_id": "pay_42_00158",
+    "settled_amount": "5712.92",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T11:26:00Z",
+    "fee": "117.02",
+    "fee_tax": "21.06",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00159",
+    "payment_id": "pay_42_00159",
+    "settled_amount": "11951.14",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T08:33:00Z",
+    "fee": "244.80",
+    "fee_tax": "44.06",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00160",
+    "payment_id": "pay_42_00160",
+    "settled_amount": "6813.56",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T16:40:00Z",
+    "fee": "139.57",
+    "fee_tax": "25.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00161",
+    "payment_id": "pay_42_00161",
+    "settled_amount": "11641.61",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:47:00Z",
+    "fee": "238.46",
+    "fee_tax": "42.92",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00162",
+    "payment_id": "pay_42_00162",
+    "settled_amount": "2586.97",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:54:00Z",
+    "fee": "52.99",
+    "fee_tax": "9.54",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00163",
+    "payment_id": "pay_42_00163",
+    "settled_amount": "4450.67",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T04:01:00Z",
+    "fee": "91.17",
+    "fee_tax": "16.41",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00164",
+    "payment_id": "pay_42_00164",
+    "settled_amount": "6973.48",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:08:00Z",
+    "fee": "137.72",
+    "fee_tax": "24.79",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00165",
+    "payment_id": "pay_42_00165",
+    "settled_amount": "2121.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T04:15:00Z",
+    "fee": "38.34",
+    "fee_tax": "6.90",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00166",
+    "payment_id": "pay_42_00166",
+    "settled_amount": "3624.63",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:22:00Z",
+    "fee": "74.25",
+    "fee_tax": "13.37",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00167",
+    "payment_id": "pay_42_00167",
+    "settled_amount": "4919.59",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:29:00Z",
+    "fee": "100.77",
+    "fee_tax": "18.14",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00168",
+    "payment_id": "pay_42_00168",
+    "settled_amount": "5345.79",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T07:36:00Z",
+    "fee": "109.50",
+    "fee_tax": "19.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00168_DUP32",
+    "payment_id": "pay_42_00168",
+    "settled_amount": "5345.79",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T07:36:00Z",
+    "fee": "109.50",
+    "fee_tax": "19.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00169",
+    "payment_id": "pay_42_00169",
+    "settled_amount": "6180.36",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:43:00Z",
+    "fee": "126.60",
+    "fee_tax": "22.79",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00169_DUP19",
+    "payment_id": "pay_42_00169",
+    "settled_amount": "6180.36",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:43:00Z",
+    "fee": "126.60",
+    "fee_tax": "22.79",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00170",
+    "payment_id": "pay_42_00170",
+    "settled_amount": "13883.43",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T20:50:00Z",
+    "fee": "284.38",
+    "fee_tax": "51.19",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00171",
+    "payment_id": "pay_42_00171",
+    "settled_amount": "13889.28",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T01:57:00Z",
+    "fee": "284.50",
+    "fee_tax": "51.21",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00172",
+    "payment_id": "pay_42_00172",
+    "settled_amount": "4728.71",
+    "currency": "INR",
+    "settlement_timestamp": "2026-07-29T20:04:00Z",
+    "fee": "96.86",
+    "fee_tax": "17.43",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00173",
+    "payment_id": "pay_42_00173",
+    "settled_amount": "13407.91",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:11:00Z",
+    "fee": "274.64",
+    "fee_tax": "49.44",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00174",
+    "payment_id": "pay_42_00174",
+    "settled_amount": "7067.91",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T20:18:00Z",
+    "fee": "144.78",
+    "fee_tax": "26.06",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00175",
+    "payment_id": "pay_42_00175",
+    "settled_amount": "14024.02",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:25:00Z",
+    "fee": "287.26",
+    "fee_tax": "51.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00176",
+    "payment_id": "pay_42_00176",
+    "settled_amount": "12561.87",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:32:00Z",
+    "fee": "257.31",
+    "fee_tax": "46.32",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00177",
+    "payment_id": "pay_42_00177",
+    "settled_amount": "8255.95",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T08:39:00Z",
+    "fee": "169.11",
+    "fee_tax": "30.44",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00178",
+    "payment_id": "pay_42_00178",
+    "settled_amount": "3877.28",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T12:46:00Z",
+    "fee": "79.42",
+    "fee_tax": "14.30",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00178_DUP32",
+    "payment_id": "pay_42_00178",
+    "settled_amount": "3877.28",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T12:46:00Z",
+    "fee": "79.42",
+    "fee_tax": "14.30",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00179",
+    "payment_id": "pay_42_00179",
+    "settled_amount": "6129.35",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:53:00Z",
+    "fee": "251.10",
+    "fee_tax": "45.20",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00180",
+    "payment_id": "pay_42_00180",
+    "settled_amount": "12166.67",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T09:00:00Z",
+    "fee": "249.22",
+    "fee_tax": "44.86",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00181",
+    "payment_id": "pay_42_00181",
+    "settled_amount": "13923.45",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:07:00Z",
+    "fee": "285.20",
+    "fee_tax": "51.34",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00182",
+    "payment_id": "pay_42_00182",
+    "settled_amount": "7172.62",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T17:14:00Z",
+    "fee": "146.92",
+    "fee_tax": "26.45",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00183",
+    "payment_id": "pay_42_00183",
+    "settled_amount": "7877.00",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T18:21:00Z",
+    "fee": "504.72",
+    "fee_tax": "30.28",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00184",
+    "payment_id": "pay_42_00184",
+    "settled_amount": "1008.61",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-30T21:28:00Z",
+    "fee": "20.66",
+    "fee_tax": "3.72",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00185",
+    "payment_id": "pay_42_00185",
+    "settled_amount": "6248.22",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T03:35:00Z",
+    "fee": "127.99",
+    "fee_tax": "23.04",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00186",
+    "payment_id": "pay_42_00186",
+    "settled_amount": "14639.89",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:42:00Z",
+    "fee": "299.88",
+    "fee_tax": "53.98",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00187",
+    "payment_id": "pay_42_00187",
+    "settled_amount": "8118.28",
+    "currency": "EUR",
+    "settlement_timestamp": "2026-08-02T10:49:00Z",
+    "fee": "166.29",
+    "fee_tax": "29.93",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00188",
+    "payment_id": "pay_42_00188",
+    "settled_amount": "8169.05",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T10:56:00Z",
+    "fee": "167.33",
+    "fee_tax": "30.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00189",
+    "payment_id": "pay_42_00189",
+    "settled_amount": "8481.74",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:03:00Z",
+    "fee": "173.74",
+    "fee_tax": "31.27",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00190",
+    "payment_id": "pay_42_00190",
+    "settled_amount": "4872.52",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:10:00Z",
+    "fee": "94.69",
+    "fee_tax": "17.04",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00191",
+    "payment_id": "pay_42_00191",
+    "settled_amount": "5371.18",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T03:17:00Z",
+    "fee": "110.02",
+    "fee_tax": "19.80",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00192",
+    "payment_id": "pay_42_00192",
+    "settled_amount": "4228.95",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T14:24:00Z",
+    "fee": "84.58",
+    "fee_tax": "15.22",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00193",
+    "payment_id": "pay_42_00193",
+    "settled_amount": "2529.97",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T14:31:00Z",
+    "fee": "103.65",
+    "fee_tax": "18.66",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00194",
+    "payment_id": "pay_42_00194",
+    "settled_amount": "9038.77",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:38:00Z",
+    "fee": "185.15",
+    "fee_tax": "33.33",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00195",
+    "payment_id": "pay_42_00195",
+    "settled_amount": "1592.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:45:00Z",
+    "fee": "32.63",
+    "fee_tax": "5.87",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00196",
+    "payment_id": "pay_42_00196",
+    "settled_amount": "5038.71",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T16:52:00Z",
+    "fee": "103.21",
+    "fee_tax": "18.58",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00197",
+    "payment_id": "pay_42_00197",
+    "settled_amount": "3721.55",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T14:59:00Z",
+    "fee": "76.23",
+    "fee_tax": "13.72",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00198",
+    "payment_id": "pay_42_00198",
+    "settled_amount": "8219.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T10:06:00Z",
+    "fee": "168.36",
+    "fee_tax": "30.30",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00199",
+    "payment_id": "pay_42_00199",
+    "settled_amount": "14117.52",
+    "currency": "INR",
+    "settlement_timestamp": "2026-07-29T23:13:00Z",
+    "fee": "289.18",
+    "fee_tax": "52.05",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00200",
+    "payment_id": "pay_42_00200",
+    "settled_amount": "2990.46",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T16:20:00Z",
+    "fee": "61.26",
+    "fee_tax": "11.03",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00201",
+    "payment_id": "pay_42_00201",
+    "settled_amount": "6670.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T08:27:00Z",
+    "fee": "136.64",
+    "fee_tax": "24.60",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00202",
+    "payment_id": "pay_42_00202",
+    "settled_amount": "9865.54",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T11:34:00Z",
+    "fee": "202.08",
+    "fee_tax": "36.37",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00202_DUP39",
+    "payment_id": "pay_42_00202",
+    "settled_amount": "9865.54",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T11:34:00Z",
+    "fee": "202.08",
+    "fee_tax": "36.37",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00203",
+    "payment_id": "pay_42_00203",
+    "settled_amount": "3911.64",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:41:00Z",
+    "fee": "80.38",
+    "fee_tax": "14.47",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00204",
+    "payment_id": "pay_42_00204",
+    "settled_amount": "7484.10",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T11:48:00Z",
+    "fee": "153.30",
+    "fee_tax": "27.59",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00205",
+    "payment_id": "pay_42_00205",
+    "settled_amount": "13152.79",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:55:00Z",
+    "fee": "269.67",
+    "fee_tax": "48.54",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00206",
+    "payment_id": "pay_42_00206",
+    "settled_amount": "10354.96",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:02:00Z",
+    "fee": "212.11",
+    "fee_tax": "38.18",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00207",
+    "payment_id": "pay_42_00207",
+    "settled_amount": "13713.54",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T21:09:00Z",
+    "fee": "280.90",
+    "fee_tax": "50.56",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00208",
+    "payment_id": "pay_42_00208",
+    "settled_amount": "7285.65",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T16:16:00Z",
+    "fee": "149.24",
+    "fee_tax": "26.86",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00209",
+    "payment_id": "pay_42_00209",
+    "settled_amount": "13162.11",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:23:00Z",
+    "fee": "269.61",
+    "fee_tax": "48.53",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00211",
+    "payment_id": "pay_42_00211",
+    "settled_amount": "6095.18",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T12:37:00Z",
+    "fee": "124.85",
+    "fee_tax": "22.47",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00211_DUP93",
+    "payment_id": "pay_42_00211",
+    "settled_amount": "6095.18",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T12:37:00Z",
+    "fee": "124.85",
+    "fee_tax": "22.47",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00212",
+    "payment_id": "pay_42_00212",
+    "settled_amount": "12757.15",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T16:44:00Z",
+    "fee": "261.31",
+    "fee_tax": "47.04",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00213",
+    "payment_id": "pay_42_00213",
+    "settled_amount": "12236.48",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:51:00Z",
+    "fee": "250.65",
+    "fee_tax": "45.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00214",
+    "payment_id": "pay_42_00214",
+    "settled_amount": "389.77",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T18:58:00Z",
+    "fee": "8.24",
+    "fee_tax": "1.48",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00216",
+    "payment_id": "pay_42_00216",
+    "settled_amount": "3911.70",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T09:12:00Z",
+    "fee": "80.13",
+    "fee_tax": "14.42",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00217",
+    "payment_id": "pay_42_00217",
+    "settled_amount": "1871.02",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T08:19:00Z",
+    "fee": "38.33",
+    "fee_tax": "6.90",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00218",
+    "payment_id": "pay_42_00218",
+    "settled_amount": "4757.26",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T13:26:00Z",
+    "fee": "97.45",
+    "fee_tax": "17.54",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00219",
+    "payment_id": "pay_42_00219",
+    "settled_amount": "3093.24",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:33:00Z",
+    "fee": "63.36",
+    "fee_tax": "11.40",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00220",
+    "payment_id": "pay_42_00220",
+    "settled_amount": "8802.00",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:40:00Z",
+    "fee": "180.30",
+    "fee_tax": "32.45",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00221",
+    "payment_id": "pay_42_00221",
+    "settled_amount": "13491.88",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T14:47:00Z",
+    "fee": "864.50",
+    "fee_tax": "51.87",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00222",
+    "payment_id": "pay_42_00222",
+    "settled_amount": "4154.58",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T00:54:00Z",
+    "fee": "85.10",
+    "fee_tax": "15.32",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00224",
+    "payment_id": "pay_42_00224",
+    "settled_amount": "807.47",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:08:00Z",
+    "fee": "16.54",
+    "fee_tax": "2.98",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00225",
+    "payment_id": "pay_42_00225",
+    "settled_amount": "11222.00",
+    "currency": "USD",
+    "settlement_timestamp": "2026-08-03T10:15:00Z",
+    "fee": "229.87",
+    "fee_tax": "41.38",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00226",
+    "payment_id": "pay_42_00226",
+    "settled_amount": "689.33",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T20:22:00Z",
+    "fee": "14.12",
+    "fee_tax": "2.54",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00227",
+    "payment_id": "pay_42_00227",
+    "settled_amount": "5396.59",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:29:00Z",
+    "fee": "105.42",
+    "fee_tax": "18.98",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00228",
+    "payment_id": "pay_42_00228",
+    "settled_amount": "12147.88",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:36:00Z",
+    "fee": "248.83",
+    "fee_tax": "44.79",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00229",
+    "payment_id": "pay_42_00229",
+    "settled_amount": "2234.01",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T01:43:00Z",
+    "fee": "91.52",
+    "fee_tax": "16.47",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00230",
+    "payment_id": "pay_42_00230",
+    "settled_amount": "14408.97",
+    "currency": "GBP",
+    "settlement_timestamp": "2026-08-03T00:50:00Z",
+    "fee": "295.15",
+    "fee_tax": "53.13",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00231",
+    "payment_id": "pay_42_00231",
+    "settled_amount": "5974.34",
+    "currency": "INR",
+    "settlement_timestamp": "2026-07-30T02:57:00Z",
+    "fee": "122.38",
+    "fee_tax": "22.03",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00232",
+    "payment_id": "pay_42_00232",
+    "settled_amount": "9735.20",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T08:04:00Z",
+    "fee": "199.41",
+    "fee_tax": "35.89",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00233",
+    "payment_id": "pay_42_00233",
+    "settled_amount": "1378.67",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-16T03:11:00Z",
+    "fee": "28.24",
+    "fee_tax": "5.08",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00234",
+    "payment_id": "pay_42_00234",
+    "settled_amount": "2763.45",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:18:00Z",
+    "fee": "56.61",
+    "fee_tax": "10.19",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00236",
+    "payment_id": "pay_42_00236",
+    "settled_amount": "10834.37",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:32:00Z",
+    "fee": "221.93",
+    "fee_tax": "39.95",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00237",
+    "payment_id": "pay_42_00237",
+    "settled_amount": "1191.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T12:39:00Z",
+    "fee": "48.80",
+    "fee_tax": "8.78",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00238",
+    "payment_id": "pay_42_00238",
+    "settled_amount": "1173.14",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T15:46:00Z",
+    "fee": "24.03",
+    "fee_tax": "4.33",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00239",
+    "payment_id": "pay_42_00239",
+    "settled_amount": "6222.35",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T16:53:00Z",
+    "fee": "127.46",
+    "fee_tax": "22.94",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00240",
+    "payment_id": "pay_42_00240",
+    "settled_amount": "6032.19",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:00:00Z",
+    "fee": "123.56",
+    "fee_tax": "22.24",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00240_DUP77",
+    "payment_id": "pay_42_00240",
+    "settled_amount": "6032.19",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:00:00Z",
+    "fee": "123.56",
+    "fee_tax": "22.24",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00241",
+    "payment_id": "pay_42_00241",
+    "settled_amount": "6465.71",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T12:07:00Z",
+    "fee": "132.44",
+    "fee_tax": "23.84",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00242",
+    "payment_id": "pay_42_00242",
+    "settled_amount": "512.12",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:14:00Z",
+    "fee": "10.49",
+    "fee_tax": "1.89",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00243",
+    "payment_id": "pay_42_00243",
+    "settled_amount": "4285.41",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:21:00Z",
+    "fee": "87.78",
+    "fee_tax": "15.80",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00244",
+    "payment_id": "pay_42_00244",
+    "settled_amount": "11199.55",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:28:00Z",
+    "fee": "229.41",
+    "fee_tax": "41.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00245",
+    "payment_id": "pay_42_00245",
+    "settled_amount": "7329.35",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:35:00Z",
+    "fee": "150.13",
+    "fee_tax": "27.02",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00246",
+    "payment_id": "pay_42_00246",
+    "settled_amount": "10781.40",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:42:00Z",
+    "fee": "220.84",
+    "fee_tax": "39.75",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00247",
+    "payment_id": "pay_42_00247",
+    "settled_amount": "13716.96",
+    "currency": "EUR",
+    "settlement_timestamp": "2026-08-03T14:49:00Z",
+    "fee": "280.97",
+    "fee_tax": "50.57",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00248",
+    "payment_id": "pay_42_00248",
+    "settled_amount": "3683.96",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:56:00Z",
+    "fee": "75.46",
+    "fee_tax": "13.58",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00249",
+    "payment_id": "pay_42_00249",
+    "settled_amount": "518.46",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T10:03:00Z",
+    "fee": "10.62",
+    "fee_tax": "1.91",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00250",
+    "payment_id": "pay_42_00250",
+    "settled_amount": "12954.63",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T21:10:00Z",
+    "fee": "265.36",
+    "fee_tax": "47.76",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00251",
+    "payment_id": "pay_42_00251",
+    "settled_amount": "5045.30",
+    "currency": "INR",
+    "settlement_timestamp": "2026-10-01T05:17:00Z",
+    "fee": "103.35",
+    "fee_tax": "18.60",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00252",
+    "payment_id": "pay_42_00252",
+    "settled_amount": "12401.49",
+    "currency": "EUR",
+    "settlement_timestamp": "2026-08-03T11:24:00Z",
+    "fee": "254.03",
+    "fee_tax": "45.73",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00253",
+    "payment_id": "pay_42_00253",
+    "settled_amount": "7283.40",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:31:00Z",
+    "fee": "149.45",
+    "fee_tax": "26.90",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00254",
+    "payment_id": "pay_42_00254",
+    "settled_amount": "7071.45",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T13:38:00Z",
+    "fee": "289.70",
+    "fee_tax": "52.15",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00255",
+    "payment_id": "pay_42_00255",
+    "settled_amount": "7019.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T18:45:00Z",
+    "fee": "143.78",
+    "fee_tax": "25.88",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00256",
+    "payment_id": "pay_42_00256",
+    "settled_amount": "2731.48",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T03:52:00Z",
+    "fee": "55.95",
+    "fee_tax": "10.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00257",
+    "payment_id": "pay_42_00257",
+    "settled_amount": "8398.98",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T19:59:00Z",
+    "fee": "172.04",
+    "fee_tax": "30.97",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00258",
+    "payment_id": "pay_42_00258",
+    "settled_amount": "10096.94",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T13:06:00Z",
+    "fee": "206.82",
+    "fee_tax": "37.23",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00259",
+    "payment_id": "pay_42_00259",
+    "settled_amount": "10351.30",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T12:13:00Z",
+    "fee": "212.03",
+    "fee_tax": "38.17",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00260",
+    "payment_id": "pay_42_00260",
+    "settled_amount": "10635.68",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T17:20:00Z",
+    "fee": "217.86",
+    "fee_tax": "39.21",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00261",
+    "payment_id": "pay_42_00261",
+    "settled_amount": "13298.57",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T20:27:00Z",
+    "fee": "272.40",
+    "fee_tax": "49.03",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00261_DUP93",
+    "payment_id": "pay_42_00261",
+    "settled_amount": "13298.57",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T20:27:00Z",
+    "fee": "272.40",
+    "fee_tax": "49.03",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00262",
+    "payment_id": "pay_42_00262",
+    "settled_amount": "12366.83",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:34:00Z",
+    "fee": "253.32",
+    "fee_tax": "45.60",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00263",
+    "payment_id": "pay_42_00263",
+    "settled_amount": "14319.63",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T03:41:00Z",
+    "fee": "293.32",
+    "fee_tax": "52.80",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00264",
+    "payment_id": "pay_42_00264",
+    "settled_amount": "4015.19",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T03:48:00Z",
+    "fee": "82.25",
+    "fee_tax": "14.81",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00265",
+    "payment_id": "pay_42_00265",
+    "settled_amount": "2625.78",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:55:00Z",
+    "fee": "53.79",
+    "fee_tax": "9.68",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00265_DUP36",
+    "payment_id": "pay_42_00265",
+    "settled_amount": "2625.78",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:55:00Z",
+    "fee": "53.79",
+    "fee_tax": "9.68",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00266",
+    "payment_id": "pay_42_00266",
+    "settled_amount": "4901.29",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:02:00Z",
+    "fee": "200.79",
+    "fee_tax": "36.14",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00268",
+    "payment_id": "pay_42_00268",
+    "settled_amount": "3964.42",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:16:00Z",
+    "fee": "81.21",
+    "fee_tax": "14.62",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00268_DUP41",
+    "payment_id": "pay_42_00268",
+    "settled_amount": "3964.42",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:16:00Z",
+    "fee": "81.21",
+    "fee_tax": "14.62",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00269",
+    "payment_id": "pay_42_00269",
+    "settled_amount": "1646.21",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T04:23:00Z",
+    "fee": "33.72",
+    "fee_tax": "6.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00270",
+    "payment_id": "pay_42_00270",
+    "settled_amount": "13940.55",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:30:00Z",
+    "fee": "285.55",
+    "fee_tax": "51.40",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00271",
+    "payment_id": "pay_42_00271",
+    "settled_amount": "12155.08",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T10:37:00Z",
+    "fee": "252.05",
+    "fee_tax": "45.37",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00272",
+    "payment_id": "pay_42_00272",
+    "settled_amount": "8053.35",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T21:44:00Z",
+    "fee": "164.96",
+    "fee_tax": "29.69",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00274",
+    "payment_id": "pay_42_00274",
+    "settled_amount": "8015.02",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T15:58:00Z",
+    "fee": "164.18",
+    "fee_tax": "29.55",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00275",
+    "payment_id": "pay_42_00275",
+    "settled_amount": "8683.13",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T23:05:00Z",
+    "fee": "177.86",
+    "fee_tax": "32.01",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00276",
+    "payment_id": "pay_42_00276",
+    "settled_amount": "11736.32",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T20:12:00Z",
+    "fee": "240.40",
+    "fee_tax": "43.27",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00277",
+    "payment_id": "pay_42_00277",
+    "settled_amount": "6505.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:19:00Z",
+    "fee": "133.26",
+    "fee_tax": "23.99",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00278",
+    "payment_id": "pay_42_00278",
+    "settled_amount": "9198.70",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:26:00Z",
+    "fee": "183.30",
+    "fee_tax": "32.99",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00280",
+    "payment_id": "pay_42_00280",
+    "settled_amount": "12175.22",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:40:00Z",
+    "fee": "249.39",
+    "fee_tax": "44.89",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00281",
+    "payment_id": "pay_42_00281",
+    "settled_amount": "741.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T21:47:00Z",
+    "fee": "15.18",
+    "fee_tax": "2.73",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00282",
+    "payment_id": "pay_42_00282",
+    "settled_amount": "8655.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T00:54:00Z",
+    "fee": "172.17",
+    "fee_tax": "30.99",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00284",
+    "payment_id": "pay_42_00284",
+    "settled_amount": "8063.23",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:08:00Z",
+    "fee": "168.24",
+    "fee_tax": "30.28",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00285",
+    "payment_id": "pay_42_00285",
+    "settled_amount": "6241.18",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:15:00Z",
+    "fee": "122.72",
+    "fee_tax": "22.09",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00287",
+    "payment_id": "pay_42_00287",
+    "settled_amount": "9432.26",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:29:00Z",
+    "fee": "193.21",
+    "fee_tax": "34.78",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00288",
+    "payment_id": "pay_42_00288",
+    "settled_amount": "13242.42",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-02T22:36:00Z",
+    "fee": "271.25",
+    "fee_tax": "48.83",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00289",
+    "payment_id": "pay_42_00289",
+    "settled_amount": "400.56",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:43:00Z",
+    "fee": "8.21",
+    "fee_tax": "1.48",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00290",
+    "payment_id": "pay_42_00290",
+    "settled_amount": "11144.14",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T10:50:00Z",
+    "fee": "228.27",
+    "fee_tax": "41.09",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00291",
+    "payment_id": "pay_42_00291",
+    "settled_amount": "11388.24",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T13:57:00Z",
+    "fee": "233.27",
+    "fee_tax": "41.99",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00292",
+    "payment_id": "pay_42_00292",
+    "settled_amount": "8503.71",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T08:04:00Z",
+    "fee": "174.19",
+    "fee_tax": "31.35",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00293",
+    "payment_id": "pay_42_00293",
+    "settled_amount": "5574.02",
+    "currency": "INR",
+    "settlement_timestamp": "2026-10-01T10:11:00Z",
+    "fee": "114.18",
+    "fee_tax": "20.55",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00294",
+    "payment_id": "pay_42_00294",
+    "settled_amount": "3173.79",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:18:00Z",
+    "fee": "65.01",
+    "fee_tax": "11.70",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00295",
+    "payment_id": "pay_42_00295",
+    "settled_amount": "4859.53",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T20:25:00Z",
+    "fee": "99.54",
+    "fee_tax": "17.92",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00296",
+    "payment_id": "pay_42_00296",
+    "settled_amount": "7774.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-16T10:32:00Z",
+    "fee": "159.24",
+    "fee_tax": "28.66",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00298",
+    "payment_id": "pay_42_00298",
+    "settled_amount": "4743.35",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:46:00Z",
+    "fee": "97.16",
+    "fee_tax": "17.49",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00299",
+    "payment_id": "pay_42_00299",
+    "settled_amount": "7174.58",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:53:00Z",
+    "fee": "146.96",
+    "fee_tax": "26.45",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00300",
+    "payment_id": "pay_42_00300",
+    "settled_amount": "13343.23",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:00:00Z",
+    "fee": "273.32",
+    "fee_tax": "49.20",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00301",
+    "payment_id": "pay_42_00301",
+    "settled_amount": "1845.15",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T22:07:00Z",
+    "fee": "37.80",
+    "fee_tax": "6.80",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00303",
+    "payment_id": "pay_42_00303",
+    "settled_amount": "1750.15",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T09:21:00Z",
+    "fee": "34.83",
+    "fee_tax": "6.27",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00304",
+    "payment_id": "pay_42_00304",
+    "settled_amount": "180.38",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T04:28:00Z",
+    "fee": "3.70",
+    "fee_tax": "0.67",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00305",
+    "payment_id": "pay_42_00305",
+    "settled_amount": "10504.60",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T23:35:00Z",
+    "fee": "215.17",
+    "fee_tax": "38.73",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00306",
+    "payment_id": "pay_42_00306",
+    "settled_amount": "10429.90",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T23:42:00Z",
+    "fee": "213.64",
+    "fee_tax": "38.46",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00307",
+    "payment_id": "pay_42_00307",
+    "settled_amount": "11964.03",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T04:49:00Z",
+    "fee": "244.04",
+    "fee_tax": "43.93",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00308",
+    "payment_id": "pay_42_00308",
+    "settled_amount": "12702.23",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T04:56:00Z",
+    "fee": "260.19",
+    "fee_tax": "46.83",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00309",
+    "payment_id": "pay_42_00309",
+    "settled_amount": "246.04",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:03:00Z",
+    "fee": "5.04",
+    "fee_tax": "0.91",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00310",
+    "payment_id": "pay_42_00310",
+    "settled_amount": "4649.85",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T20:10:00Z",
+    "fee": "95.25",
+    "fee_tax": "17.15",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00311",
+    "payment_id": "pay_42_00311",
+    "settled_amount": "13712.31",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:17:00Z",
+    "fee": "280.88",
+    "fee_tax": "50.56",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00312",
+    "payment_id": "pay_42_00312",
+    "settled_amount": "5387.29",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T23:24:00Z",
+    "fee": "110.35",
+    "fee_tax": "19.86",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00313",
+    "payment_id": "pay_42_00313",
+    "settled_amount": "423.18",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T09:31:00Z",
+    "fee": "6.62",
+    "fee_tax": "1.19",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00314",
+    "payment_id": "pay_42_00314",
+    "settled_amount": "12781.15",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T16:38:00Z",
+    "fee": "818.96",
+    "fee_tax": "49.14",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00315",
+    "payment_id": "pay_42_00315",
+    "settled_amount": "10803.87",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:45:00Z",
+    "fee": "221.30",
+    "fee_tax": "39.83",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00315_DUP51",
+    "payment_id": "pay_42_00315",
+    "settled_amount": "10803.87",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:45:00Z",
+    "fee": "221.30",
+    "fee_tax": "39.83",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00316",
+    "payment_id": "pay_42_00316",
+    "settled_amount": "456.99",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T12:52:00Z",
+    "fee": "4.24",
+    "fee_tax": "0.76",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00317",
+    "payment_id": "pay_42_00317",
+    "settled_amount": "4928.62",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T23:59:00Z",
+    "fee": "100.96",
+    "fee_tax": "18.17",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00318",
+    "payment_id": "pay_42_00318",
+    "settled_amount": "10554.87",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T23:06:00Z",
+    "fee": "216.20",
+    "fee_tax": "38.92",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00319",
+    "payment_id": "pay_42_00319",
+    "settled_amount": "7543.66",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:13:00Z",
+    "fee": "154.52",
+    "fee_tax": "27.81",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00320",
+    "payment_id": "pay_42_00320",
+    "settled_amount": "10315.66",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T12:20:00Z",
+    "fee": "211.30",
+    "fee_tax": "38.03",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00321",
+    "payment_id": "pay_42_00321",
+    "settled_amount": "2234.24",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:27:00Z",
+    "fee": "45.77",
+    "fee_tax": "8.24",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00322",
+    "payment_id": "pay_42_00322",
+    "settled_amount": "11326.97",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T16:34:00Z",
+    "fee": "232.02",
+    "fee_tax": "41.76",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00323",
+    "payment_id": "pay_42_00323",
+    "settled_amount": "8503.71",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T17:41:00Z",
+    "fee": "174.19",
+    "fee_tax": "31.35",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00324",
+    "payment_id": "pay_42_00324",
+    "settled_amount": "4561.26",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T02:48:00Z",
+    "fee": "186.86",
+    "fee_tax": "33.63",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00325",
+    "payment_id": "pay_42_00325",
+    "settled_amount": "2495.19",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T11:55:00Z",
+    "fee": "51.11",
+    "fee_tax": "9.20",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00326",
+    "payment_id": "pay_42_00326",
+    "settled_amount": "10980.11",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T00:02:00Z",
+    "fee": "224.91",
+    "fee_tax": "40.48",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00327",
+    "payment_id": "pay_42_00327",
+    "settled_amount": "14477.81",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T16:09:00Z",
+    "fee": "296.56",
+    "fee_tax": "53.38",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00328",
+    "payment_id": "pay_42_00328",
+    "settled_amount": "6730.76",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T20:16:00Z",
+    "fee": "138.13",
+    "fee_tax": "24.86",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00329",
+    "payment_id": "pay_42_00329",
+    "settled_amount": "5833.99",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:23:00Z",
+    "fee": "239.00",
+    "fee_tax": "43.02",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00330",
+    "payment_id": "pay_42_00330",
+    "settled_amount": "9399.03",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T03:30:00Z",
+    "fee": "191.50",
+    "fee_tax": "34.47",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00331",
+    "payment_id": "pay_42_00331",
+    "settled_amount": "1061.35",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T17:37:00Z",
+    "fee": "21.74",
+    "fee_tax": "3.91",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00331_DUP62",
+    "payment_id": "pay_42_00331",
+    "settled_amount": "1061.35",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T17:37:00Z",
+    "fee": "21.74",
+    "fee_tax": "3.91",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00332",
+    "payment_id": "pay_42_00332",
+    "settled_amount": "12398.82",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T02:44:00Z",
+    "fee": "253.97",
+    "fee_tax": "45.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00333",
+    "payment_id": "pay_42_00333",
+    "settled_amount": "7272.47",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:51:00Z",
+    "fee": "148.97",
+    "fee_tax": "26.81",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00334",
+    "payment_id": "pay_42_00334",
+    "settled_amount": "1995.27",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T19:58:00Z",
+    "fee": "40.87",
+    "fee_tax": "7.36",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00335",
+    "payment_id": "pay_42_00335",
+    "settled_amount": "13451.86",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T03:05:00Z",
+    "fee": "275.54",
+    "fee_tax": "49.60",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00336",
+    "payment_id": "pay_42_00336",
+    "settled_amount": "10871.96",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T16:12:00Z",
+    "fee": "222.70",
+    "fee_tax": "40.09",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00337",
+    "payment_id": "pay_42_00337",
+    "settled_amount": "4057.18",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:19:00Z",
+    "fee": "83.11",
+    "fee_tax": "14.96",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00338",
+    "payment_id": "pay_42_00338",
+    "settled_amount": "14098.24",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T04:26:00Z",
+    "fee": "288.78",
+    "fee_tax": "51.98",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00339",
+    "payment_id": "pay_42_00339",
+    "settled_amount": "3948.07",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-16T15:33:00Z",
+    "fee": "80.87",
+    "fee_tax": "14.56",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00340",
+    "payment_id": "pay_42_00340",
+    "settled_amount": "4012.03",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T15:40:00Z",
+    "fee": "82.18",
+    "fee_tax": "14.79",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00341",
+    "payment_id": "pay_42_00341",
+    "settled_amount": "3572.65",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T07:47:00Z",
+    "fee": "73.18",
+    "fee_tax": "13.17",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00342",
+    "payment_id": "pay_42_00342",
+    "settled_amount": "13147.95",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T13:54:00Z",
+    "fee": "269.32",
+    "fee_tax": "48.48",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00343",
+    "payment_id": "pay_42_00343",
+    "settled_amount": "4775.45",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T01:01:00Z",
+    "fee": "100.89",
+    "fee_tax": "18.16",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00344",
+    "payment_id": "pay_42_00344",
+    "settled_amount": "4486.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:08:00Z",
+    "fee": "92.16",
+    "fee_tax": "16.59",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00345",
+    "payment_id": "pay_42_00345",
+    "settled_amount": "4494.98",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T05:15:00Z",
+    "fee": "184.15",
+    "fee_tax": "33.15",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00346",
+    "payment_id": "pay_42_00346",
+    "settled_amount": "5196.64",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-16T16:22:00Z",
+    "fee": "106.45",
+    "fee_tax": "19.16",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00347",
+    "payment_id": "pay_42_00347",
+    "settled_amount": "12166.67",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T19:29:00Z",
+    "fee": "249.22",
+    "fee_tax": "44.86",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00348",
+    "payment_id": "pay_42_00348",
+    "settled_amount": "13815.57",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:36:00Z",
+    "fee": "282.99",
+    "fee_tax": "50.94",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00349",
+    "payment_id": "pay_42_00349",
+    "settled_amount": "9012.90",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T08:43:00Z",
+    "fee": "184.62",
+    "fee_tax": "33.23",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00350",
+    "payment_id": "pay_42_00350",
+    "settled_amount": "3350.99",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T00:50:00Z",
+    "fee": "68.64",
+    "fee_tax": "12.36",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00351",
+    "payment_id": "pay_42_00351",
+    "settled_amount": "1576.64",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T03:57:00Z",
+    "fee": "32.30",
+    "fee_tax": "5.81",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00352",
+    "payment_id": "pay_42_00352",
+    "settled_amount": "6131.54",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T00:04:00Z",
+    "fee": "125.60",
+    "fee_tax": "22.61",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00353",
+    "payment_id": "pay_42_00353",
+    "settled_amount": "12970.25",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T04:11:00Z",
+    "fee": "265.68",
+    "fee_tax": "47.82",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00354",
+    "payment_id": "pay_42_00354",
+    "settled_amount": "3439.85",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:18:00Z",
+    "fee": "70.46",
+    "fee_tax": "12.68",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00354_DUP34",
+    "payment_id": "pay_42_00354",
+    "settled_amount": "3439.85",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:18:00Z",
+    "fee": "70.46",
+    "fee_tax": "12.68",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00355",
+    "payment_id": "pay_42_00355",
+    "settled_amount": "12045.11",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-16T17:25:00Z",
+    "fee": "246.73",
+    "fee_tax": "44.41",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00356",
+    "payment_id": "pay_42_00356",
+    "settled_amount": "8930.14",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T05:32:00Z",
+    "fee": "182.92",
+    "fee_tax": "32.93",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00357",
+    "payment_id": "pay_42_00357",
+    "settled_amount": "8635.27",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:39:00Z",
+    "fee": "176.88",
+    "fee_tax": "31.84",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00358",
+    "payment_id": "pay_42_00358",
+    "settled_amount": "14219.55",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T19:46:00Z",
+    "fee": "291.27",
+    "fee_tax": "52.43",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00359",
+    "payment_id": "pay_42_00359",
+    "settled_amount": "3348.07",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T15:53:00Z",
+    "fee": "68.58",
+    "fee_tax": "12.34",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00360",
+    "payment_id": "pay_42_00360",
+    "settled_amount": "11955.53",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:00:00Z",
+    "fee": "244.89",
+    "fee_tax": "44.08",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00361",
+    "payment_id": "pay_42_00361",
+    "settled_amount": "2536.20",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T16:07:00Z",
+    "fee": "51.95",
+    "fee_tax": "9.35",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00362",
+    "payment_id": "pay_42_00362",
+    "settled_amount": "7754.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T02:14:00Z",
+    "fee": "496.85",
+    "fee_tax": "29.81",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00363",
+    "payment_id": "pay_42_00363",
+    "settled_amount": "12308.74",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T05:21:00Z",
+    "fee": "252.13",
+    "fee_tax": "45.38",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00364",
+    "payment_id": "pay_42_00364",
+    "settled_amount": "2777.06",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T11:28:00Z",
+    "fee": "57.14",
+    "fee_tax": "10.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00365",
+    "payment_id": "pay_42_00365",
+    "settled_amount": "14325.49",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T02:35:00Z",
+    "fee": "293.44",
+    "fee_tax": "52.82",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00366",
+    "payment_id": "pay_42_00366",
+    "settled_amount": "12324.12",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T19:42:00Z",
+    "fee": "252.44",
+    "fee_tax": "45.44",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00367",
+    "payment_id": "pay_42_00367",
+    "settled_amount": "11410.70",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T06:49:00Z",
+    "fee": "233.73",
+    "fee_tax": "42.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00368",
+    "payment_id": "pay_42_00368",
+    "settled_amount": "915.00",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T02:56:00Z",
+    "fee": "21.82",
+    "fee_tax": "3.93",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00369",
+    "payment_id": "pay_42_00369",
+    "settled_amount": "203.82",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T00:03:00Z",
+    "fee": "4.18",
+    "fee_tax": "0.75",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00370",
+    "payment_id": "pay_42_00370",
+    "settled_amount": "8566.92",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T00:10:00Z",
+    "fee": "175.48",
+    "fee_tax": "31.59",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00371",
+    "payment_id": "pay_42_00371",
+    "settled_amount": "13205.48",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T12:17:00Z",
+    "fee": "268.45",
+    "fee_tax": "48.32",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00373",
+    "payment_id": "pay_42_00373",
+    "settled_amount": "12814.51",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T09:31:00Z",
+    "fee": "262.49",
+    "fee_tax": "47.25",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00373_DUP68",
+    "payment_id": "pay_42_00373",
+    "settled_amount": "12814.51",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T09:31:00Z",
+    "fee": "262.49",
+    "fee_tax": "47.25",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00375",
+    "payment_id": "pay_42_00375",
+    "settled_amount": "1592.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T19:45:00Z",
+    "fee": "32.63",
+    "fee_tax": "5.87",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00376",
+    "payment_id": "pay_42_00376",
+    "settled_amount": "10283.44",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T05:52:00Z",
+    "fee": "210.64",
+    "fee_tax": "37.92",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00377",
+    "payment_id": "pay_42_00377",
+    "settled_amount": "13620.04",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T03:59:00Z",
+    "fee": "278.99",
+    "fee_tax": "50.22",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00378",
+    "payment_id": "pay_42_00378",
+    "settled_amount": "778.68",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T14:06:00Z",
+    "fee": "15.95",
+    "fee_tax": "2.87",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00379",
+    "payment_id": "pay_42_00379",
+    "settled_amount": "841.66",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T05:13:00Z",
+    "fee": "17.24",
+    "fee_tax": "3.10",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00380",
+    "payment_id": "pay_42_00380",
+    "settled_amount": "13702.79",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T08:20:00Z",
+    "fee": "280.68",
+    "fee_tax": "50.52",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00381",
+    "payment_id": "pay_42_00381",
+    "settled_amount": "1328.87",
+    "currency": "GBP",
+    "settlement_timestamp": "2026-08-03T13:27:00Z",
+    "fee": "27.22",
+    "fee_tax": "4.90",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00382",
+    "payment_id": "pay_42_00382",
+    "settled_amount": "10928.60",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:34:00Z",
+    "fee": "223.86",
+    "fee_tax": "40.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00383",
+    "payment_id": "pay_42_00383",
+    "settled_amount": "8108.99",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T09:41:00Z",
+    "fee": "166.10",
+    "fee_tax": "29.90",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00384",
+    "payment_id": "pay_42_00384",
+    "settled_amount": "13513.38",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:48:00Z",
+    "fee": "276.80",
+    "fee_tax": "49.82",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00386",
+    "payment_id": "pay_42_00386",
+    "settled_amount": "8577.65",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T22:02:00Z",
+    "fee": "549.62",
+    "fee_tax": "32.98",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00387",
+    "payment_id": "pay_42_00387",
+    "settled_amount": "12450.80",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:09:00Z",
+    "fee": "255.04",
+    "fee_tax": "45.91",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00389",
+    "payment_id": "pay_42_00389",
+    "settled_amount": "5151.67",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T12:23:00Z",
+    "fee": "105.78",
+    "fee_tax": "19.04",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00390",
+    "payment_id": "pay_42_00390",
+    "settled_amount": "7212.66",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T09:30:00Z",
+    "fee": "147.74",
+    "fee_tax": "26.59",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00391",
+    "payment_id": "pay_42_00391",
+    "settled_amount": "747.19",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T22:37:00Z",
+    "fee": "30.61",
+    "fee_tax": "5.51",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00392",
+    "payment_id": "pay_42_00392",
+    "settled_amount": "517.49",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T20:44:00Z",
+    "fee": "10.60",
+    "fee_tax": "1.91",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00393",
+    "payment_id": "pay_42_00393",
+    "settled_amount": "13914.91",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-16T21:51:00Z",
+    "fee": "285.03",
+    "fee_tax": "51.31",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00394",
+    "payment_id": "pay_42_00394",
+    "settled_amount": "11680.62",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T16:58:00Z",
+    "fee": "239.52",
+    "fee_tax": "43.11",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00395",
+    "payment_id": "pay_42_00395",
+    "settled_amount": "2809.59",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:05:00Z",
+    "fee": "57.55",
+    "fee_tax": "10.36",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00396",
+    "payment_id": "pay_42_00396",
+    "settled_amount": "1109.68",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T23:12:00Z",
+    "fee": "22.73",
+    "fee_tax": "4.09",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00397",
+    "payment_id": "pay_42_00397",
+    "settled_amount": "7843.42",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:19:00Z",
+    "fee": "160.66",
+    "fee_tax": "28.92",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00398",
+    "payment_id": "pay_42_00398",
+    "settled_amount": "9596.79",
+    "currency": "INR",
+    "settlement_timestamp": "2026-07-30T22:26:00Z",
+    "fee": "196.58",
+    "fee_tax": "35.38",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00399",
+    "payment_id": "pay_42_00399",
+    "settled_amount": "455.28",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T20:33:00Z",
+    "fee": "4.21",
+    "fee_tax": "0.76",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00400",
+    "payment_id": "pay_42_00400",
+    "settled_amount": "5452.46",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T06:40:00Z",
+    "fee": "111.69",
+    "fee_tax": "20.10",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00401",
+    "payment_id": "pay_42_00401",
+    "settled_amount": "5477.40",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:47:00Z",
+    "fee": "107.08",
+    "fee_tax": "19.27",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00402",
+    "payment_id": "pay_42_00402",
+    "settled_amount": "6568.64",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T19:54:00Z",
+    "fee": "132.50",
+    "fee_tax": "23.85",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00403",
+    "payment_id": "pay_42_00403",
+    "settled_amount": "5863.73",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T23:01:00Z",
+    "fee": "375.72",
+    "fee_tax": "22.54",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00404",
+    "payment_id": "pay_42_00404",
+    "settled_amount": "9572.38",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T16:08:00Z",
+    "fee": "196.08",
+    "fee_tax": "35.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00405",
+    "payment_id": "pay_42_00405",
+    "settled_amount": "11279.25",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T01:15:00Z",
+    "fee": "234.11",
+    "fee_tax": "42.14",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00406",
+    "payment_id": "pay_42_00406",
+    "settled_amount": "2324.80",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:22:00Z",
+    "fee": "47.62",
+    "fee_tax": "8.57",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00407",
+    "payment_id": "pay_42_00407",
+    "settled_amount": "12720.78",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T13:29:00Z",
+    "fee": "260.57",
+    "fee_tax": "46.90",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00408",
+    "payment_id": "pay_42_00408",
+    "settled_amount": "8646.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T09:36:00Z",
+    "fee": "177.12",
+    "fee_tax": "31.88",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00409",
+    "payment_id": "pay_42_00409",
+    "settled_amount": "11322.08",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T06:43:00Z",
+    "fee": "231.92",
+    "fee_tax": "41.75",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00410",
+    "payment_id": "pay_42_00410",
+    "settled_amount": "12398.82",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:50:00Z",
+    "fee": "253.97",
+    "fee_tax": "45.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00411",
+    "payment_id": "pay_42_00411",
+    "settled_amount": "10698.21",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T12:57:00Z",
+    "fee": "214.02",
+    "fee_tax": "38.52",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00412",
+    "payment_id": "pay_42_00412",
+    "settled_amount": "1791.69",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T15:04:00Z",
+    "fee": "36.70",
+    "fee_tax": "6.61",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00413",
+    "payment_id": "pay_42_00413",
+    "settled_amount": "6022.80",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T05:11:00Z",
+    "fee": "246.74",
+    "fee_tax": "44.41",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00414",
+    "payment_id": "pay_42_00414",
+    "settled_amount": "6082.23",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T02:18:00Z",
+    "fee": "124.59",
+    "fee_tax": "22.43",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00415",
+    "payment_id": "pay_42_00415",
+    "settled_amount": "7819.99",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:25:00Z",
+    "fee": "160.18",
+    "fee_tax": "28.83",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00416",
+    "payment_id": "pay_42_00416",
+    "settled_amount": "13396.70",
+    "currency": "EUR",
+    "settlement_timestamp": "2026-08-03T23:32:00Z",
+    "fee": "274.41",
+    "fee_tax": "49.39",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00417",
+    "payment_id": "pay_42_00417",
+    "settled_amount": "8433.40",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T23:39:00Z",
+    "fee": "172.75",
+    "fee_tax": "31.10",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00418",
+    "payment_id": "pay_42_00418",
+    "settled_amount": "5199.33",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:46:00Z",
+    "fee": "106.50",
+    "fee_tax": "19.17",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00419",
+    "payment_id": "pay_42_00419",
+    "settled_amount": "13682.28",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:53:00Z",
+    "fee": "280.26",
+    "fee_tax": "50.45",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00419_DUP41",
+    "payment_id": "pay_42_00419",
+    "settled_amount": "13682.28",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:53:00Z",
+    "fee": "280.26",
+    "fee_tax": "50.45",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00420",
+    "payment_id": "pay_42_00420",
+    "settled_amount": "2888.92",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:00:00Z",
+    "fee": "59.18",
+    "fee_tax": "10.65",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00421",
+    "payment_id": "pay_42_00421",
+    "settled_amount": "3656.25",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T09:07:00Z",
+    "fee": "77.97",
+    "fee_tax": "14.03",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00422",
+    "payment_id": "pay_42_00422",
+    "settled_amount": "565.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T19:14:00Z",
+    "fee": "11.58",
+    "fee_tax": "2.08",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00423",
+    "payment_id": "pay_42_00423",
+    "settled_amount": "168.43",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T19:21:00Z",
+    "fee": "3.45",
+    "fee_tax": "0.62",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00425",
+    "payment_id": "pay_42_00425",
+    "settled_amount": "7416.73",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:35:00Z",
+    "fee": "151.92",
+    "fee_tax": "27.35",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00426",
+    "payment_id": "pay_42_00426",
+    "settled_amount": "10322.49",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:42:00Z",
+    "fee": "211.44",
+    "fee_tax": "38.06",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00427",
+    "payment_id": "pay_42_00427",
+    "settled_amount": "5664.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T03:49:00Z",
+    "fee": "116.02",
+    "fee_tax": "20.88",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00428",
+    "payment_id": "pay_42_00428",
+    "settled_amount": "10177.79",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T15:56:00Z",
+    "fee": "203.36",
+    "fee_tax": "36.60",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00429",
+    "payment_id": "pay_42_00429",
+    "settled_amount": "4014.38",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T17:03:00Z",
+    "fee": "80.18",
+    "fee_tax": "14.43",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00430",
+    "payment_id": "pay_42_00430",
+    "settled_amount": "6311.69",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-17T02:10:00Z",
+    "fee": "129.29",
+    "fee_tax": "23.27",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00431",
+    "payment_id": "pay_42_00431",
+    "settled_amount": "7883.20",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T12:17:00Z",
+    "fee": "161.48",
+    "fee_tax": "29.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00432",
+    "payment_id": "pay_42_00432",
+    "settled_amount": "7931.29",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:24:00Z",
+    "fee": "162.46",
+    "fee_tax": "29.24",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00433",
+    "payment_id": "pay_42_00433",
+    "settled_amount": "10006.15",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T01:31:00Z",
+    "fee": "204.96",
+    "fee_tax": "36.89",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00434",
+    "payment_id": "pay_42_00434",
+    "settled_amount": "3218.45",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T07:38:00Z",
+    "fee": "65.93",
+    "fee_tax": "11.87",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00435",
+    "payment_id": "pay_42_00435",
+    "settled_amount": "11051.13",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T03:45:00Z",
+    "fee": "226.37",
+    "fee_tax": "40.75",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00436",
+    "payment_id": "pay_42_00436",
+    "settled_amount": "2772.98",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:52:00Z",
+    "fee": "56.80",
+    "fee_tax": "10.22",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00437",
+    "payment_id": "pay_42_00437",
+    "settled_amount": "620.98",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:59:00Z",
+    "fee": "12.72",
+    "fee_tax": "2.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00439",
+    "payment_id": "pay_42_00439",
+    "settled_amount": "1908.61",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:13:00Z",
+    "fee": "39.10",
+    "fee_tax": "7.04",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00440",
+    "payment_id": "pay_42_00440",
+    "settled_amount": "13256.58",
+    "currency": "INR",
+    "settlement_timestamp": "2026-10-02T03:20:00Z",
+    "fee": "271.54",
+    "fee_tax": "48.88",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00441",
+    "payment_id": "pay_42_00441",
+    "settled_amount": "6898.27",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T14:27:00Z",
+    "fee": "141.30",
+    "fee_tax": "25.43",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00442",
+    "payment_id": "pay_42_00442",
+    "settled_amount": "14141.40",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T05:34:00Z",
+    "fee": "288.64",
+    "fee_tax": "51.96",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00443",
+    "payment_id": "pay_42_00443",
+    "settled_amount": "13939.09",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T15:41:00Z",
+    "fee": "285.52",
+    "fee_tax": "51.39",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00444",
+    "payment_id": "pay_42_00444",
+    "settled_amount": "13872.44",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T11:48:00Z",
+    "fee": "284.16",
+    "fee_tax": "51.15",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00445",
+    "payment_id": "pay_42_00445",
+    "settled_amount": "13111.59",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T16:55:00Z",
+    "fee": "268.57",
+    "fee_tax": "48.34",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00446",
+    "payment_id": "pay_42_00446",
+    "settled_amount": "4594.69",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T09:02:00Z",
+    "fee": "94.12",
+    "fee_tax": "16.94",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00447",
+    "payment_id": "pay_42_00447",
+    "settled_amount": "4726.50",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T00:09:00Z",
+    "fee": "96.82",
+    "fee_tax": "17.43",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00448",
+    "payment_id": "pay_42_00448",
+    "settled_amount": "12096.86",
+    "currency": "GBP",
+    "settlement_timestamp": "2026-08-03T17:16:00Z",
+    "fee": "247.79",
+    "fee_tax": "44.60",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00449",
+    "payment_id": "pay_42_00449",
+    "settled_amount": "4079.10",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T14:23:00Z",
+    "fee": "83.81",
+    "fee_tax": "15.09",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00450",
+    "payment_id": "pay_42_00450",
+    "settled_amount": "7927.88",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T10:30:00Z",
+    "fee": "162.39",
+    "fee_tax": "29.23",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00451",
+    "payment_id": "pay_42_00451",
+    "settled_amount": "6098.83",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:37:00Z",
+    "fee": "124.93",
+    "fee_tax": "22.49",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00451_DUP61",
+    "payment_id": "pay_42_00451",
+    "settled_amount": "6098.83",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:37:00Z",
+    "fee": "124.93",
+    "fee_tax": "22.49",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00452",
+    "payment_id": "pay_42_00452",
+    "settled_amount": "12092.70",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T14:44:00Z",
+    "fee": "247.70",
+    "fee_tax": "44.59",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00453",
+    "payment_id": "pay_42_00453",
+    "settled_amount": "5333.82",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T16:51:00Z",
+    "fee": "109.26",
+    "fee_tax": "19.67",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00454",
+    "payment_id": "pay_42_00454",
+    "settled_amount": "5127.07",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T18:58:00Z",
+    "fee": "210.04",
+    "fee_tax": "37.81",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00455",
+    "payment_id": "pay_42_00455",
+    "settled_amount": "6971.01",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:05:00Z",
+    "fee": "142.79",
+    "fee_tax": "25.70",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00456",
+    "payment_id": "pay_42_00456",
+    "settled_amount": "5500.79",
+    "currency": "EUR",
+    "settlement_timestamp": "2026-08-04T11:12:00Z",
+    "fee": "112.68",
+    "fee_tax": "20.28",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00458",
+    "payment_id": "pay_42_00458",
+    "settled_amount": "13817.52",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T07:26:00Z",
+    "fee": "283.03",
+    "fee_tax": "50.95",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00459",
+    "payment_id": "pay_42_00459",
+    "settled_amount": "3333.92",
+    "currency": "INR",
+    "settlement_timestamp": "2026-09-17T05:33:00Z",
+    "fee": "68.29",
+    "fee_tax": "12.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00460",
+    "payment_id": "pay_42_00460",
+    "settled_amount": "10569.52",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T01:40:00Z",
+    "fee": "216.50",
+    "fee_tax": "38.97",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00460_DUP95",
+    "payment_id": "pay_42_00460",
+    "settled_amount": "10569.52",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T01:40:00Z",
+    "fee": "216.50",
+    "fee_tax": "38.97",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS",
+      "duplicate_flag": true
+    }
+  },
+  {
+    "settlement_id": "set_42_00461",
+    "payment_id": "pay_42_00461",
+    "settled_amount": "925.87",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T13:47:00Z",
+    "fee": "18.97",
+    "fee_tax": "3.41",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00462",
+    "payment_id": "pay_42_00462",
+    "settled_amount": "10583.20",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T15:54:00Z",
+    "fee": "216.78",
+    "fee_tax": "39.02",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00463",
+    "payment_id": "pay_42_00463",
+    "settled_amount": "1344.01",
+    "currency": "INR",
+    "settlement_timestamp": "2026-07-31T06:01:00Z",
+    "fee": "27.53",
+    "fee_tax": "4.96",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00464",
+    "payment_id": "pay_42_00464",
+    "settled_amount": "11225.66",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:08:00Z",
+    "fee": "229.94",
+    "fee_tax": "41.39",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00465",
+    "payment_id": "pay_42_00465",
+    "settled_amount": "1280.75",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T06:15:00Z",
+    "fee": "25.21",
+    "fee_tax": "4.54",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00466",
+    "payment_id": "pay_42_00466",
+    "settled_amount": "5978.49",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T22:22:00Z",
+    "fee": "122.46",
+    "fee_tax": "22.04",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00467",
+    "payment_id": "pay_42_00467",
+    "settled_amount": "1191.93",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T12:29:00Z",
+    "fee": "24.42",
+    "fee_tax": "4.40",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00468",
+    "payment_id": "pay_42_00468",
+    "settled_amount": "5715.36",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T14:36:00Z",
+    "fee": "117.07",
+    "fee_tax": "21.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00469",
+    "payment_id": "pay_42_00469",
+    "settled_amount": "9952.68",
+    "currency": "USD",
+    "settlement_timestamp": "2026-08-04T00:43:00Z",
+    "fee": "203.87",
+    "fee_tax": "36.70",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00471",
+    "payment_id": "pay_42_00471",
+    "settled_amount": "4311.81",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T14:57:00Z",
+    "fee": "83.20",
+    "fee_tax": "14.98",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00473",
+    "payment_id": "pay_42_00473",
+    "settled_amount": "4825.37",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T02:11:00Z",
+    "fee": "98.84",
+    "fee_tax": "17.79",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00474",
+    "payment_id": "pay_42_00474",
+    "settled_amount": "3953.68",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T15:18:00Z",
+    "fee": "80.99",
+    "fee_tax": "14.58",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00475",
+    "payment_id": "pay_42_00475",
+    "settled_amount": "14314.02",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T06:25:00Z",
+    "fee": "293.20",
+    "fee_tax": "52.78",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00476",
+    "payment_id": "pay_42_00476",
+    "settled_amount": "13718.54",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:32:00Z",
+    "fee": "284.08",
+    "fee_tax": "51.13",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00477",
+    "payment_id": "pay_42_00477",
+    "settled_amount": "364.92",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:39:00Z",
+    "fee": "7.48",
+    "fee_tax": "1.35",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00478",
+    "payment_id": "pay_42_00478",
+    "settled_amount": "734.25",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T07:46:00Z",
+    "fee": "15.04",
+    "fee_tax": "2.71",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00479",
+    "payment_id": "pay_42_00479",
+    "settled_amount": "12369.27",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:53:00Z",
+    "fee": "253.37",
+    "fee_tax": "45.61",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00480",
+    "payment_id": "pay_42_00480",
+    "settled_amount": "10344.71",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T13:00:00Z",
+    "fee": "211.90",
+    "fee_tax": "38.14",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00481",
+    "payment_id": "pay_42_00481",
+    "settled_amount": "1435.30",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T22:07:00Z",
+    "fee": "29.40",
+    "fee_tax": "5.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00482",
+    "payment_id": "pay_42_00482",
+    "settled_amount": "8679.21",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:14:00Z",
+    "fee": "177.78",
+    "fee_tax": "32.00",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00483",
+    "payment_id": "pay_42_00483",
+    "settled_amount": "11274.73",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T19:21:00Z",
+    "fee": "230.95",
+    "fee_tax": "41.57",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00484",
+    "payment_id": "pay_42_00484",
+    "settled_amount": "1726.55",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T23:28:00Z",
+    "fee": "30.25",
+    "fee_tax": "5.45",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00485",
+    "payment_id": "pay_42_00485",
+    "settled_amount": "2007.48",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T18:35:00Z",
+    "fee": "41.12",
+    "fee_tax": "7.40",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00486",
+    "payment_id": "pay_42_00486",
+    "settled_amount": "8039.67",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T12:42:00Z",
+    "fee": "164.68",
+    "fee_tax": "29.64",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00487",
+    "payment_id": "pay_42_00487",
+    "settled_amount": "3023.18",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T19:49:00Z",
+    "fee": "123.85",
+    "fee_tax": "22.29",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00488",
+    "payment_id": "pay_42_00488",
+    "settled_amount": "5443.86",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T04:56:00Z",
+    "fee": "111.77",
+    "fee_tax": "20.12",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC",
+      "reversal_notice": "partial_chargeback_split"
+    }
+  },
+  {
+    "settlement_id": "set_42_00489",
+    "payment_id": "pay_42_00489",
+    "settled_amount": "11342.95",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T17:03:00Z",
+    "fee": "235.42",
+    "fee_tax": "42.38",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00490",
+    "payment_id": "pay_42_00490",
+    "settled_amount": "5858.40",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T12:10:00Z",
+    "fee": "120.00",
+    "fee_tax": "21.60",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00492",
+    "payment_id": "pay_42_00492",
+    "settled_amount": "11947.96",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T21:24:00Z",
+    "fee": "244.74",
+    "fee_tax": "44.05",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00493",
+    "payment_id": "pay_42_00493",
+    "settled_amount": "833.11",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T08:31:00Z",
+    "fee": "17.07",
+    "fee_tax": "3.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  },
+  {
+    "settlement_id": "set_42_00494",
+    "payment_id": "pay_42_00494",
+    "settled_amount": "13815.08",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T14:38:00Z",
+    "fee": "282.98",
+    "fee_tax": "50.94",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "SBIN"
+    }
+  },
+  {
+    "settlement_id": "set_42_00495",
+    "payment_id": "pay_42_00495",
+    "settled_amount": "5245.71",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T10:45:00Z",
+    "fee": "107.45",
+    "fee_tax": "19.34",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00497",
+    "payment_id": "pay_42_00497",
+    "settled_amount": "10868.31",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T02:59:00Z",
+    "fee": "222.62",
+    "fee_tax": "40.07",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "HDFC"
+    }
+  },
+  {
+    "settlement_id": "set_42_00498",
+    "payment_id": "pay_42_00498",
+    "settled_amount": "1200.23",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-04T07:06:00Z",
+    "fee": "24.59",
+    "fee_tax": "4.43",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "AXIS"
+    }
+  },
+  {
+    "settlement_id": "set_42_00499",
+    "payment_id": "pay_42_00499",
+    "settled_amount": "9195.04",
+    "currency": "INR",
+    "settlement_timestamp": "2026-08-03T22:13:00Z",
+    "fee": "183.23",
+    "fee_tax": "32.98",
+    "status": "SETTLED",
+    "metadata": {
+      "acquirer": "ICICI"
+    }
+  }
+]

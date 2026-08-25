@@ -1,0 +1,13 @@
+{
+  "dataset_id": "stress_5000",
+  "generator_version": "1.0.0",
+  "schema_version": "1.0.0",
+  "seed": 1337,
+  "record_count": 5000,
+  "source_counts": {
+    "payments": 5000,
+    "settlements": 4950,
+    "ledger_entries": 10000
+  },
+  "generation_timestamp": "2026-08-25T04:25:37.236241+00:00"
+}
