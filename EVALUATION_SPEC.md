@@ -39,7 +39,7 @@ The synthetic dataset implements a realistic enterprise distribution across the 
 
 | Class | Target % | Description |
 |---|---|---|
-| `EXACT_MATCH` | 65% | Clean transactions; payments, settlements, and ledger match perfectly. |
+| `EXACT_MATCH` | 60% | Clean transactions; payments, settlements, and ledger match perfectly. |
 | `AMOUNT_MISMATCH` | 10% | Discrepancies in settled amount vs. gross payment or ledger. |
 | `MISSING_SETTLEMENT` | 6% | Valid payment and ledger entries with no settlement payout recorded. |
 | `DUPLICATE_RECORD` | 5% | Duplicate settlement payouts or duplicate ledger postings. |
@@ -49,6 +49,15 @@ The synthetic dataset implements a realistic enterprise distribution across the 
 | `FEE_DISCREPANCY` | 2% | Incorrect fee or GST deduction variance. |
 | `CURRENCY_MISMATCH` | 2.5% | Currency code mismatch or conversion discrepancy. |
 | `AMBIGUOUS` | 2.5% | Complex multi-source conflict requiring deep AI evidence reasoning. |
+
+### 2.4 Minority Class Sampling Rationale & Evaluation Methodology
+The distribution reflects real-world banking anomaly frequencies where edge cases represent 2.0% - 3.0% of total transactional volume:
+- In `dev_500`, minority classes naturally produce 10 to 15 examples (`FEE_DISCREPANCY`: 10, `CURRENCY_MISMATCH`: 12, `AMBIGUOUS`: 13, `PARTIAL_SETTLEMENT`: 15).
+- Rather than artificially inflating minority class frequencies (which would distort enterprise operational realism and reconcile-to-exception baseline performance), evaluation methodology is strengthened:
+  1. **Stratified Per-Class Metrics:** Recall, Precision, and F1 computed independently for every class.
+  2. **10x10 Confusion Matrix:** Required in all benchmark report artifacts.
+  3. **Macro-Averaged F1:** Unweighted class-average F1 alongside overall micro-accuracy to prevent majority class dominance.
+  4. **Tiered Sample Confidence:** The 5,000-record tier (`stress_5000`) provides 100-150 samples per minority class for statistical significance.
 
 ---
 

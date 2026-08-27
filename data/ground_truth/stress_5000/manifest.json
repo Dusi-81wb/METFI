@@ -1,10 +1,10 @@
 {
   "dataset_id": "stress_5000",
-  "generator_version": "1.0.0",
+  "generator_version": "1.0.1",
   "schema_version": "1.0.0",
   "seed": 1337,
   "record_count": 5000,
-  "generation_timestamp": "2026-08-25T04:25:37.236241+00:00",
+  "generation_timestamp": "2026-08-27T17:49:50.601099+00:00",
   "source_counts": {
     "payments": 5000,
     "settlements": 4950,
@@ -23,9 +23,9 @@
     "AMBIGUOUS": 125
   },
   "checksums": {
-    "payments_sha256": "e0a5e8272cb8c0988cd65c6e2d9fe95473a28e8896547d6935d3f7ca0b727319",
-    "settlements_sha256": "acf11520d8ffff1be4b2fbce2525c502e9d0e75e77457f4aa9c3a72d6c174c5e",
-    "ledger_sha256": "8febdc342b3a03cbd25c052e565faf8c451c6d1be2a39406b5eb55fad1bfd07a",
-    "ground_truth_sha256": "f7c6d72512692bd4ad07a3dd2b0cb7a5625eee4d5850206b392a31a1007fba03"
+    "payments_sha256": "8b729ab471a1c308fe83232ddb8c049cf6fdced430ee35ce803efc185da3c2e1",
+    "settlements_sha256": "7e4aa896425fa509d26d4861859d4224f7bdc15f5994619815938e9a6a735795",
+    "ledger_sha256": "548b8f15befbb3fb70f04e70ba29ab0fd8c43cc28984b79d74d43d3b6c5de403",
+    "ground_truth_sha256": "f0e8873842ca41ef71989983cd616989e3512e68c3b718902af1cc8123396fc8"
   }
 }

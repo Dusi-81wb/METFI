@@ -10,6 +10,7 @@ backend_path = Path(__file__).resolve().parents[2] / "backend"
 if str(backend_path) not in sys.path:
     sys.path.insert(0, str(backend_path))
 
+from app.domain.sanitization import DatasetIdValidationError, validate_dataset_id
 from app.services.data_generator import (
     SyntheticFinancialGenerator,
     export_dataset,
@@ -27,8 +28,14 @@ def main() -> None:
 
     args = parser.parse_args()
 
+    try:
+        validated_dataset_id = validate_dataset_id(args.dataset_id)
+    except DatasetIdValidationError as e:
+        print(f"Error: Invalid --dataset-id: {e}", file=sys.stderr)
+        sys.exit(1)
+
     print(f"=== METFI Synthetic Data Generator ===")
-    print(f"Dataset ID : {args.dataset_id}")
+    print(f"Dataset ID : {validated_dataset_id}")
     print(f"Size       : {args.size} transactions")
     print(f"Seed       : {args.seed}")
 

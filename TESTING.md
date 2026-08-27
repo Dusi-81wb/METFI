@@ -20,16 +20,20 @@ Testing in METFI is a continuous requirement throughout development. Because MET
 ```text
 tests/
 ├── unit/
-│   ├── test_normalization.py     # Schema validation, decimal handling, currency formatting
-│   ├── test_rules.py             # Deterministic matching rules (amounts, dates, references)
-│   ├── test_policy.py            # Policy engine gate evaluations
-│   └── test_audit.py             # Audit trail event creation and serialization
+│   ├── test_ground_truth_isolation.py  # Adversarial leakage, schema whitelist, and opaque ID tests
+│   ├── test_security_sanitization.py   # Dataset ID path traversal and injection prevention
+│   ├── test_time.py                    # Strict UTC ISO 8601 parsing & date-only rejection
+│   ├── test_money.py                   # Decimal quantization and float rejection
+│   ├── test_corruption.py              # 10 deterministic corruption operators
+│   ├── test_generator.py               # Deterministic synthetic dataset generator & distribution
+│   ├── test_invariants.py              # Mathematical and structural integrity invariants
+│   ├── test_normalizer.py              # Raw to canonical normalization pipeline
+│   └── test_schemas.py                 # Raw ingest schema validation
 ├── integration/
-│   ├── test_reconciliation_pipeline.py  # End-to-end ingestion -> matching -> policy flow
-│   ├── test_api_endpoints.py            # FastAPI route tests via HTTPX AsyncClient
-│   └── test_db_persistence.py           # PostgreSQL persistence and retrieval
+│   ├── test_dataset_generation_pipeline.py  # End-to-end dataset export and reload
+│   └── test_db_persistence.py               # PostgreSQL persistence and retrieval
 └── golden/
-    └── test_golden_fixtures.py   # Golden benchmark fixtures across all 10 exception classes
+    └── test_golden_fixtures.py         # Golden benchmark fixtures across all 10 exception classes
 ```
 
 ---

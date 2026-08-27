@@ -19,15 +19,17 @@ from app.domain.ground_truth import (
     DatasetManifest,
     GroundTruthRecord,
 )
+from app.domain.identifiers import generate_opaque_id
 from app.domain.money import quantize_money
 from app.domain.raw_models import (
     RawLedgerRecord,
     RawPaymentRecord,
     RawSettlementRecord,
 )
+from app.domain.sanitization import validate_dataset_id
 from app.domain.time import to_iso_utc
 
-# Canonical distribution targets covering all 10 exception classes summing to 1.00 (100%)
+# Canonical distribution targets covering all 10 exception classes summing to exactly 1.000 (100%)
 DEFAULT_DISTRIBUTION: dict[ExceptionType, float] = {
     ExceptionType.EXACT_MATCH: 0.60,
     ExceptionType.AMOUNT_MISMATCH: 0.10,
@@ -41,7 +43,7 @@ DEFAULT_DISTRIBUTION: dict[ExceptionType, float] = {
     ExceptionType.AMBIGUOUS: 0.025,
 }
 
-GENERATOR_VERSION = "1.0.0"
+GENERATOR_VERSION = "1.0.1"
 SCHEMA_VERSION = "1.0.0"
 
 
@@ -106,12 +108,13 @@ class SyntheticFinancialGenerator:
         self, idx: int, base_time: datetime
     ) -> tuple[RawPaymentRecord, RawSettlementRecord, list[RawLedgerRecord]]:
         """Generate an internally coherent, perfect 3-way financial transaction."""
-        order_id = f"ord_{self.seed}_{idx:05d}"
-        payment_id = f"pay_{self.seed}_{idx:05d}"
-        settlement_id = f"set_{self.seed}_{idx:05d}"
-        ledger_id_dr = f"led_{self.seed}_{idx:05d}_dr"
-        ledger_id_cr = f"led_{self.seed}_{idx:05d}_cr"
-        customer_id = f"cust_{self.rng.randint(1000, 9999)}"
+        order_id = generate_opaque_id("ord", self.seed, "order", idx)
+        payment_id = generate_opaque_id("pay", self.seed, "payment", idx)
+        settlement_id = generate_opaque_id("set", self.seed, "settlement", idx)
+        ledger_id_dr = generate_opaque_id("led", self.seed, "ledger_dr", idx)
+        ledger_id_cr = generate_opaque_id("led", self.seed, "ledger_cr", idx)
+        customer_id = generate_opaque_id("cust", self.seed, "customer", idx)
+        jv_id = generate_opaque_id("jv", self.seed, "voucher", idx).upper()
 
         # Amount between 100.00 and 15,000.00 INR
         raw_amt = self.rng.randint(100, 15000)
@@ -167,7 +170,7 @@ class SyntheticFinancialGenerator:
             entry_timestamp=payment_ts,
             account=LedgerAccount.PAYMENT_GATEWAY_CLEARING.value,
             status=LedgerStatus.POSTED.value,
-            metadata={"journal_voucher": f"JV_{idx:05d}"},
+            metadata={"journal_voucher": jv_id},
         )
         ledger_cr = RawLedgerRecord(
             ledger_id=ledger_id_cr,
@@ -178,7 +181,7 @@ class SyntheticFinancialGenerator:
             entry_timestamp=payment_ts,
             account=LedgerAccount.ACCOUNTS_RECEIVABLE.value,
             status=LedgerStatus.POSTED.value,
-            metadata={"journal_voucher": f"JV_{idx:05d}"},
+            metadata={"journal_voucher": jv_id},
         )
 
         return payment, settlement, [ledger_dr, ledger_cr]
@@ -214,7 +217,7 @@ class SyntheticFinancialGenerator:
             operator = CORRUPTION_OPERATORS[target_class]
             bundle = operator(payment, settlement, ledger_entries, self.rng)
 
-            case_id = f"case_{self.seed}_{idx:05d}"
+            case_id = generate_opaque_id("case", self.seed, "case", idx)
             order_id = payment.order_id
 
             if bundle.payment:
@@ -281,9 +284,10 @@ def export_dataset(
     - Inference input files saved to data/generated/<dataset_id>/input/
     - Ground truth files saved to data/ground_truth/<dataset_id>/
     """
+    validated_id = validate_dataset_id(result.dataset_id)
     root_dir = Path(base_dir) if base_dir else Path(__file__).resolve().parents[3] / "data"
-    input_dir = root_dir / "generated" / result.dataset_id / "input"
-    gt_dir = root_dir / "ground_truth" / result.dataset_id
+    input_dir = root_dir / "generated" / validated_id / "input"
+    gt_dir = root_dir / "ground_truth" / validated_id
 
     input_dir.mkdir(parents=True, exist_ok=True)
     gt_dir.mkdir(parents=True, exist_ok=True)

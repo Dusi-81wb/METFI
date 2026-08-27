@@ -36,14 +36,31 @@ def ensure_utc(dt: datetime | str) -> datetime:
     return dt.astimezone(UTC)
 
 
+DATE_ONLY_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
 def parse_iso_timestamp(ts_str: str) -> datetime:
-    """Parse an ISO 8601 string into a UTC timezone-aware datetime."""
+    """
+    Parse an ISO 8601 string into a UTC timezone-aware datetime.
+
+    Date-only strings (e.g. '2026-08-25') are strictly rejected.
+    """
     if not isinstance(ts_str, str):
         raise TimestampValidationError(f"Expected timestamp string, got {type(ts_str).__name__}")
 
     clean_str = ts_str.strip()
     if not clean_str:
         raise TimestampValidationError("Timestamp string cannot be empty.")
+
+    if DATE_ONLY_PATTERN.match(clean_str):
+        raise TimestampValidationError(
+            f"Date-only timestamp '{ts_str}' is rejected. Expected full ISO 8601 timestamp."
+        )
+
+    if not ISO_8601_PATTERN.match(clean_str):
+        raise TimestampValidationError(
+            f"Invalid ISO 8601 timestamp format '{ts_str}'. Expected ISO 8601 with time/timezone."
+        )
 
     # Handle standard 'Z' suffix
     normalized_str = clean_str.replace("Z", "+00:00")

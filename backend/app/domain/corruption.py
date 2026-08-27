@@ -121,16 +121,19 @@ def apply_duplicate_record(
     rng: random.Random,
 ) -> CorruptedTransactionBundle:
     """Inject duplicate settlement record with identical payment reference."""
-    dup_settlement_id = f"{settlement.settlement_id}_DUP{rng.randint(10, 99)}"
+    import hashlib
+
+    dup_hash = hashlib.sha256(f"dup:{settlement.settlement_id}".encode()).hexdigest()[:12]
+    dup_settlement_id = f"set_{dup_hash}"
     duplicate_settlement = settlement.model_copy(
         update={
             "settlement_id": dup_settlement_id,
-            "metadata": {**settlement.metadata, "duplicate_flag": True},
+            "metadata": {**settlement.metadata},
         }
     )
     fault = InjectedFaultDetails(
         exception_type=ExceptionType.DUPLICATE_RECORD,
-        description=(f"Duplicate payout {dup_settlement_id} for payment {payment.payment_id}."),
+        description=f"Duplicate payout {dup_settlement_id} for payment {payment.payment_id}.",
         target_source="settlement",
         field_mutated="payment_id",
         original_value=settlement.settlement_id,
@@ -321,21 +324,21 @@ def apply_ambiguous(
     ledger_entries: list[RawLedgerRecord],
     rng: random.Random,
 ) -> CorruptedTransactionBundle:
-    """Inject multi-factor ambiguous discrepancy (small fee delta + reference suffix)."""
+    """Inject multi-factor ambiguous discrepancy without semantic label leakage."""
     delta = Decimal("12.50")
     original_settled = Decimal(str(settlement.settled_amount))
     mutated_settled = quantize_money(original_settled - delta)
     mutated_settlement = settlement.model_copy(
         update={
             "settled_amount": mutated_settled,
-            "metadata": {**settlement.metadata, "reversal_notice": "partial_chargeback_split"},
+            "metadata": {**settlement.metadata},
         }
     )
     fault = InjectedFaultDetails(
         exception_type=ExceptionType.AMBIGUOUS,
         description="Complex multi-factor discrepancy requiring deep evidence reasoning.",
         target_source="cross",
-        field_mutated="settled_amount_and_metadata",
+        field_mutated="settled_amount",
         original_value=str(original_settled),
         mutated_value=str(mutated_settled),
         delta=delta,

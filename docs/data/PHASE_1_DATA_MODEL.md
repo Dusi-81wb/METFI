@@ -21,37 +21,38 @@ The METFI data layer establishes a mathematically strict, deterministic, and iso
 
 ### 2.1 Payments Source (Gateway / Processor)
 Represents transaction authorizations captured at the payment gateway:
-- `payment_id` (`str`): Unique gateway payment identifier (e.g. `pay_42_00001`).
-- `order_id` (`str`): Merchant checkout order reference (e.g. `ord_42_00001`).
-- `customer_id` (`str`): Customer entity reference (e.g. `cust_1042`).
+- `payment_id` (`str`): Deterministic opaque gateway payment identifier (e.g. `pay_e76a1ef025df`).
+- `order_id` (`str`): Deterministic opaque merchant checkout order reference (e.g. `ord_13dc8352a434`).
+- `customer_id` (`str`): Deterministic opaque customer reference (e.g. `cust_d61470d87cf0`).
 - `amount` (`Decimal`): Gross authorized transaction amount.
 - `currency` (`str`): ISO 4217 uppercase 3-letter currency code (e.g. `INR`).
 - `status` (`PaymentStatus`): Enum (`SUCCESS`, `FAILED`, `PENDING`, `REFUNDED`).
-- `payment_timestamp` (`datetime`): UTC timezone-aware authorization timestamp.
+- `payment_timestamp` (`datetime`): UTC timezone-aware authorization timestamp (`YYYY-MM-DDTHH:MM:SSZ`). Date-only strings are strictly rejected.
 - `metadata` (`dict`): Gateway specific attributes (payment method, card network).
 
 ### 2.2 Settlements Source (Acquirer / Bank Payout)
 Represents funds disbursed into merchant accounts post-processing:
-- `settlement_id` (`str`): Unique settlement batch/payout identifier.
-- `payment_id` (`str`): Associated payment reference.
+- `settlement_id` (`str`): Deterministic opaque settlement identifier (e.g. `set_17fdbad0d1b1`).
+- `payment_id` (`str`): Associated payment reference (e.g. `pay_e76a1ef025df`).
 - `settled_amount` (`Decimal`): Net funds received.
 - `fee` (`Decimal`): Gateway processing fee deducted.
 - `fee_tax` (`Decimal`): Tax levied on fee (e.g. 18% GST).
 - `currency` (`str`): ISO 4217 uppercase currency code.
 - `settlement_timestamp` (`datetime`): UTC timezone-aware payout timestamp.
 - `status` (`SettlementStatus`): Enum (`SETTLED`, `HOLD`, `FAILED`).
-- `metadata` (`dict`): Banking/acquirer metadata.
+- `metadata` (`dict`): Banking/acquirer metadata. Contains zero synthetic flags (e.g. no `duplicate_flag` or `reversal_notice`).
 
 ### 2.3 General Ledger Source (Merchant ERP / Accounting)
 Represents double-entry accounting journal postings:
-- `ledger_id` (`str`): Journal entry voucher identifier (e.g. `led_42_00001_dr`).
-- `order_id` (`str`): Merchant order reference.
+- `ledger_id` (`str`): Deterministic opaque journal entry identifier (e.g. `led_c9c74fd1bea1`).
+- `order_id` (`str`): Merchant order reference tying to transaction.
 - `debit` (`Decimal`): Debit monetary value.
 - `credit` (`Decimal`): Credit monetary value.
 - `currency` (`str`): ISO 4217 uppercase currency code.
 - `entry_timestamp` (`datetime`): UTC timezone-aware journal posting timestamp.
 - `account` (`LedgerAccount`): Enum (`PAYMENT_GATEWAY_CLEARING`, `ACCOUNTS_RECEIVABLE`, `BANK_ACCOUNT`, `PROCESSING_FEE_EXPENSE`, `SALES_REVENUE`, `REFUND_EXPENSE`).
 - `status` (`LedgerStatus`): Enum (`POSTED`, `DRAFT`, `REVERSED`).
+- `metadata` (`dict`): Accounting voucher metadata (e.g. `{"journal_voucher": "JV_9AB1FBB3B85B"}`).
 
 ---
 

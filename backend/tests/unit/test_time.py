@@ -26,12 +26,25 @@ def test_parse_iso_timestamp_valid_formats() -> None:
     assert dt_offset.minute == 30
 
 
+def test_parse_iso_timestamp_rejects_date_only() -> None:
+    """Verify that date-only strings without time component are strictly rejected."""
+    with pytest.raises(TimestampValidationError, match="Date-only timestamp"):
+        parse_iso_timestamp("2026-08-25")
+
+    with pytest.raises(TimestampValidationError, match="Date-only timestamp"):
+        parse_iso_timestamp("2026-12-31")
+
+
 def test_parse_iso_timestamp_invalid() -> None:
     """Verify rejection of invalid timestamp formats."""
     with pytest.raises(TimestampValidationError):
         parse_iso_timestamp("invalid-date")
     with pytest.raises(TimestampValidationError):
         parse_iso_timestamp("")
+    with pytest.raises(TimestampValidationError):
+        parse_iso_timestamp("2026-08-25 25:00:00Z")  # invalid hour
+    with pytest.raises(TimestampValidationError):
+        parse_iso_timestamp("2026/08/25 10:00:00")
 
 
 def test_ensure_utc_naive_and_aware() -> None:

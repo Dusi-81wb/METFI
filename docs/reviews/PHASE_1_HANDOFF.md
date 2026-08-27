@@ -66,86 +66,38 @@ Phase 1 establishes the deterministic, mathematically grounded, and isolated fin
 uv run pytest -v
 ```
 ```text
-tests/integration/test_dataset_generation_pipeline.py::test_end_to_end_dataset_generation_and_normalization PASSED [  1%]
-tests/integration/test_db_persistence.py::test_database_connectivity_probe PASSED [  3%]
-tests/integration/test_db_persistence.py::test_session_lifecycle PASSED  [  5%]
-tests/test_health.py::test_root_endpoint PASSED                          [  7%]
-tests/test_health.py::test_api_v1_health_endpoint PASSED                 [  9%]
-tests/test_health.py::test_root_health_endpoint PASSED                   [ 11%]
-tests/test_smoke_live.py::test_live_server_smoke_startup PASSED          [ 13%]
-tests/unit/test_config.py::test_parse_cors_origins_json PASSED           [ 15%]
-tests/unit/test_config.py::test_parse_cors_origins_csv PASSED            [ 17%]
-tests/unit/test_config.py::test_default_settings PASSED                  [ 19%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[EXACT_MATCH] PASSED [ 21%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[AMOUNT_MISMATCH] PASSED [ 23%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[MISSING_SETTLEMENT] PASSED [ 25%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[DUPLICATE_RECORD] PASSED [ 26%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[DATE_MISMATCH] PASSED [ 28%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[REFERENCE_MISMATCH] PASSED [ 30%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[PARTIAL_SETTLEMENT] PASSED [ 32%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[FEE_DISCREPANCY] PASSED [ 34%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[CURRENCY_MISMATCH] PASSED [ 36%]
-tests/unit/test_corruption.py::test_all_corruption_operators_deterministic[AMBIGUOUS] PASSED [ 38%]
-tests/unit/test_corruption.py::test_missing_settlement_operator PASSED   [ 40%]
-tests/unit/test_corruption.py::test_duplicate_record_operator PASSED     [ 42%]
-tests/unit/test_generator.py::test_generator_deterministic_reproducibility PASSED [ 44%]
-tests/unit/test_generator.py::test_generator_different_seeds_produce_different_data PASSED [ 46%]
-tests/unit/test_generator.py::test_generator_class_distribution_sums_to_total PASSED [ 48%]
-tests/unit/test_ground_truth_isolation.py::test_input_payloads_have_zero_ground_truth_fields PASSED [ 50%]
-tests/unit/test_ground_truth_isolation.py::test_exported_files_physical_isolation PASSED [ 51%]
-tests/unit/test_intelligence_provider.py::test_mock_llm_provider_generate_text PASSED [ 53%]
-tests/unit/test_intelligence_provider.py::test_mock_llm_provider_generate_structured PASSED [ 55%]
-tests/unit/test_intelligence_provider.py::test_gemini_provider_unconfigured_error PASSED [ 57%]
-tests/unit/test_intelligence_provider.py::test_get_llm_provider_factory PASSED [ 59%]
-tests/unit/test_invariants.py::test_data_invariants_dev_dataset PASSED   [ 61%]
-tests/unit/test_money.py::test_quantize_money_valid_types PASSED         [ 63%]
-tests/unit/test_money.py::test_quantize_money_rejects_float PASSED       [ 65%]
-tests/unit/test_money.py::test_quantize_money_rejects_invalid_strings PASSED [ 67%]
-tests/unit/test_money.py::test_validate_money_amount_negative_checks PASSED [ 69%]
-tests/unit/test_money.py::test_normalize_currency_valid_iso PASSED       [ 71%]
-tests/unit/test_money.py::test_normalize_currency_invalid_codes PASSED   [ 73%]
-tests/unit/test_money.py::test_is_amount_equal_with_tolerance PASSED     [ 75%]
-tests/unit/test_normalizer.py::test_normalize_payment_success PASSED     [ 76%]
-tests/unit/test_normalizer.py::test_normalize_payment_invalid_amount PASSED [ 78%]
-tests/unit/test_normalizer.py::test_normalize_settlement_success PASSED  [ 80%]
-tests/unit/test_normalizer.py::test_normalize_ledger_success PASSED      [ 82%]
-tests/unit/test_schemas.py::test_raw_payment_schema_valid PASSED         [ 84%]
-tests/unit/test_schemas.py::test_raw_payment_schema_missing_required PASSED [ 86%]
-tests/unit/test_schemas.py::test_raw_settlement_schema_valid PASSED      [ 88%]
-tests/unit/test_schemas.py::test_raw_ledger_schema_valid PASSED          [ 90%]
-tests/unit/test_time.py::test_parse_iso_timestamp_valid_formats PASSED   [ 92%]
-tests/unit/test_time.py::test_parse_iso_timestamp_invalid PASSED         [ 94%]
-tests/unit/test_time.py::test_ensure_utc_naive_and_aware PASSED          [ 96%]
-tests/unit/test_time.py::test_to_iso_utc PASSED                          [ 98%]
-tests/unit/test_time.py::test_hours_between PASSED                       [100%]
-
-============================= 52 passed in 3.19s ==============================
+============================= 84 passed in 3.35s ==============================
 ```
 
 ### 3.2 Code Quality & Static Analysis
 - **Ruff:** `uv run ruff check .` -> **All checks passed! (0 errors)**
-- **Mypy:** `uv run mypy app` -> **Success: no issues found in 27 source files**
+- **Mypy:** `uv run mypy app` -> **Success: no issues found in 29 source files**
 - **Frontend Type-Check:** `npm run type-check` -> **0 errors**
 - **Frontend Linter:** `npm run lint` -> **✔ No ESLint warnings or errors**
+- **Frontend Build:** `npm run build` -> **✔ Compiled successfully**
 
 ---
 
-## 4. Key Files Added in Phase 1
+## 4. Key Files Added & Remediated in Phase 1
 
 | Component | File Path | Purpose |
 |---|---|---|
 | **Domain Enums** | `backend/app/domain/enums.py` | 10 ExceptionType classes, status enums, policy outcomes |
 | **Money Library** | `backend/app/domain/money.py` | Exact `Decimal` arithmetic, quantization, anti-float guardrails |
-| **Time Library** | `backend/app/domain/time.py` | Timezone-aware UTC normalization and ISO 8601 parsing |
+| **Time Library** | `backend/app/domain/time.py` | Strict UTC ISO 8601 parsing, date-only string rejection |
+| **Opaque Identifiers**| `backend/app/domain/identifiers.py`| Cryptographic deterministic opaque ID generator |
+| **Security Sanitizer**| `backend/app/domain/sanitization.py`| Path traversal prevention and dataset ID validation |
 | **Raw Schemas** | `backend/app/domain/raw_models.py` | Source ingest Pydantic models (Payments, Settlements, Ledger) |
 | **Canonical Models** | `backend/app/domain/canonical.py` | Immutable normalized reconciliation models |
 | **Normalizer Engine**| `backend/app/domain/normalizer.py` | Deterministic sanitization, validation, and error reporting |
 | **Ground Truth** | `backend/app/domain/ground_truth.py`| Isolated ground-truth labels and dataset manifests |
-| **Corruption Operators** | `backend/app/domain/corruption.py` | Deterministic mutation operators for all 10 exception classes |
+| **Corruption Operators** | `backend/app/domain/corruption.py` | Leakage-free deterministic mutation operators for all 10 classes |
 | **Synthetic Generator** | `backend/app/services/data_generator.py` | Deterministic financial generator and file exporter |
 | **Generator CLI** | `data/generators/cli.py` | CLI for generating standard benchmark tiers |
 | **Dataset Inspector** | `data/generators/inspect_dataset.py` | Developer CLI to audit input and ground-truth manifests |
 | **Data Model Docs** | `docs/data/PHASE_1_DATA_MODEL.md` | Canonical data model and isolation documentation |
+| **Isolation Tests** | `backend/tests/unit/test_ground_truth_isolation.py` | Adversarial leakage tests and schema verification |
+| **Security Tests** | `backend/tests/unit/test_security_sanitization.py` | Path traversal and dataset ID security tests |
 
 ---
 
@@ -155,14 +107,14 @@ tests/unit/test_time.py::test_hours_between PASSED                       [100%]
    - *Design Choice:* Synthetic errors follow realistic banking patterns (standard 2% fees, 18% GST, typical ±100-250 INR deltas, 12-48h SLA timing).
    - *Adversarial Surface:* Complex non-standard FX cross-rates across multiple exotic currencies are deferred to future phases.
 2. **Deterministic Pseudorandomness:**  
-   - *Design Choice:* Generator uses Python's standard `random.Random(seed)`.
-   - *Defense:* Generates bitwise reproducible datasets on identical Python 3.12 environments while maintaining high statistical variance across records.
+   - *Design Choice:* Generator uses Python's standard `random.Random(seed)` combined with SHA-256 opaque ID hashing.
+   - *Defense:* Generates bitwise reproducible datasets on identical Python 3.12 environments while maintaining high statistical variance and zero index correlation across records.
 3. **Ground-Truth Boundary:**  
    - *Design Choice:* Ground truth is written exclusively to `data/ground_truth/` and never referenced by the API runtime.
-   - *Defense:* Verified by `test_ground_truth_isolation.py` (0 forbidden fields in input payloads).
+   - *Defense:* Verified by adversarial scans in `test_ground_truth_isolation.py` (0 forbidden tokens, 0 unauthorized fields in input payloads).
 
 ---
 
 ## 6. Status Declaration
 
-**PHASE 1 STATUS: READY FOR PRIME REVIEW**
+**PHASE 1 REMEDIATION 01 STATUS: READY FOR PRIME RE-REVIEW**
