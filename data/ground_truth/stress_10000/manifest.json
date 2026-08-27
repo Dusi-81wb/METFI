@@ -1,0 +1,31 @@
+{
+  "dataset_id": "stress_10000",
+  "generator_version": "1.0.1",
+  "schema_version": "1.0.0",
+  "seed": 9999,
+  "record_count": 10000,
+  "generation_timestamp": "2026-08-27T18:04:57.502122+00:00",
+  "source_counts": {
+    "payments": 10000,
+    "settlements": 9900,
+    "ledger_entries": 20000
+  },
+  "class_distribution": {
+    "EXACT_MATCH": 6000,
+    "AMOUNT_MISMATCH": 1000,
+    "MISSING_SETTLEMENT": 600,
+    "DUPLICATE_RECORD": 500,
+    "DATE_MISMATCH": 500,
+    "REFERENCE_MISMATCH": 400,
+    "PARTIAL_SETTLEMENT": 300,
+    "FEE_DISCREPANCY": 200,
+    "CURRENCY_MISMATCH": 250,
+    "AMBIGUOUS": 250
+  },
+  "checksums": {
+    "payments_sha256": "8e077a0a4b7cbc032def20620303075a9f41f78f156f6eb67e5174d57450cff4",
+    "settlements_sha256": "58268cfef5bec8a60aaf6bdaae001fd10a24e1109e5e873b743828374e230884",
+    "ledger_sha256": "0a62a89722d5045d97a3a92b85e7537bc694f4e4596f2e97d824a0a4ec9720c1",
+    "ground_truth_sha256": "ccd403f63b1c8e24067836885388e5cd7c161dde1922eb2d296b4e195719e30b"
+  }
+}

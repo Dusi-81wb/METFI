@@ -1,0 +1,237 @@
+{
+  "benchmark_id": "bench_stress_10000_20260827_180459",
+  "dataset_id": "stress_10000",
+  "timestamp": "2026-08-27T18:04:59Z",
+  "total_records": 10000,
+  "correct_classifications": 10000,
+  "overall_accuracy": 1.0,
+  "macro_f1": 1.0,
+  "false_match_rate": 0.0,
+  "false_unresolved_rate": 0.0,
+  "per_class_metrics": {
+    "EXACT_MATCH": {
+      "true_positives": 6000,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 6000
+    },
+    "AMOUNT_MISMATCH": {
+      "true_positives": 1000,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 1000
+    },
+    "MISSING_SETTLEMENT": {
+      "true_positives": 600,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 600
+    },
+    "DUPLICATE_RECORD": {
+      "true_positives": 500,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 500
+    },
+    "DATE_MISMATCH": {
+      "true_positives": 500,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 500
+    },
+    "REFERENCE_MISMATCH": {
+      "true_positives": 400,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 400
+    },
+    "PARTIAL_SETTLEMENT": {
+      "true_positives": 300,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 300
+    },
+    "FEE_DISCREPANCY": {
+      "true_positives": 200,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 200
+    },
+    "CURRENCY_MISMATCH": {
+      "true_positives": 250,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 250
+    },
+    "AMBIGUOUS": {
+      "true_positives": 250,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 250
+    }
+  },
+  "confusion_matrix": {
+    "EXACT_MATCH": {
+      "EXACT_MATCH": 6000,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "AMOUNT_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 1000,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "MISSING_SETTLEMENT": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 600,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "DUPLICATE_RECORD": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 500,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "DATE_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 500,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "REFERENCE_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 400,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "PARTIAL_SETTLEMENT": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 300,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "FEE_DISCREPANCY": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 200,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "CURRENCY_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 250,
+      "AMBIGUOUS": 0
+    },
+    "AMBIGUOUS": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 250
+    }
+  },
+  "failures": [],
+  "performance_metrics": {
+    "total_records_processed": 39900,
+    "total_cases_reconciled": 10000,
+    "candidate_generation_time_ms": 113.62100000042119,
+    "evidence_and_classification_time_ms": 499.7139999995852,
+    "total_wall_clock_time_ms": 614.8565000003146,
+    "throughput_records_per_sec": 64893.19,
+    "latency_p50_ms": 0.0358,
+    "latency_p95_ms": 0.0758,
+    "latency_p99_ms": 0.148
+  }
+}

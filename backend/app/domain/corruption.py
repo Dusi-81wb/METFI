@@ -65,6 +65,8 @@ def apply_amount_mismatch(
     delta_options = [Decimal("50.00"), Decimal("100.00"), Decimal("250.00"), Decimal("-150.00")]
     delta = rng.choice(delta_options)
     original_settled = Decimal(str(settlement.settled_amount))
+    if original_settled + delta <= Decimal("0.00"):
+        delta = Decimal("50.00")
     mutated_settled = quantize_money(original_settled + delta)
 
     mutated_settlement = settlement.model_copy(update={"settled_amount": mutated_settled})

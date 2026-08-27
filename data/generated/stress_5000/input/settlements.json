@@ -7295,7 +7295,7 @@
   {
     "settlement_id": "set_1b5397599642",
     "payment_id": "pay_46d5c7044281",
-    "settled_amount": "-38.20",
+    "settled_amount": "161.80",
     "currency": "INR",
     "settlement_timestamp": "2026-08-04T11:44:00Z",
     "fee": "2.29",
@@ -44618,7 +44618,7 @@
   {
     "settlement_id": "set_28a722b6d93e",
     "payment_id": "pay_165a3d430ce1",
-    "settled_amount": "-13.07",
+    "settled_amount": "186.93",
     "currency": "INR",
     "settlement_timestamp": "2026-08-19T05:51:00Z",
     "fee": "2.81",

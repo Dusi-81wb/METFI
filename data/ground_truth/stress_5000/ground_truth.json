@@ -13166,15 +13166,15 @@
       "led_a1cceb346add",
       "led_b10810c8a61e"
     ],
-    "expected_amount_delta": "-150.00",
+    "expected_amount_delta": "50.00",
     "injected_fault": {
       "exception_type": "AMOUNT_MISMATCH",
-      "description": "Settled amount altered by delta -150.00.",
+      "description": "Settled amount altered by delta 50.00.",
       "target_source": "settlement",
       "field_mutated": "settled_amount",
       "original_value": "111.80",
-      "mutated_value": "-38.20",
-      "delta": "-150.00"
+      "mutated_value": "161.80",
+      "delta": "50.00"
     },
     "is_synthetic": true
   },
@@ -79429,15 +79429,15 @@
       "led_83e1fcc26d45",
       "led_4b9a8de44f0a"
     ],
-    "expected_amount_delta": "-150.00",
+    "expected_amount_delta": "50.00",
     "injected_fault": {
       "exception_type": "AMOUNT_MISMATCH",
-      "description": "Settled amount altered by delta -150.00.",
+      "description": "Settled amount altered by delta 50.00.",
       "target_source": "settlement",
       "field_mutated": "settled_amount",
       "original_value": "136.93",
-      "mutated_value": "-13.07",
-      "delta": "-150.00"
+      "mutated_value": "186.93",
+      "delta": "50.00"
     },
     "is_synthetic": true
   },

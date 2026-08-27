@@ -4,7 +4,7 @@
   "schema_version": "1.0.0",
   "seed": 1337,
   "record_count": 5000,
-  "generation_timestamp": "2026-08-27T17:49:50.601099+00:00",
+  "generation_timestamp": "2026-08-27T18:04:17.698243+00:00",
   "source_counts": {
     "payments": 5000,
     "settlements": 4950,
@@ -24,8 +24,8 @@
   },
   "checksums": {
     "payments_sha256": "8b729ab471a1c308fe83232ddb8c049cf6fdced430ee35ce803efc185da3c2e1",
-    "settlements_sha256": "7e4aa896425fa509d26d4861859d4224f7bdc15f5994619815938e9a6a735795",
+    "settlements_sha256": "2c0e0f087d895fad5c23a817cdabd12826aeb6f3adb680754cd64f22120ad64e",
     "ledger_sha256": "548b8f15befbb3fb70f04e70ba29ab0fd8c43cc28984b79d74d43d3b6c5de403",
-    "ground_truth_sha256": "f0e8873842ca41ef71989983cd616989e3512e68c3b718902af1cc8123396fc8"
+    "ground_truth_sha256": "5c7a81123e83e7007caa9ea05241d919e482a35deae0fc04efba984f4df84b63"
   }
 }

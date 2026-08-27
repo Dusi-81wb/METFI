@@ -20,6 +20,12 @@ Testing in METFI is a continuous requirement throughout development. Because MET
 ```text
 tests/
 ├── unit/
+│   ├── test_candidate_matcher.py       # Candidate generation, hash indexing, and Levenshtein recovery
+│   ├── test_evidence_extractor.py      # Monetary, currency, timing, reference, cardinality extraction
+│   ├── test_reconciliation_engine.py   # 10 canonical exception classes and exact match testing
+│   ├── test_classification_precedence.py # Multi-fault adversarial precedence tests
+│   ├── test_policy_engine.py           # Deterministic policy outcome gatekeeping
+│   ├── test_evaluation_metrics.py      # Accuracy, macro-F1, FMR, and confusion matrix testing
 │   ├── test_ground_truth_isolation.py  # Adversarial leakage, schema whitelist, and opaque ID tests
 │   ├── test_security_sanitization.py   # Dataset ID path traversal and injection prevention
 │   ├── test_time.py                    # Strict UTC ISO 8601 parsing & date-only rejection
@@ -30,6 +36,7 @@ tests/
 │   ├── test_normalizer.py              # Raw to canonical normalization pipeline
 │   └── test_schemas.py                 # Raw ingest schema validation
 ├── integration/
+│   ├── test_reconciliation_pipeline.py # End-to-end reconciliation service and FastAPI routes
 │   ├── test_dataset_generation_pipeline.py  # End-to-end dataset export and reload
 │   └── test_db_persistence.py               # PostgreSQL persistence and retrieval
 └── golden/
