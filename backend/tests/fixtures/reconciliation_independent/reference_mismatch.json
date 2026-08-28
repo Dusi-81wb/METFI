@@ -1,0 +1,74 @@
+[
+  {
+    "scenario_id": "order_reference_transposition",
+    "payment": {
+      "payment_id": "pay_ref_001",
+      "order_id": "ord_alpha_999",
+      "customer_id": "cust_ref_001",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ref_001",
+      "payment_id": "pay_ref_001",
+      "settled_amount": "976.40",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_ref_001_dr",
+        "order_id": "ord_alphX_999",
+        "debit": "1000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      }
+    ],
+    "expected_classification": "REFERENCE_MISMATCH",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "payment_reference_typo",
+    "payment": {
+      "payment_id": "pay_orig_777",
+      "order_id": "ord_ref_002",
+      "customer_id": "cust_ref_002",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ref_002",
+      "payment_id": "pay_orig_778",
+      "settled_amount": "976.40",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_ref_002_dr",
+        "order_id": "ord_ref_002",
+        "debit": "1000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      }
+    ],
+    "expected_classification": "REFERENCE_MISMATCH",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  }
+]

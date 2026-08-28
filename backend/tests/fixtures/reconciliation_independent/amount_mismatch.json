@@ -1,0 +1,237 @@
+[
+  {
+    "scenario_id": "amount_delta_3",
+    "payment": {
+      "payment_id": "pay_amt_001",
+      "order_id": "ord_amt_001",
+      "customer_id": "cust_amt_001",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_amt_001",
+      "payment_id": "pay_amt_001",
+      "settled_amount": "973.40",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_amt_001_dr",
+        "order_id": "ord_amt_001",
+        "debit": "1000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      },
+      {
+        "ledger_id": "led_amt_001_cr",
+        "order_id": "ord_amt_001",
+        "debit": "0.00",
+        "credit": "1000.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "ACCOUNTS_RECEIVABLE",
+        "status": "POSTED"
+      }
+    ],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "AMOUNT_MISMATCH",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "amount_delta_17",
+    "payment": {
+      "payment_id": "pay_amt_002",
+      "order_id": "ord_amt_002",
+      "customer_id": "cust_amt_002",
+      "amount": "2500.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_amt_002",
+      "payment_id": "pay_amt_002",
+      "settled_amount": "2424.00",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "50.00",
+      "fee_tax": "9.00",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_amt_002_dr",
+        "order_id": "ord_amt_002",
+        "debit": "2500.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      },
+      {
+        "ledger_id": "led_amt_002_cr",
+        "order_id": "ord_amt_002",
+        "debit": "0.00",
+        "credit": "2500.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "ACCOUNTS_RECEIVABLE",
+        "status": "POSTED"
+      }
+    ],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "AMOUNT_MISMATCH",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "amount_delta_37_50",
+    "payment": {
+      "payment_id": "pay_amt_003",
+      "order_id": "ord_amt_003",
+      "customer_id": "cust_amt_003",
+      "amount": "4000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_amt_003",
+      "payment_id": "pay_amt_003",
+      "settled_amount": "3868.10",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "80.00",
+      "fee_tax": "14.40",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_amt_003_dr",
+        "order_id": "ord_amt_003",
+        "debit": "4000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      },
+      {
+        "ledger_id": "led_amt_003_cr",
+        "order_id": "ord_amt_003",
+        "debit": "0.00",
+        "credit": "4000.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "ACCOUNTS_RECEIVABLE",
+        "status": "POSTED"
+      }
+    ],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "AMOUNT_MISMATCH",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "amount_delta_125",
+    "payment": {
+      "payment_id": "pay_amt_004",
+      "order_id": "ord_amt_004",
+      "customer_id": "cust_amt_004",
+      "amount": "8000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_amt_004",
+      "payment_id": "pay_amt_004",
+      "settled_amount": "7686.20",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "160.00",
+      "fee_tax": "28.80",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_amt_004_dr",
+        "order_id": "ord_amt_004",
+        "debit": "8000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      },
+      {
+        "ledger_id": "led_amt_004_cr",
+        "order_id": "ord_amt_004",
+        "debit": "0.00",
+        "credit": "8000.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "ACCOUNTS_RECEIVABLE",
+        "status": "POSTED"
+      }
+    ],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "AMOUNT_MISMATCH",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "amount_delta_412_75",
+    "payment": {
+      "payment_id": "pay_amt_005",
+      "order_id": "ord_amt_005",
+      "customer_id": "cust_amt_005",
+      "amount": "12000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_amt_005",
+      "payment_id": "pay_amt_005",
+      "settled_amount": "11304.05",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "240.00",
+      "fee_tax": "43.20",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_amt_005_dr",
+        "order_id": "ord_amt_005",
+        "debit": "12000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      },
+      {
+        "ledger_id": "led_amt_005_cr",
+        "order_id": "ord_amt_005",
+        "debit": "0.00",
+        "credit": "12000.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "ACCOUNTS_RECEIVABLE",
+        "status": "POSTED"
+      }
+    ],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "AMOUNT_MISMATCH",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  }
+]

@@ -1,0 +1,237 @@
+{
+  "benchmark_id": "bench_independent_generalization_benchmark_20260828_094431",
+  "dataset_id": "independent_generalization_benchmark",
+  "timestamp": "2026-08-28T09:44:31Z",
+  "total_records": 31,
+  "correct_classifications": 31,
+  "overall_accuracy": 1.0,
+  "macro_f1": 1.0,
+  "false_match_rate": 0.0,
+  "false_unresolved_rate": 0.0,
+  "per_class_metrics": {
+    "EXACT_MATCH": {
+      "true_positives": 8,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 8
+    },
+    "AMOUNT_MISMATCH": {
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 5
+    },
+    "MISSING_SETTLEMENT": {
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 1
+    },
+    "DUPLICATE_RECORD": {
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 1
+    },
+    "DATE_MISMATCH": {
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 2
+    },
+    "REFERENCE_MISMATCH": {
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 2
+    },
+    "PARTIAL_SETTLEMENT": {
+      "true_positives": 7,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 7
+    },
+    "FEE_DISCREPANCY": {
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 2
+    },
+    "CURRENCY_MISMATCH": {
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 1
+    },
+    "AMBIGUOUS": {
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 2
+    }
+  },
+  "confusion_matrix": {
+    "EXACT_MATCH": {
+      "EXACT_MATCH": 8,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "AMOUNT_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 5,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "MISSING_SETTLEMENT": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 1,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "DUPLICATE_RECORD": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 1,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "DATE_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 2,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "REFERENCE_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 2,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "PARTIAL_SETTLEMENT": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 7,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "FEE_DISCREPANCY": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 2,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "CURRENCY_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 1,
+      "AMBIGUOUS": 0
+    },
+    "AMBIGUOUS": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 2
+    }
+  },
+  "failures": [],
+  "performance_metrics": {
+    "total_records_processed": 31,
+    "total_cases_reconciled": 31,
+    "candidate_generation_time_ms": 0.0,
+    "evidence_and_classification_time_ms": 4.987100000107603,
+    "total_wall_clock_time_ms": 4.987100000107603,
+    "throughput_records_per_sec": 6216.04,
+    "latency_p50_ms": 0.04,
+    "latency_p95_ms": 0.08,
+    "latency_p99_ms": 0.12
+  }
+}

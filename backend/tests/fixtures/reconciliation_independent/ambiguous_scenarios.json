@@ -1,0 +1,102 @@
+[
+  {
+    "scenario_id": "ambiguous_multi_candidate_tie",
+    "description": "Two ledger entries with equal edit distance and matching monetary parameters",
+    "payment": {
+      "payment_id": "pay_amb_tie_01",
+      "order_id": "ord_target_100",
+      "customer_id": "cust_amb_01",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_amb_tie_01",
+      "payment_id": "pay_amb_tie_01",
+      "settled_amount": "976.40",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "competing_ledger_orders": [
+      {
+        "order_id": "ord_target_10A",
+        "entries": [
+          {
+            "ledger_id": "led_amb_01_a_dr",
+            "order_id": "ord_target_10A",
+            "debit": "1000.00",
+            "credit": "0.00",
+            "currency": "INR",
+            "entry_timestamp": "2026-08-01T10:15:00Z",
+            "account": "PAYMENT_GATEWAY_CLEARING",
+            "status": "POSTED"
+          }
+        ]
+      },
+      {
+        "order_id": "ord_target_10B",
+        "entries": [
+          {
+            "ledger_id": "led_amb_01_b_dr",
+            "order_id": "ord_target_10B",
+            "debit": "1000.00",
+            "credit": "0.00",
+            "currency": "INR",
+            "entry_timestamp": "2026-08-01T10:20:00Z",
+            "account": "PAYMENT_GATEWAY_CLEARING",
+            "status": "POSTED"
+          }
+        ]
+      }
+    ],
+    "expected_classification": "AMBIGUOUS",
+    "expected_policy_outcome": "UNRESOLVED"
+  },
+  {
+    "scenario_id": "ambiguous_cross_customer_guard",
+    "description": "Lexically similar order ID belongs to a different customer",
+    "payment": {
+      "payment_id": "pay_amb_cust_02",
+      "order_id": "ord_cust_100",
+      "customer_id": "cust_A",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_amb_cust_02",
+      "payment_id": "pay_amb_cust_02",
+      "settled_amount": "976.40",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "competing_ledger_orders": [
+      {
+        "order_id": "ord_cust_101",
+        "entries": [
+          {
+            "ledger_id": "led_amb_02_dr",
+            "order_id": "ord_cust_101",
+            "debit": "1000.00",
+            "credit": "0.00",
+            "currency": "INR",
+            "entry_timestamp": "2026-08-01T10:10:00Z",
+            "account": "PAYMENT_GATEWAY_CLEARING",
+            "status": "POSTED",
+            "metadata": {"customer_id": "cust_B"}
+          }
+        ]
+      }
+    ],
+    "expected_classification": "AMBIGUOUS",
+    "expected_policy_outcome": "UNRESOLVED"
+  }
+]

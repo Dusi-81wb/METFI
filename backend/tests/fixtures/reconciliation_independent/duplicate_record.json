@@ -1,0 +1,50 @@
+[
+  {
+    "scenario_id": "duplicate_settlement_01",
+    "payment": {
+      "payment_id": "pay_dup_001",
+      "order_id": "ord_dup_001",
+      "customer_id": "cust_dup_001",
+      "amount": "2000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlements": [
+      {
+        "settlement_id": "set_dup_001_a",
+        "payment_id": "pay_dup_001",
+        "settled_amount": "1952.80",
+        "currency": "INR",
+        "settlement_timestamp": "2026-08-02T10:00:00Z",
+        "fee": "40.00",
+        "fee_tax": "7.20",
+        "status": "SETTLED"
+      },
+      {
+        "settlement_id": "set_dup_001_b",
+        "payment_id": "pay_dup_001",
+        "settled_amount": "1952.80",
+        "currency": "INR",
+        "settlement_timestamp": "2026-08-02T12:00:00Z",
+        "fee": "40.00",
+        "fee_tax": "7.20",
+        "status": "SETTLED"
+      }
+    ],
+    "ledger_entries": [
+      {
+        "ledger_id": "led_dup_001_dr",
+        "order_id": "ord_dup_001",
+        "debit": "2000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      }
+    ],
+    "expected_classification": "DUPLICATE_RECORD",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  }
+]

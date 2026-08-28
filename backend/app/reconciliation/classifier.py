@@ -1,10 +1,9 @@
-"""Deterministic exception classification engine with authoritative precedence policy."""
+"""Deterministic exception classification engine with authoritative financial precedence."""
 
 from decimal import Decimal
 
 from app.domain.enums import ExceptionType
 from app.domain.evidence import ReconciliationEvidence
-from app.domain.money import quantize_money
 
 
 class DeterministicClassifier:
@@ -12,7 +11,7 @@ class DeterministicClassifier:
     Authoritative financial exception classifier.
 
     Applies strict domain precedence rules to classify candidate evidence
-    into one of the 10 canonical ExceptionType categories.
+    into one of the 10 canonical ExceptionType categories without generator-specific heuristics.
     """
 
     def classify(self, evidence: ReconciliationEvidence) -> tuple[ExceptionType, str, str]:
@@ -27,13 +26,14 @@ class DeterministicClassifier:
         ref = evidence.reference
         timing = evidence.timing
         mon = evidence.monetary
+        flags = set(evidence.flags)
 
         # 1. Structural / Cardinality Violations (Precedence #1 & #2)
         if card.has_duplicate_settlement:
             return (
                 ExceptionType.DUPLICATE_RECORD,
                 "CARDINALITY_DUPLICATE_PAYOUT",
-                f"Multiple settlements ({card.settlement_count}) for payment {ref.payment_id}.",
+                f"Multiple settlements ({card.settlement_count}) recorded for payment {ref.payment_id}.",
             )
 
         if card.has_missing_settlement:
@@ -49,7 +49,7 @@ class DeterministicClassifier:
                 ExceptionType.CURRENCY_MISMATCH,
                 "CURRENCY_CODE_CONFLICT",
                 (
-                    f"Currency conflict: pay={curr.payment_currency}, "
+                    f"Currency conflict across feeds: pay={curr.payment_currency}, "
                     f"set={curr.settlement_currency}, led={curr.ledger_currency}."
                 ),
             )
@@ -87,58 +87,102 @@ class DeterministicClassifier:
                 f"Settlement timing of {timing.hours_to_settlement:.1f}h exceeds SLA window.",
             )
 
-        # 5. Financial Discrepancies (Precedence #6, #7, #8, #9)
-        if mon.settlement_amount_delta != Decimal("0.00") or mon.fee_variance != Decimal("0.00"):
-            # Check for Partial Settlement: settled is exactly 50% of expected settled
-            if mon.expected_settled_amount and mon.settled_net:
-                half_expected = quantize_money(mon.expected_settled_amount / Decimal("2.0"))
-                if abs(mon.settled_net - half_expected) <= Decimal(
-                    "0.05"
-                ) and mon.fee_variance == Decimal("0.00"):
+        # 5. Evidence Ambiguity / Structural Linkage Conflict (Precedence #6)
+        if ref.is_ambiguous_candidate or "AMBIGUOUS_CANDIDATES" in flags:
+            return (
+                ExceptionType.AMBIGUOUS,
+                "AMBIGUOUS_CANDIDATE_TIE",
+                "Multiple equally plausible candidate matches identified with unresolved tie.",
+            )
+
+        if not ref.is_cross_customer_matched or "CROSS_CUSTOMER_MISMATCH" in flags:
+            return (
+                ExceptionType.AMBIGUOUS,
+                "CROSS_CUSTOMER_CONFLICT",
+                "Conflicting customer identities detected across candidate records.",
+            )
+
+        # 6. Fee and Tax Pricing Discrepancies (Precedence #7)
+        # Gross equals Settled plus Total Deductions (all funds accounted for), but rates deviate from policy
+        if (
+            mon.is_fee_policy_known
+            and mon.payment_gross is not None
+            and mon.settled_net is not None
+            and mon.total_deductions is not None
+        ):
+            is_gross_balanced = (
+                mon.settled_net + mon.total_deductions == mon.payment_gross
+            )
+            if is_gross_balanced and not mon.is_fee_compliant:
+                if (
+                    mon.tax_variance != Decimal("0.00")
+                    and mon.fee_variance == Decimal("0.00")
+                ):
+                    return (
+                        ExceptionType.FEE_DISCREPANCY,
+                        "TAX_VARIANCE_DETECTED",
+                        (
+                            f"Non-standard tax on fee: observed {mon.fee_tax_deducted} vs "
+                            f"policy {mon.standard_contract_fee_tax} (tax variance {mon.tax_variance})."
+                        ),
+                    )
+                if (
+                    mon.fee_variance != Decimal("0.00")
+                    and mon.tax_variance == Decimal("0.00")
+                ):
+                    return (
+                        ExceptionType.FEE_DISCREPANCY,
+                        "FEE_VARIANCE_DETECTED",
+                        (
+                            f"Non-standard gateway fee: observed {mon.fee_deducted} vs "
+                            f"policy {mon.standard_contract_fee} (fee variance {mon.fee_variance})."
+                        ),
+                    )
+                return (
+                    ExceptionType.FEE_DISCREPANCY,
+                    "FEE_TAX_VARIANCE_DETECTED",
+                    (
+                        f"Non-standard fee and tax schedule: fee variance {mon.fee_variance}, "
+                        f"tax variance {mon.tax_variance}."
+                    ),
+                )
+
+        # 7. Partial Settlement (Precedence #8)
+        # Fractional principal disbursement (< 90% of expected collectible net amount)
+        if (
+            mon.expected_settled_amount is not None
+            and mon.settled_net is not None
+            and mon.payment_gross is not None
+        ):
+            if (
+                Decimal("0.00") < mon.settled_net < mon.expected_settled_amount
+                and mon.settlement_amount_delta != Decimal("0.00")
+            ):
+                ratio = mon.settled_net / mon.expected_settled_amount
+                # Fractional principal payout (up to 90% of expected net funds)
+                if ratio <= Decimal("0.90"):
+                    shortfall = mon.expected_settled_amount - mon.settled_net
                     return (
                         ExceptionType.PARTIAL_SETTLEMENT,
                         "MONETARY_PARTIAL_PAYOUT",
                         (
-                            f"Partial payout: settled {mon.settled_net} vs "
-                            f"expected {mon.expected_settled_amount}."
+                            f"Partial payout ({ratio * 100:.1f}%): settled {mon.settled_net} "
+                            f"of expected {mon.expected_settled_amount} (shortfall {shortfall})."
                         ),
                     )
 
-            # Check for Fee Discrepancy: fee deviates from 2% schedule
-            if mon.payment_gross and mon.settled_net and mon.total_deductions:
-                if (
-                    mon.settled_net + mon.total_deductions == mon.payment_gross
-                ) and mon.fee_variance != Decimal("0.00"):
-                    return (
-                        ExceptionType.FEE_DISCREPANCY,
-                        "MONETARY_NON_STANDARD_FEE",
-                        (
-                            f"Non-standard fee: observed {mon.fee_deducted} vs "
-                            f"standard {mon.standard_contract_fee}."
-                        ),
-                    )
-
-            # Check for Ambiguous: small delta without clean fee or partial explanation
-            if mon.settlement_amount_delta == Decimal(
-                "-12.50"
-            ) or mon.settlement_amount_delta == Decimal("12.50"):
-                return (
-                    ExceptionType.AMBIGUOUS,
-                    "MONETARY_AMBIGUOUS_VARIANCE",
-                    f"Ambiguous variance of {mon.settlement_amount_delta} requires investigation.",
-                )
-
-            # Standard Amount Mismatch
+        # 8. Unexplained Capital Discrepancy / Amount Mismatch (Precedence #9)
+        if mon.settlement_amount_delta != Decimal("0.00"):
             return (
                 ExceptionType.AMOUNT_MISMATCH,
                 "MONETARY_SETTLEMENT_DELTA",
                 (
-                    f"Delta {mon.settlement_amount_delta}: settled {mon.settled_net} vs "
+                    f"Settlement delta of {mon.settlement_amount_delta}: observed {mon.settled_net} vs "
                     f"expected {mon.expected_settled_amount}."
                 ),
             )
 
-        # 6. Clean Exact Match (Precedence #10)
+        # 9. Clean Exact Match (Precedence #10)
         return (
             ExceptionType.EXACT_MATCH,
             "EXACT_MATCH_VERIFIED",

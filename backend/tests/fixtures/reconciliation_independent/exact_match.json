@@ -1,0 +1,110 @@
+[
+  {
+    "scenario_id": "exact_std_01",
+    "payment": {
+      "payment_id": "pay_indep_001",
+      "order_id": "ord_indep_001",
+      "customer_id": "cust_indep_001",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z",
+      "metadata": {"payment_method": "upi"}
+    },
+    "settlement": {
+      "settlement_id": "set_indep_001",
+      "payment_id": "pay_indep_001",
+      "settled_amount": "976.40",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED",
+      "metadata": {"acquirer": "HDFC"}
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_indep_001_dr",
+        "order_id": "ord_indep_001",
+        "debit": "1000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED",
+        "metadata": {"customer_id": "cust_indep_001"}
+      },
+      {
+        "ledger_id": "led_indep_001_cr",
+        "order_id": "ord_indep_001",
+        "debit": "0.00",
+        "credit": "1000.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "ACCOUNTS_RECEIVABLE",
+        "status": "POSTED",
+        "metadata": {"customer_id": "cust_indep_001"}
+      }
+    ],
+    "policy": {
+      "fee_rate": "0.02",
+      "tax_rate_on_fee": "0.18"
+    },
+    "expected_classification": "EXACT_MATCH",
+    "expected_policy_outcome": "AUTO_RECONCILE"
+  },
+  {
+    "scenario_id": "exact_custom_fee_02",
+    "payment": {
+      "payment_id": "pay_indep_002",
+      "order_id": "ord_indep_002",
+      "customer_id": "cust_indep_002",
+      "amount": "5000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T11:00:00Z",
+      "metadata": {"payment_method": "card"}
+    },
+    "settlement": {
+      "settlement_id": "set_indep_002",
+      "payment_id": "pay_indep_002",
+      "settled_amount": "4852.50",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T11:00:00Z",
+      "fee": "125.00",
+      "fee_tax": "22.50",
+      "status": "SETTLED",
+      "metadata": {"acquirer": "ICICI"}
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_indep_002_dr",
+        "order_id": "ord_indep_002",
+        "debit": "5000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T11:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED",
+        "metadata": {"customer_id": "cust_indep_002"}
+      },
+      {
+        "ledger_id": "led_indep_002_cr",
+        "order_id": "ord_indep_002",
+        "debit": "0.00",
+        "credit": "5000.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T11:00:00Z",
+        "account": "ACCOUNTS_RECEIVABLE",
+        "status": "POSTED",
+        "metadata": {"customer_id": "cust_indep_002"}
+      }
+    ],
+    "policy": {
+      "fee_rate": "0.025",
+      "tax_rate_on_fee": "0.18"
+    },
+    "expected_classification": "EXACT_MATCH",
+    "expected_policy_outcome": "AUTO_RECONCILE"
+  }
+]

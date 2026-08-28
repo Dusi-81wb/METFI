@@ -203,10 +203,14 @@ def test_reconcile_currency_mismatch() -> None:
 def test_reconcile_ambiguous() -> None:
     engine = DeterministicReconciliationEngine()
     p, s, led = _setup_baseline()
-    # ₹12.50 delta (ambiguous variance)
-    s_amb = s.model_copy(update={"settled_amount": Decimal("963.90")})
+    # Structural ambiguity: candidate tie prevents safe unique resolution
     group = CanonicalTransactionGroup(
-        case_id="case_10", order_id="ord_base", payment=p, settlement=s_amb, ledger_entries=led
+        case_id="case_10",
+        order_id="ord_base",
+        payment=p,
+        settlement=s,
+        ledger_entries=led,
+        is_ambiguous_candidate=True,
     )
 
     res = engine.reconcile_group(group)

@@ -1,0 +1,196 @@
+[
+  {
+    "scenario_id": "fee_1_5_tax_0_exact",
+    "policy": {"fee_rate": "0.015", "tax_rate_on_fee": "0.00"},
+    "payment": {
+      "payment_id": "pay_ft_01",
+      "order_id": "ord_ft_01",
+      "customer_id": "cust_ft_01",
+      "amount": "10000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ft_01",
+      "payment_id": "pay_ft_01",
+      "settled_amount": "9850.00",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "150.00",
+      "fee_tax": "0.00",
+      "status": "SETTLED"
+    },
+    "expected_classification": "EXACT_MATCH"
+  },
+  {
+    "scenario_id": "fee_1_5_tax_18_exact",
+    "policy": {"fee_rate": "0.015", "tax_rate_on_fee": "0.18"},
+    "payment": {
+      "payment_id": "pay_ft_02",
+      "order_id": "ord_ft_02",
+      "customer_id": "cust_ft_02",
+      "amount": "10000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ft_02",
+      "payment_id": "pay_ft_02",
+      "settled_amount": "9823.00",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "150.00",
+      "fee_tax": "27.00",
+      "status": "SETTLED"
+    },
+    "expected_classification": "EXACT_MATCH"
+  },
+  {
+    "scenario_id": "fee_2_0_tax_10_exact",
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.10"},
+    "payment": {
+      "payment_id": "pay_ft_03",
+      "order_id": "ord_ft_03",
+      "customer_id": "cust_ft_03",
+      "amount": "10000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ft_03",
+      "payment_id": "pay_ft_03",
+      "settled_amount": "9780.00",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "200.00",
+      "fee_tax": "20.00",
+      "status": "SETTLED"
+    },
+    "expected_classification": "EXACT_MATCH"
+  },
+  {
+    "scenario_id": "fee_2_5_tax_5_exact",
+    "policy": {"fee_rate": "0.025", "tax_rate_on_fee": "0.05"},
+    "payment": {
+      "payment_id": "pay_ft_04",
+      "order_id": "ord_ft_04",
+      "customer_id": "cust_ft_04",
+      "amount": "10000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ft_04",
+      "payment_id": "pay_ft_04",
+      "settled_amount": "9737.50",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "250.00",
+      "fee_tax": "12.50",
+      "status": "SETTLED"
+    },
+    "expected_classification": "EXACT_MATCH"
+  },
+  {
+    "scenario_id": "fee_3_0_tax_18_exact",
+    "policy": {"fee_rate": "0.03", "tax_rate_on_fee": "0.18"},
+    "payment": {
+      "payment_id": "pay_ft_05",
+      "order_id": "ord_ft_05",
+      "customer_id": "cust_ft_05",
+      "amount": "10000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ft_05",
+      "payment_id": "pay_ft_05",
+      "settled_amount": "9646.00",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "300.00",
+      "fee_tax": "54.00",
+      "status": "SETTLED"
+    },
+    "expected_classification": "EXACT_MATCH"
+  },
+  {
+    "scenario_id": "fee_3_5_tax_25_exact",
+    "policy": {"fee_rate": "0.035", "tax_rate_on_fee": "0.25"},
+    "payment": {
+      "payment_id": "pay_ft_06",
+      "order_id": "ord_ft_06",
+      "customer_id": "cust_ft_06",
+      "amount": "10000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ft_06",
+      "payment_id": "pay_ft_06",
+      "settled_amount": "9562.50",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "350.00",
+      "fee_tax": "87.50",
+      "status": "SETTLED"
+    },
+    "expected_classification": "EXACT_MATCH"
+  },
+  {
+    "scenario_id": "tax_variance_only_case",
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "payment": {
+      "payment_id": "pay_ft_tax_var",
+      "order_id": "ord_ft_tax_var",
+      "customer_id": "cust_ft_tax_var",
+      "amount": "10000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ft_tax_var",
+      "payment_id": "pay_ft_tax_var",
+      "settled_amount": "9780.00",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "200.00",
+      "fee_tax": "20.00",
+      "status": "SETTLED"
+    },
+    "expected_classification": "FEE_DISCREPANCY",
+    "expected_reason": "TAX_VARIANCE_DETECTED"
+  },
+  {
+    "scenario_id": "fee_variance_only_case",
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "payment": {
+      "payment_id": "pay_ft_fee_var",
+      "order_id": "ord_ft_fee_var",
+      "customer_id": "cust_ft_fee_var",
+      "amount": "10000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_ft_fee_var",
+      "payment_id": "pay_ft_fee_var",
+      "settled_amount": "9664.00",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "300.00",
+      "fee_tax": "36.00",
+      "status": "SETTLED"
+    },
+    "expected_classification": "FEE_DISCREPANCY",
+    "expected_reason": "FEE_VARIANCE_DETECTED"
+  }
+]

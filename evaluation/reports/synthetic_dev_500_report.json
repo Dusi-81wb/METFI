@@ -1,0 +1,418 @@
+{
+  "benchmark_id": "bench_dev_500_20260828_094431",
+  "dataset_id": "dev_500",
+  "timestamp": "2026-08-28T09:44:31Z",
+  "total_records": 500,
+  "correct_classifications": 485,
+  "overall_accuracy": 0.97,
+  "macro_f1": 0.8802,
+  "false_match_rate": 0.0,
+  "false_unresolved_rate": 0.0,
+  "per_class_metrics": {
+    "EXACT_MATCH": {
+      "true_positives": 300,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 300
+    },
+    "AMOUNT_MISMATCH": {
+      "true_positives": 48,
+      "false_positives": 13,
+      "false_negatives": 2,
+      "precision": 0.7869,
+      "recall": 0.96,
+      "f1_score": 0.8649,
+      "support": 50
+    },
+    "MISSING_SETTLEMENT": {
+      "true_positives": 30,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 30
+    },
+    "DUPLICATE_RECORD": {
+      "true_positives": 25,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 25
+    },
+    "DATE_MISMATCH": {
+      "true_positives": 25,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 25
+    },
+    "REFERENCE_MISMATCH": {
+      "true_positives": 20,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20
+    },
+    "PARTIAL_SETTLEMENT": {
+      "true_positives": 15,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "precision": 0.8824,
+      "recall": 1.0,
+      "f1_score": 0.9375,
+      "support": 15
+    },
+    "FEE_DISCREPANCY": {
+      "true_positives": 10,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 10
+    },
+    "CURRENCY_MISMATCH": {
+      "true_positives": 12,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 12
+    },
+    "AMBIGUOUS": {
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 13,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 13
+    }
+  },
+  "confusion_matrix": {
+    "EXACT_MATCH": {
+      "EXACT_MATCH": 300,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "AMOUNT_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 48,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 2,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "MISSING_SETTLEMENT": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 30,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "DUPLICATE_RECORD": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 25,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "DATE_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 25,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "REFERENCE_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 20,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "PARTIAL_SETTLEMENT": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 15,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "FEE_DISCREPANCY": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 10,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    },
+    "CURRENCY_MISMATCH": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 0,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 12,
+      "AMBIGUOUS": 0
+    },
+    "AMBIGUOUS": {
+      "EXACT_MATCH": 0,
+      "AMOUNT_MISMATCH": 13,
+      "MISSING_SETTLEMENT": 0,
+      "DUPLICATE_RECORD": 0,
+      "DATE_MISMATCH": 0,
+      "REFERENCE_MISMATCH": 0,
+      "PARTIAL_SETTLEMENT": 0,
+      "FEE_DISCREPANCY": 0,
+      "CURRENCY_MISMATCH": 0,
+      "AMBIGUOUS": 0
+    }
+  },
+  "failures": [
+    {
+      "case_id": "case_06fa08682a68",
+      "order_id": "ord_f978a9ecee19",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 11629.11 vs expected 11641.61.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_2b2bf25a309f",
+      "order_id": "ord_af54723ba08c",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 5333.29 vs expected 5345.79.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_70ad98f0185c",
+      "order_id": "ord_095033d9efec",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 4585.61 vs expected 4598.11.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_77c1b3c99ebc",
+      "order_id": "ord_29a95465d5d2",
+      "actual_class": "AMOUNT_MISMATCH",
+      "predicted_class": "PARTIAL_SETTLEMENT",
+      "reason_code": "MONETARY_PARTIAL_PAYOUT",
+      "summary": "Partial payout (88.4%): settled 1148.12 of expected 1298.12 (shortfall 150.00).",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMOUNT_MISMATCH but predicted PARTIAL_SETTLEMENT via rule MONETARY_PARTIAL_PAYOUT"
+    },
+    {
+      "case_id": "case_7d4437f61407",
+      "order_id": "ord_1afe52dac9ff",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 5478.76 vs expected 5491.26.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_870ec6e19441",
+      "order_id": "ord_0d558662bfd1",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 13438.62 vs expected 13451.12.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_9a1ab2d8ca3c",
+      "order_id": "ord_e6b81ef35630",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 8995.52 vs expected 9008.02.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_9d78578aef9e",
+      "order_id": "ord_9e1467663417",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 5472.67 vs expected 5485.17.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_bd810949cee6",
+      "order_id": "ord_b0cf967814b2",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 8472.17 vs expected 8484.67.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_c0f5effd56fb",
+      "order_id": "ord_e5decba50171",
+      "actual_class": "AMOUNT_MISMATCH",
+      "predicted_class": "PARTIAL_SETTLEMENT",
+      "reason_code": "MONETARY_PARTIAL_PAYOUT",
+      "summary": "Partial payout (89.4%): settled 1260.89 of expected 1410.89 (shortfall 150.00).",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMOUNT_MISMATCH but predicted PARTIAL_SETTLEMENT via rule MONETARY_PARTIAL_PAYOUT"
+    },
+    {
+      "case_id": "case_c8ab3e3dc58e",
+      "order_id": "ord_99edf20f8ce7",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 1553.40 vs expected 1565.90.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_d09cfc84ffd4",
+      "order_id": "ord_c2b64db89634",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 14110.15 vs expected 14122.65.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_dd6bfc73fba4",
+      "order_id": "ord_c0a8a084c3aa",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 7183.08 vs expected 7195.58.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_e56a3a0642e5",
+      "order_id": "ord_d0ea5b111fdd",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 6015.78 vs expected 6028.28.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    },
+    {
+      "case_id": "case_f9038a4c0043",
+      "order_id": "ord_3eb4cf119995",
+      "actual_class": "AMBIGUOUS",
+      "predicted_class": "AMOUNT_MISMATCH",
+      "reason_code": "MONETARY_SETTLEMENT_DELTA",
+      "summary": "Settlement delta of -12.50: observed 743.23 vs expected 755.73.",
+      "discrepancy_flags": [
+        "AMOUNT_DELTA_NON_ZERO"
+      ],
+      "failure_reason": "Expected AMBIGUOUS but predicted AMOUNT_MISMATCH via rule MONETARY_SETTLEMENT_DELTA"
+    }
+  ],
+  "performance_metrics": {
+    "total_records_processed": 1995,
+    "total_cases_reconciled": 500,
+    "candidate_generation_time_ms": 183.74019999987468,
+    "evidence_and_classification_time_ms": 21.26659999998992,
+    "total_wall_clock_time_ms": 205.00909999987016,
+    "throughput_records_per_sec": 9731.28,
+    "latency_p50_ms": 0.0397,
+    "latency_p95_ms": 0.052,
+    "latency_p99_ms": 0.1311
+  }
+}

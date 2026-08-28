@@ -13,6 +13,7 @@ from app.domain.canonical import (
     CanonicalSettlement,
     CanonicalTransactionGroup,
 )
+from app.domain.fee_policy import FeeTaxPolicy, UNSET_POLICY
 from app.domain.reconciliation_result import (
     BatchPerformanceMetrics,
     BatchReconciliationResult,
@@ -38,25 +39,37 @@ class DeterministicReconciliationEngine:
         evidence_extractor: EvidenceExtractor | None = None,
         classifier: DeterministicClassifier | None = None,
         policy_engine: DeterministicPolicyEngine | None = None,
+        default_policy: FeeTaxPolicy | None = None,
     ) -> None:
         self.matcher = candidate_matcher or CandidateMatcher()
         self.extractor = evidence_extractor or EvidenceExtractor()
         self.classifier = classifier or DeterministicClassifier()
         self.policy = policy_engine or DeterministicPolicyEngine()
+        self.default_policy = default_policy or FeeTaxPolicy()
 
     def reconcile_group(
         self,
         group: CanonicalTransactionGroup,
         all_matched_settlements: list[CanonicalSettlement] | None = None,
+        policy: FeeTaxPolicy | None | object = UNSET_POLICY,
     ) -> ReconciliationResult:
         """
-        Reconcile a single candidate transaction group.
+        Reconcile a single candidate transaction group under specified or default policy.
         """
-        settlements = all_matched_settlements or ([group.settlement] if group.settlement else [])
+        active_policy = self.default_policy if policy is UNSET_POLICY else policy
+        settlements = (
+            all_matched_settlements
+            if all_matched_settlements is not None
+            else (group.settlements or ([group.settlement] if group.settlement else []))
+        )
+
         evidence = self.extractor.extract_evidence(
             payment=group.payment,
             settlements=settlements,
             ledger_entries=group.ledger_entries,
+            policy=active_policy,
+            is_ambiguous_candidate=group.is_ambiguous_candidate,
+            is_cross_customer_rejected=group.is_cross_customer_rejected,
         )
 
         classification, reason_code, summary = self.classifier.classify(evidence)
@@ -87,35 +100,34 @@ class DeterministicReconciliationEngine:
         settlements: list[CanonicalSettlement],
         ledger_entries: list[CanonicalLedgerEntry],
         dataset_id: str = "batch",
+        policy: FeeTaxPolicy | None | object = UNSET_POLICY,
     ) -> BatchReconciliationResult:
         """
         Execute high-speed deterministic reconciliation across all source feeds.
         """
         start_total = time.perf_counter()
+        active_policy = self.default_policy if policy is UNSET_POLICY else policy
 
-        # Step 1: Candidate Generation
+        # Step 1: Candidate Generation (Matcher handles exact, fuzzy, and multiplicity linkages)
         start_matcher = time.perf_counter()
         groups = self.matcher.group_candidates(payments, settlements, ledger_entries)
         candidate_time_ms = (time.perf_counter() - start_matcher) * 1000.0
 
-        # Step 2: Index all settlements by payment_id for multiplicity handling
-        settlements_by_payment: dict[str, list[CanonicalSettlement]] = defaultdict(list)
-        for s in settlements:
-            settlements_by_payment[s.payment_id].append(s)
-
-        # Step 3: Evidence Evaluation, Classification, and Policy Mapping
+        # Step 2: Evidence Evaluation, Classification, and Policy Mapping
         start_eval = time.perf_counter()
         results: list[ReconciliationResult] = []
         case_latencies_ms: list[float] = []
 
         for group in groups:
             case_start = time.perf_counter()
-            matched_settlements = (
-                settlements_by_payment.get(group.payment.payment_id, [])
-                if group.payment
-                else ([group.settlement] if group.settlement else [])
+            matched_settlements = group.settlements or (
+                [group.settlement] if group.settlement else []
             )
-            res = self.reconcile_group(group, matched_settlements)
+            res = self.reconcile_group(
+                group=group,
+                all_matched_settlements=matched_settlements,
+                policy=active_policy,
+            )
             results.append(res)
             case_latencies_ms.append((time.perf_counter() - case_start) * 1000.0)
 

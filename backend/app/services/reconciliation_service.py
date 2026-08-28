@@ -10,6 +10,7 @@ from app.domain.canonical import (
     CanonicalPayment,
     CanonicalSettlement,
 )
+from app.domain.fee_policy import FeeTaxPolicy, UNSET_POLICY
 from app.domain.normalizer import (
     normalize_ledger,
     normalize_payment,
@@ -47,6 +48,7 @@ class ReconciliationService:
         self,
         dataset_id: str,
         base_dir: str | Path | None = None,
+        policy: FeeTaxPolicy | None | object = UNSET_POLICY,
     ) -> BatchReconciliationResult:
         """
         Load inference records from data/generated/<dataset_id>/input/, normalize, and reconcile.
@@ -87,6 +89,7 @@ class ReconciliationService:
             settlements=canonical_settlements,
             ledger_entries=canonical_ledger,
             dataset_id=valid_id,
+            policy=policy,
         )
 
     def reconcile_records(
@@ -95,6 +98,7 @@ class ReconciliationService:
         raw_settlements: list[dict],
         raw_ledger: list[dict],
         dataset_id: str = "custom_payload",
+        policy: FeeTaxPolicy | None | object = UNSET_POLICY,
     ) -> BatchReconciliationResult:
         """
         Normalize and reconcile in-memory raw records.
@@ -114,4 +118,5 @@ class ReconciliationService:
             settlements=canonical_settlements,
             ledger_entries=canonical_ledger,
             dataset_id=dataset_id,
+            policy=policy,
         )

@@ -2,7 +2,7 @@
 
 **Project:** METFI (Autonomous Finance Controller)  
 **Track:** Razorpay AI Buildathon, Track 04 — AI Finance Controller  
-**Status:** Canonical Evaluation Protocol  
+**Status:** Canonical Evaluation Protocol (Remediation Round 01)  
 
 ---
 
@@ -19,45 +19,25 @@ Evaluation in METFI is designed to be **objective, reproducible, statistically s
   - Policy engine rules
 - **Evaluation Runner Separation:** The evaluation harness runs post-reconciliation as an independent verification layer that compares actual system outcomes against isolated ground-truth files.
 
+### 1.2 Metric Honesty & Generalization Standard
+- The evaluation harness reports three distinct benchmark suites independently:
+  1. **Synthetic Benchmark:** Evaluates historical generator-derived datasets (labeled clearly as *"Generator-constrained baseline — pre-generalization"*).
+  2. **Independent Generalization Benchmark:** Evaluates pure, hand-authored fixture suites with zero synthetic generator dependencies, encompassing wide parameter variations (rates 1.5%–3.5%, taxes 0%–25%, arbitrary deltas, arbitrary partial settlement tranches 30%–90%).
+  3. **Adversarial Benchmark:** Evaluates multi-fault conflicts, cross-customer spoofing, and unconfigured fee schedules.
+- Metric honesty is strictly enforced: results are not artificially inflated to 100% through generator-specific hardcoding.
+
 ---
 
-## 2. Benchmark Datasets & Corruption Distribution
+## 2. Benchmark Datasets & Tiers
 
-The synthetic data generator produces two standardized benchmark tiers with fixed, recorded random seeds:
+### 2.1 Synthetic Generator Datasets (Historical Baseline)
+- **Development Tier (`dev_500`):** 500 records, canonical seed `42`.
+- **Stress Tier (`stress_5000`):** 5,000 records, stress seed `1337`.
+- **High-Volume Stress Tier (`stress_10000`):** 10,000 records.
 
-### 2.1 Development Benchmark (500 records)
-- **Primary Use:** Local iteration, regression testing, golden fixture generation.
-- **Seed:** `42` (default canonical seed).
-
-### 2.2 Stress / Hackathon Benchmark (5,000 records)
-- **Primary Use:** Competition evaluation, throughput benchmarking, latency profiling, and stress resilience.
-- **Seed:** `1337` (default stress seed).
-
-### 2.3 Corruption Distribution Profile
-
-The synthetic dataset implements a realistic enterprise distribution across the 10 exception classes:
-
-| Class | Target % | Description |
-|---|---|---|
-| `EXACT_MATCH` | 60% | Clean transactions; payments, settlements, and ledger match perfectly. |
-| `AMOUNT_MISMATCH` | 10% | Discrepancies in settled amount vs. gross payment or ledger. |
-| `MISSING_SETTLEMENT` | 6% | Valid payment and ledger entries with no settlement payout recorded. |
-| `DUPLICATE_RECORD` | 5% | Duplicate settlement payouts or duplicate ledger postings. |
-| `DATE_MISMATCH` | 5% | Settlement timestamp out of SLA or preceding payment authorization. |
-| `REFERENCE_MISMATCH` | 4% | Order ID or customer reference typographical errors / truncation. |
-| `PARTIAL_SETTLEMENT` | 3% | Incomplete settlement without accompanying refund record. |
-| `FEE_DISCREPANCY` | 2% | Incorrect fee or GST deduction variance. |
-| `CURRENCY_MISMATCH` | 2.5% | Currency code mismatch or conversion discrepancy. |
-| `AMBIGUOUS` | 2.5% | Complex multi-source conflict requiring deep AI evidence reasoning. |
-
-### 2.4 Minority Class Sampling Rationale & Evaluation Methodology
-The distribution reflects real-world banking anomaly frequencies where edge cases represent 2.0% - 3.0% of total transactional volume:
-- In `dev_500`, minority classes naturally produce 10 to 15 examples (`FEE_DISCREPANCY`: 10, `CURRENCY_MISMATCH`: 12, `AMBIGUOUS`: 13, `PARTIAL_SETTLEMENT`: 15).
-- Rather than artificially inflating minority class frequencies (which would distort enterprise operational realism and reconcile-to-exception baseline performance), evaluation methodology is strengthened:
-  1. **Stratified Per-Class Metrics:** Recall, Precision, and F1 computed independently for every class.
-  2. **10x10 Confusion Matrix:** Required in all benchmark report artifacts.
-  3. **Macro-Averaged F1:** Unweighted class-average F1 alongside overall micro-accuracy to prevent majority class dominance.
-  4. **Tiered Sample Confidence:** The 5,000-record tier (`stress_5000`) provides 100-150 samples per minority class for statistical significance.
+### 2.2 Independent Generalization Suite
+- Stored permanently in `backend/tests/fixtures/reconciliation_independent/`.
+- Hand-authored, permanent JSON scenarios covering all 10 canonical exception classes across arbitrary monetary, policy, and timing matrices.
 
 ---
 
@@ -68,57 +48,28 @@ Every benchmark run produces a standardized, machine-readable metrics JSON artif
 ### 3.1 Accuracy & Classification Metrics
 1. **Overall Reconciliation Accuracy:**
    $$\text{Accuracy} = \frac{\text{Correct Classifications}}{\text{Total Records Processed}}$$
-2. **Exception Detection Recall:**
-   $$\text{Recall}_{\text{Exceptions}} = \frac{\text{True Detected Exceptions}}{\text{Total Ground-Truth Exceptions}}$$
-3. **Exception Detection Precision:**
-   $$\text{Precision}_{\text{Exceptions}} = \frac{\text{True Detected Exceptions}}{\text{Total Predicted Exceptions}}$$
-4. **F1-Score:** Harmonic mean of precision and recall.
-5. **False-Match Rate (FMR):** Proportion of true exception records mistakenly classified as `EXACT_MATCH` (Target: **0.0%** on golden regression suite).
-6. **False-Unresolved Rate (FUR):** Proportion of solvable clean/explainable records mistakenly marked as `UNRESOLVED`.
+2. **False-Match Rate (FMR):** Proportion of true exception records mistakenly classified as `EXACT_MATCH` (Target: **0.0%**).
+3. **False-Unresolved Rate (FUR):** Proportion of solvable clean/explainable records mistakenly marked as `UNRESOLVED`.
+4. **Per-Class Precision, Recall, and F1:** Computed independently for all 10 classes.
+5. **Macro-Averaged F1:** Unweighted arithmetic mean across all 10 canonical classes.
+6. **10x10 Confusion Matrix:** Complete transition mapping.
 
 ### 3.2 Throughput & Performance Metrics
 1. **Processing Throughput:** Records processed per second ($\text{rec/sec}$).
 2. **End-to-End Batch Latency:** Total wall-clock time for batch ingestion, reconciliation, AI investigation, policy gating, and audit trail generation.
 3. **Latency Percentiles:** P50, P95, and P99 latency per record/case.
 
-### 3.3 Governance & Policy Metrics
-1. **Auto-Resolution Rate:** Percentage of total volume safely automated without human intervention.
-2. **AI-Policy Agreement Rate:** Percentage of AI recommendations approved without policy override.
-3. **Audit Completeness:** Percentage of final decisions possessing a complete, schema-valid audit event (Target: **100.0%**).
-
 ---
 
-## 4. Benchmark Execution & Report Schema
+## 4. Benchmark CLI Execution
 
-Benchmark runs are executed via the CLI:
 ```bash
-python -m evaluation.benchmarks.runner --dataset dev --seed 42 --output evaluation/reports/dev_benchmark_report.json
-```
+# Run all benchmark suites (Synthetic + Independent Generalization)
+python evaluation/benchmarks/runner.py --suite all
 
-### Report JSON Structure
-```json
-{
-  "benchmark_id": "bench_20260825_dev42",
-  "timestamp": "2026-08-25T03:40:00Z",
-  "engine_version": "0.1.0",
-  "dataset": {
-    "name": "dev_500",
-    "seed": 42,
-    "total_records": 500
-  },
-  "metrics": {
-    "accuracy": 0.982,
-    "exception_recall": 0.971,
-    "exception_precision": 0.985,
-    "f1_score": 0.978,
-    "false_match_rate": 0.000,
-    "throughput_rec_per_sec": 412.5,
-    "latency_p50_ms": 2.1,
-    "latency_p95_ms": 14.8,
-    "auto_resolution_rate": 0.724,
-    "audit_completeness_rate": 1.000
-  },
-  "confusion_matrix": {},
-  "unresolved_cases_breakdown": {}
-}
+# Run Independent Generalization Benchmark only
+python evaluation/benchmarks/runner.py --suite independent --output evaluation/reports/independent_report.json
+
+# Run Synthetic Benchmark only
+python evaluation/benchmarks/runner.py --suite synthetic --dataset-id dev_500
 ```

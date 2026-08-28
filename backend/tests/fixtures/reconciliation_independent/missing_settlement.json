@@ -1,0 +1,30 @@
+[
+  {
+    "scenario_id": "missing_settlement_01",
+    "payment": {
+      "payment_id": "pay_mis_001",
+      "order_id": "ord_mis_001",
+      "customer_id": "cust_mis_001",
+      "amount": "1500.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": null,
+    "settlements": [],
+    "ledger_entries": [
+      {
+        "ledger_id": "led_mis_001_dr",
+        "order_id": "ord_mis_001",
+        "debit": "1500.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      }
+    ],
+    "expected_classification": "MISSING_SETTLEMENT",
+    "expected_policy_outcome": "UNRESOLVED"
+  }
+]

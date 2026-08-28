@@ -1,0 +1,195 @@
+[
+  {
+    "scenario_id": "partial_30pct",
+    "payment": {
+      "payment_id": "pay_prt_030",
+      "order_id": "ord_prt_030",
+      "customer_id": "cust_prt_030",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_prt_030",
+      "payment_id": "pay_prt_030",
+      "settled_amount": "292.92",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [
+      {
+        "ledger_id": "led_prt_030_dr",
+        "order_id": "ord_prt_030",
+        "debit": "1000.00",
+        "credit": "0.00",
+        "currency": "INR",
+        "entry_timestamp": "2026-08-01T10:00:00Z",
+        "account": "PAYMENT_GATEWAY_CLEARING",
+        "status": "POSTED"
+      }
+    ],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "PARTIAL_SETTLEMENT",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "partial_40pct",
+    "payment": {
+      "payment_id": "pay_prt_040",
+      "order_id": "ord_prt_040",
+      "customer_id": "cust_prt_040",
+      "amount": "2000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_prt_040",
+      "payment_id": "pay_prt_040",
+      "settled_amount": "781.12",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "40.00",
+      "fee_tax": "7.20",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "PARTIAL_SETTLEMENT",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "partial_50pct",
+    "payment": {
+      "payment_id": "pay_prt_050",
+      "order_id": "ord_prt_050",
+      "customer_id": "cust_prt_050",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_prt_050",
+      "payment_id": "pay_prt_050",
+      "settled_amount": "488.20",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "PARTIAL_SETTLEMENT",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "partial_60pct",
+    "payment": {
+      "payment_id": "pay_prt_060",
+      "order_id": "ord_prt_060",
+      "customer_id": "cust_prt_060",
+      "amount": "3000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_prt_060",
+      "payment_id": "pay_prt_060",
+      "settled_amount": "1757.52",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "60.00",
+      "fee_tax": "10.80",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "PARTIAL_SETTLEMENT",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "partial_75pct",
+    "payment": {
+      "payment_id": "pay_prt_075",
+      "order_id": "ord_prt_075",
+      "customer_id": "cust_prt_075",
+      "amount": "4000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_prt_075",
+      "payment_id": "pay_prt_075",
+      "settled_amount": "2929.20",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "80.00",
+      "fee_tax": "14.40",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "PARTIAL_SETTLEMENT",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "partial_90pct",
+    "payment": {
+      "payment_id": "pay_prt_090",
+      "order_id": "ord_prt_090",
+      "customer_id": "cust_prt_090",
+      "amount": "5000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_prt_090",
+      "payment_id": "pay_prt_090",
+      "settled_amount": "4393.80",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "100.00",
+      "fee_tax": "18.00",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "PARTIAL_SETTLEMENT",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "partial_plus_fee_variance",
+    "payment": {
+      "payment_id": "pay_prt_feev",
+      "order_id": "ord_prt_feev",
+      "customer_id": "cust_prt_feev",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_prt_feev",
+      "payment_id": "pay_prt_feev",
+      "settled_amount": "500.00",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "30.00",
+      "fee_tax": "5.40",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [],
+    "policy": {"fee_rate": "0.02", "tax_rate_on_fee": "0.18"},
+    "expected_classification": "PARTIAL_SETTLEMENT",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  }
+]

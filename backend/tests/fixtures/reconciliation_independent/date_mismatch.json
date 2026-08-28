@@ -1,0 +1,52 @@
+[
+  {
+    "scenario_id": "settlement_precedes_payment",
+    "payment": {
+      "payment_id": "pay_dt_001",
+      "order_id": "ord_dt_001",
+      "customer_id": "cust_dt_001",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-05T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_dt_001",
+      "payment_id": "pay_dt_001",
+      "settled_amount": "976.40",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-01T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [],
+    "expected_classification": "DATE_MISMATCH",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  },
+  {
+    "scenario_id": "settlement_exceeds_sla",
+    "payment": {
+      "payment_id": "pay_dt_002",
+      "order_id": "ord_dt_002",
+      "customer_id": "cust_dt_002",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-06-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_dt_002",
+      "payment_id": "pay_dt_002",
+      "settled_amount": "976.40",
+      "currency": "INR",
+      "settlement_timestamp": "2026-08-01T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [],
+    "expected_classification": "DATE_MISMATCH",
+    "expected_policy_outcome": "REVIEW_REQUIRED"
+  }
+]

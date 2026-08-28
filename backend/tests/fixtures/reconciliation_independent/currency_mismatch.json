@@ -1,0 +1,27 @@
+[
+  {
+    "scenario_id": "currency_inr_vs_usd",
+    "payment": {
+      "payment_id": "pay_curr_001",
+      "order_id": "ord_curr_001",
+      "customer_id": "cust_curr_001",
+      "amount": "1000.00",
+      "currency": "INR",
+      "status": "SUCCESS",
+      "payment_timestamp": "2026-08-01T10:00:00Z"
+    },
+    "settlement": {
+      "settlement_id": "set_curr_001",
+      "payment_id": "pay_curr_001",
+      "settled_amount": "976.40",
+      "currency": "USD",
+      "settlement_timestamp": "2026-08-02T10:00:00Z",
+      "fee": "20.00",
+      "fee_tax": "3.60",
+      "status": "SETTLED"
+    },
+    "ledger_entries": [],
+    "expected_classification": "CURRENCY_MISMATCH",
+    "expected_policy_outcome": "UNRESOLVED"
+  }
+]

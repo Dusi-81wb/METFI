@@ -83,8 +83,19 @@ class CanonicalTransactionGroup(BaseModel):
     order_id: str = Field(description="Merchant order reference tying records together")
     payment: CanonicalPayment | None = Field(default=None, description="Matched canonical payment")
     settlement: CanonicalSettlement | None = Field(
-        default=None, description="Matched canonical settlement"
+        default=None, description="Primary or uniquely resolved canonical settlement"
+    )
+    settlements: list[CanonicalSettlement] = Field(
+        default_factory=list, description="All associated candidate settlements"
     )
     ledger_entries: list[CanonicalLedgerEntry] = Field(
         default_factory=list, description="Associated canonical ledger entries"
+    )
+    is_ambiguous_candidate: bool = Field(
+        default=False,
+        description="True if multiple equally plausible candidate matches could not be resolved",
+    )
+    is_cross_customer_rejected: bool = Field(
+        default=False,
+        description="True if candidate match was rejected due to conflicting customer identities",
     )

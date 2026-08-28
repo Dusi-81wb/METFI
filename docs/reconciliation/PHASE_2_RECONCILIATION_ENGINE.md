@@ -1,9 +1,9 @@
 # METFI Phase 2 — Deterministic Reconciliation Engine Specification
 
 **Project:** METFI (Autonomous Finance Controller for Razorpay AI Buildathon, Track 04)  
-**Phase:** Phase 2 — Deterministic Reconciliation Engine  
-**Status:** Frozen Foundation / Canonical Engine Reference  
-**Version:** 2.0.0  
+**Phase:** Phase 2 — Deterministic Reconciliation Engine (Remediation Round 01)  
+**Status:** Certified Foundation / Canonical Generalization Reference  
+**Version:** 2.1.0  
 
 ---
 
@@ -13,7 +13,7 @@ The Phase 2 Deterministic Reconciliation Engine constitutes the authoritative fi
 
 > **Core Principle:** Financial truth is strictly deterministic. AI provides investigation, explanation, and bounded recommendations. No LLM is involved in Layer D candidate generation, arithmetic verification, or exception classification.
 
-The engine executes in $O(N)$ time, operates on immutable data structures, guarantees exact `Decimal` precision (zero floating-point math), and enforces strict physical and semantic ground-truth isolation.
+The engine executes in $O(N)$ time, operates on immutable data structures, guarantees exact `Decimal` precision (zero floating-point math), and enforces strict physical and semantic ground-truth isolation. Following Remediation Round 01, all generator-specific constants, magic numbers, and hardcoded corruption assumptions have been completely eradicated in favor of generalized domain principles and configurable contract policies.
 
 ---
 
@@ -29,12 +29,14 @@ The reconciliation engine is structured into five decoupled, independently testa
 ┌──────────────────────────────────────┐
 │     1. Candidate Generation          │
 │   Hash Indexing (O(N)) + Levenshtein │
+│   + Customer Isolation Guard         │
 └──────────────────┬───────────────────┘
                    │
                    ▼
 ┌──────────────────────────────────────┐
 │     2. Evidence Construction         │
-│   Exact Monetary, Timing, Reference  │
+│   Dynamic FeeTaxPolicy Evaluation    │
+│   Monetary, Timing, Reference Parity │
 └──────────────────┬───────────────────┘
                    │
                    ▼
@@ -58,18 +60,22 @@ The reconciliation engine is structured into five decoupled, independently testa
 
 ### 2.1 Component Responsibilities
 1. **Candidate Matcher (`CandidateMatcher`):**
-   - Builds primary hash maps on `payment_id` and `order_id`.
-   - Performs primary grouping around authorized payments.
-   - Secondary pass resolves mutated order references (e.g. `REFERENCE_MISMATCH`) using monetary, currency, and timing proximity combined with bounded Levenshtein edit distance ($d \le 3$).
+   - Builds primary hash indexes on `payment_id` and `order_id`.
+   - Groups multi-settlement payouts without blind truncation.
+   - Enforces **Customer Consistency Guard**: strictly rejects linking candidate records across different customer accounts.
+   - Detects multi-candidate ties with equal edit distances and marks candidate groups with `is_ambiguous_candidate = True`.
+   - Secondary pass resolves mutated order and payment references using monetary, currency, and timing proximity combined with bounded Levenshtein edit distance ($d \le 3$).
    - Tertiary and quaternary passes capture orphaned settlements and orphaned ledger postings.
 2. **Evidence Extractor (`EvidenceExtractor`):**
-   - Evaluates monetary deltas (`settlement_amount_delta`, `fee_variance`, `is_ledger_balanced`).
+   - Integrates explicit, configurable `FeeTaxPolicy` contracts (supporting variable fee schedules from 0.5%–10% and tax rates 0%–30%).
+   - Evaluates monetary deltas (`settlement_amount_delta`, `fee_variance`, `tax_variance`, `total_deduction_variance`, `is_ledger_balanced`).
+   - Safely handles unknown or absent fee policies: emits structured `UNKNOWN_FEE_POLICY` flag without inventing fabricated deductions.
    - Evaluates currency parity (`is_currency_matched`).
    - Evaluates timing windows (`hours_to_settlement`, `is_settlement_preceding_payment`, `is_within_sla_window`).
    - Evaluates cross-source reference integrity (`is_payment_id_matched`, `is_order_id_matched`).
    - Evaluates cardinality (`payment_count`, `settlement_count`, `ledger_entry_count`).
 3. **Deterministic Classifier (`DeterministicClassifier`):**
-   - Maps evidence into one of 10 canonical classes using an authoritative precedence hierarchy.
+   - Maps evidence into one of 10 canonical classes using an authoritative financial precedence hierarchy.
 4. **Policy Engine (`DeterministicPolicyEngine`):**
    - Deterministic policy gatekeeper that maps classifications to `AUTO_RECONCILE`, `REVIEW_REQUIRED`, or `UNRESOLVED`.
 5. **Reconciliation Service (`ReconciliationService`):**
@@ -83,67 +89,49 @@ A transaction group is classified as `EXACT_MATCH` **if and only if all of the f
 
 1. **Cardinality Hard Constraint:** Exactly 1 Payment record, exactly 1 Settlement record, and at least 2 Ledger records.
 2. **Monetary Hard Constraint:** `settlement_amount_delta == Decimal("0.00")` (Gross Payment equals Net Settled plus Fee plus Fee Tax).
-3. **Fee Arithmetic Hard Constraint:** `fee_variance == Decimal("0.00")` (Fee equals standard 2.00% of gross, Fee Tax equals 18.00% GST on fee).
+3. **Fee/Tax Policy Hard Constraint:** `fee_variance == Decimal("0.00")` and `tax_variance == Decimal("0.00")` under the configured domain contract policy (`is_fee_compliant == True`).
 4. **Ledger Balance Hard Constraint:** Sum of Debits equals Sum of Credits (`is_ledger_balanced == True`).
 5. **Currency Hard Constraint:** Payment currency, settlement currency, and ledger currency match identically (`is_currency_matched == True`).
 6. **Reference Hard Constraint:** `payment_id` and `order_id` match across all three sources (`is_order_id_matched == True`, `is_payment_id_matched == True`).
-7. **Timing Hard Constraint:** Settlement payout timestamp is strictly on or after payment authorization timestamp (`is_settlement_preceding_payment == False`) and within 30-day SLA window ($0 \le \Delta t \le 720\text{h}$).
+7. **Timing Hard Constraint:** Settlement payout timestamp is strictly on or after payment authorization timestamp (`is_settlement_preceding_payment == False`) and within SLA window ($0 \le \Delta t \le 720\text{h}$).
 
 ---
 
-## 4. Classification Precedence Policy
+## 4. Authoritative Classification Precedence Hierarchy
 
 When multiple discrepancy conditions occur simultaneously, the engine resolves classification through an explicit, domain-grounded priority hierarchy:
 
 | Priority | Exception Class | Trigger Condition | Rationale |
 |---|---|---|---|
-| **1** | `DUPLICATE_RECORD` | `settlement_count > 1` | Multiplicity violation invalidates 1-to-1 financial arithmetic comparisons. |
-| **2** | `MISSING_SETTLEMENT` | `settlement_count == 0` | Missing mandatory settlement stream prevents net payout reconciliation. |
-| **3** | `CURRENCY_MISMATCH` | `is_currency_matched == False` | Cross-currency reconciliation cannot proceed without authoritative FX tables. |
-| **4** | `REFERENCE_MISMATCH` | `is_order_id_matched == False` or `is_payment_id_matched == False` | Broken identity linkage across ledger/gateway precedes timing or fee analysis. |
-| **5** | `DATE_MISMATCH` | `is_settlement_preceding_payment == True` or `hours > 720` | Chronological violation or SLA breach invalidates standard settlement cycle. |
-| **6** | `PARTIAL_SETTLEMENT` | Net settled amount is exact ~50% fraction ($0.50 \times \text{expected}$) with standard fee structure | Explicit fractional payout pattern distinct from arbitrary fee or amount delta. |
-| **7** | `FEE_DISCREPANCY` | Gross equals Settled plus Deductions, but fee rate deviates from 2.0% schedule | Explains entire monetary difference as a contract pricing dispute rather than missing capital. |
-| **8** | `AMBIGUOUS` | Small unexplained delta (e.g. $\pm ₹12.50$) or multi-factor conflict | Requires AI investigation and LLM root-cause reasoning. |
-| **9** | `AMOUNT_MISMATCH` | Unexplained net delta between settled amount and expected gross minus deductions | Capital variance requiring manual audit. |
-| **10** | `EXACT_MATCH` | All hard constraints verified | Clean 3-way match. |
+| **1** | `DUPLICATE_RECORD` | `cardinality.has_duplicate_settlement == True` | Multiplicity violation invalidates 1-to-1 financial arithmetic comparisons. |
+| **2** | `MISSING_SETTLEMENT` | `cardinality.has_missing_settlement == True` | Absence of counterparty settlement record prevents settlement verification. |
+| **3** | `CURRENCY_MISMATCH` | `currency.is_currency_matched == False` | Cross-currency discrepancies invalidate single-currency ledger balancing. |
+| **4** | `REFERENCE_MISMATCH` | `reference.is_order_id_matched == False` or `reference.is_payment_id_matched == False` | Misidentified transaction reference must be linked before financial amounts are audited. |
+| **5** | `DATE_MISMATCH` | `timing.is_settlement_preceding_payment == True` or `timing.is_within_sla_window == False` | Causality violation (settlement before authorization) or contractual SLA breach. |
+| **6** | `AMBIGUOUS` | `reference.is_ambiguous_candidate == True` or `reference.is_cross_customer_matched == False` | Structural candidate ties or customer conflicts that cannot be uniquely resolved without manual review. |
+| **7** | `FEE_DISCREPANCY` | `is_gross_balanced == True` and `is_fee_compliant == False` (`fee_variance != 0` or `tax_variance != 0`) | Gross funds are completely balanced, but deducted fees or taxes deviate from contractual fee policy. |
+| **8** | `PARTIAL_SETTLEMENT` | `is_gross_balanced == False` and `0 < settled_net <= 0.90 * expected_settled` | Net payout represents a fractional tranche of principal funds disbursed. |
+| **9** | `AMOUNT_MISMATCH` | `settlement_amount_delta != Decimal("0.00")` | General unexplained capital discrepancy between payment gross and settlement net. |
+| **10** | `EXACT_MATCH` | All constraints satisfied | 3-way reconciliation verified across payment, settlement, and ledger. |
 
 ---
 
-## 5. Policy Engine Mapping
+## 5. Domain Policy Configuration (`FeeTaxPolicy`)
 
-| Classification | Authorized Policy Outcome | Human Intervention |
-|---|---|---|
-| `EXACT_MATCH` | `AUTO_RECONCILE` | Zero (Automated) |
-| `AMOUNT_MISMATCH` | `REVIEW_REQUIRED` | Controller sign-off required |
-| `DUPLICATE_RECORD` | `REVIEW_REQUIRED` | Controller sign-off required |
-| `DATE_MISMATCH` | `REVIEW_REQUIRED` | Controller sign-off required |
-| `REFERENCE_MISMATCH` | `REVIEW_REQUIRED` | Controller sign-off required |
-| `PARTIAL_SETTLEMENT` | `REVIEW_REQUIRED` | Controller sign-off required |
-| `FEE_DISCREPANCY` | `REVIEW_REQUIRED` | Controller sign-off required |
-| `MISSING_SETTLEMENT` | `UNRESOLVED` | Escalated / Incomplete evidence |
-| `CURRENCY_MISMATCH` | `UNRESOLVED` | Escalated / FX investigation |
-| `AMBIGUOUS` | `UNRESOLVED` | Escalated to AI Investigation (Phase 3) |
+The reconciliation engine accepts an optional or configured `FeeTaxPolicy` object:
 
----
+```python
+class FeeTaxPolicy(BaseModel):
+    fee_rate: Decimal = Decimal("0.02")          # e.g., 2.0% gateway fee
+    tax_rate_on_fee: Decimal = Decimal("0.18")   # e.g., 18.0% GST on fee
+    currency: str | None = None                  # Applicable ISO currency or None
+    provider: str | None = None                  # Gateway provider or None
+    rounding_rule: str = "ROUND_HALF_UP"         # Exact Decimal rounding
+```
 
-## 6. Evaluation & Benchmark Methodology
-
-The independent evaluator (`BenchmarkEvaluator`) loads ground truth exclusively during benchmark evaluation and computes:
-1. **Overall Micro-Accuracy:** Correct classifications divided by total records.
-2. **Macro-Averaged F1:** Unweighted arithmetic mean of per-class F1 scores across all 10 classes.
-3. **Per-Class Metrics:** True Positives, False Positives, False Negatives, Precision, Recall, and F1.
-4. **False-Match Rate (FMR):** Proportion of exception cases incorrectly classified as `EXACT_MATCH` (Target: **0.0%**).
-5. **False-Unresolved Rate (FUR):** Proportion of clean `EXACT_MATCH` cases incorrectly marked as `UNRESOLVED`.
-6. **10x10 Confusion Matrix:** Exact cross-classification matrix.
-7. **Failure Diagnosis Report:** Full diagnostic dump of any misclassified cases.
-
----
-
-## 7. Performance & Latency Benchmarks
-
-| Tier | Size | Total Latency | Throughput | P50 Latency | P95 Latency | P99 Latency | Accuracy | Macro F1 | FMR |
-|---|---|---|---|---|---|---|---|---|---|
-| **Development (`dev_500`)** | 500 | 21.21 ms | 94,041 rec/s | 0.035 ms | 0.045 ms | 0.056 ms | **100.0%** | **1.0000** | **0.00%** |
-| **Stress (`stress_5000`)** | 5,000 | 258.82 ms | 77,080 rec/s | 0.035 ms | 0.059 ms | 0.119 ms | **100.0%** | **1.0000** | **0.00%** |
-| **Large-Batch (`stress_10000`)** | 10,000 | 614.86 ms | 64,893 rec/s | 0.036 ms | 0.076 ms | 0.148 ms | **100.0%** | **1.0000** | **0.00%** |
+### 5.1 Handling Unknown Policy
+When no fee policy is configured or known for a provider, the engine:
+1. Sets `is_fee_policy_known = False`.
+2. Computes net settlement balance against observed deductions without fabricating an artificial fee schedule.
+3. Flags `UNKNOWN_FEE_POLICY`.
+4. Routes the transaction to `REVIEW_REQUIRED` so human finance operators can verify the uncontracted deductions.
