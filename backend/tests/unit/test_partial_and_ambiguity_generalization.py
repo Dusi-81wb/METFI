@@ -9,12 +9,12 @@ Verifies:
 4. Structural ambiguity triggers strictly from candidate conflict or multi-factor evidence ties.
 """
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
 
-from app.domain.canonical import CanonicalPayment, CanonicalSettlement, CanonicalTransactionGroup
+from app.domain.canonical import CanonicalPayment, CanonicalSettlement
 from app.domain.enums import ExceptionType, PaymentStatus, SettlementStatus
 from app.domain.evidence import (
     CardinalityEvidence,
@@ -69,14 +69,14 @@ def test_partial_settlement_generalization_ratios(
         amount=gross,
         currency="INR",
         status=PaymentStatus.SUCCESS,
-        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=timezone.utc),
+        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=UTC),
     )
     settle = CanonicalSettlement(
         settlement_id=f"set_prt_{ratio}",
         payment_id=f"pay_prt_{ratio}",
         settled_amount=partial_net,
         currency="INR",
-        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=timezone.utc),
+        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=UTC),
         fee=exp_fee,
         fee_tax=exp_tax,
         status=SettlementStatus.SETTLED,
@@ -120,14 +120,14 @@ def test_arbitrary_numeric_deltas_do_not_falsely_become_ambiguous(
         amount=gross,
         currency="INR",
         status=PaymentStatus.SUCCESS,
-        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=timezone.utc),
+        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=UTC),
     )
     settle = CanonicalSettlement(
         settlement_id=f"set_delta_{delta_val}",
         payment_id=f"pay_delta_{delta_val}",
         settled_amount=mutated_settled,
         currency="INR",
-        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=timezone.utc),
+        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=UTC),
         fee=exp_fee,
         fee_tax=exp_tax,
         status=SettlementStatus.SETTLED,
@@ -157,7 +157,11 @@ def test_structural_ambiguity_from_candidate_tie(classifier: DeterministicClassi
             expected_settled_amount=Decimal("976.40"),
             settlement_amount_delta=Decimal("0.00"),
         ),
-        currency=CurrencyEvidence(payment_currency="INR", settlement_currency="INR", ledger_currency="INR"),
+        currency=CurrencyEvidence(
+            payment_currency="INR",
+            settlement_currency="INR",
+            ledger_currency="INR",
+        ),
         timing=TimingEvidence(hours_to_settlement=24.0, is_within_sla_window=True),
         reference=ReferenceEvidence(
             payment_id="pay_amb_001",

@@ -2,8 +2,8 @@
 
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 
 def inspect(dataset_id: str, base_dir: Path | str | None = None) -> None:
@@ -15,16 +15,16 @@ def inspect(dataset_id: str, base_dir: Path | str | None = None) -> None:
         print(f"Error: Input directory for dataset '{dataset_id}' not found at: {input_dir}")
         sys.exit(1)
 
-    print(f"\n=======================================================")
+    print("\n=======================================================")
     print(f"       METFI DATASET INSPECTOR — {dataset_id}")
-    print(f"=======================================================")
+    print("=======================================================")
 
     # 1. Inspect Input Manifest
     input_manifest_file = input_dir / "manifest.json"
     if input_manifest_file.exists():
         with open(input_manifest_file, "r", encoding="utf-8") as f:
             in_manifest = json.load(f)
-        print(f"\n[INFERENCE INPUT MANIFEST]")
+        print("\n[INFERENCE INPUT MANIFEST]")
         print(f"  Dataset ID        : {in_manifest.get('dataset_id')}")
         print(f"  Generator Version : {in_manifest.get('generator_version')}")
         print(f"  Schema Version    : {in_manifest.get('schema_version')}")
@@ -45,15 +45,15 @@ def inspect(dataset_id: str, base_dir: Path | str | None = None) -> None:
     if gt_manifest_file.exists():
         with open(gt_manifest_file, "r", encoding="utf-8") as f:
             gt_manifest = json.load(f)
-        print(f"\n[ISOLATED GROUND TRUTH MANIFEST]")
-        print(f"  Class Distribution:")
+        print("\n[ISOLATED GROUND TRUTH MANIFEST]")
+        print("  Class Distribution:")
         dist = gt_manifest.get("class_distribution", {})
         total = sum(dist.values())
         for cls_name, count in dist.items():
             pct = (count / total * 100) if total else 0
             print(f"    - {cls_name:<22}: {count:>5} ({pct:>5.1f}%)")
 
-        print(f"\n  File Checksums (SHA256):")
+        print("\n  File Checksums (SHA256):")
         for k, v in gt_manifest.get("checksums", {}).items():
             print(f"    - {k:<22}: {v}")
 
@@ -62,7 +62,7 @@ def inspect(dataset_id: str, base_dir: Path | str | None = None) -> None:
     if gt_file.exists():
         with open(gt_file, "r", encoding="utf-8") as f:
             gt_records = json.load(f)
-        print(f"\n[SAMPLE GROUND TRUTH RECORDS (First 3)]")
+        print("\n[SAMPLE GROUND TRUTH RECORDS (First 3)]")
         for sample in gt_records[:3]:
             print(f"  Case ID: {sample.get('case_id')} | Order: {sample.get('order_id')}")
             print(f"    Expected Class : {sample.get('expected_classification')}")
@@ -71,7 +71,7 @@ def inspect(dataset_id: str, base_dir: Path | str | None = None) -> None:
                 print(f"    Fault Info     : {sample['injected_fault'].get('description')}")
             print()
 
-    print(f"=======================================================\n")
+    print("=======================================================\n")
 
 
 def main() -> None:

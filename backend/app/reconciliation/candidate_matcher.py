@@ -75,7 +75,9 @@ class CandidateMatcher:
 
         # 3. Primary pass: Group around known Payments (Exact reference match)
         unlinked_payments: list[CanonicalPayment] = []
-        payments_with_missing_settlement: list[tuple[CanonicalPayment, list[CanonicalLedgerEntry], bool]] = []
+        payments_with_missing_settlement: list[
+            tuple[CanonicalPayment, list[CanonicalLedgerEntry], bool]
+        ] = []
 
         for p in payments:
             used_payment_ids.add(p.payment_id)
@@ -123,7 +125,7 @@ class CandidateMatcher:
 
         # 4a. Check unlinked settlements for payments that matched ledger
         for p, matched_ledger, is_cross_customer in payments_with_missing_settlement:
-            matched_settlements: list[CanonicalSettlement] = []
+            resolved_settlements: list[CanonicalSettlement] = []
             for s in unlinked_settlements:
                 if s.settlement_id in used_settlement_ids:
                     continue
@@ -135,19 +137,19 @@ class CandidateMatcher:
                 if time_diff > 72.0:
                     continue
                 if _levenshtein_distance(p.payment_id, s.payment_id) <= 3:
-                    matched_settlements.append(s)
+                    resolved_settlements.append(s)
                     used_settlement_ids.add(s.settlement_id)
                     break
 
             case_id = self._generate_case_id(p.order_id, p.payment_id)
-            primary_settlement = matched_settlements[0] if matched_settlements else None
+            primary_settlement = resolved_settlements[0] if resolved_settlements else None
             groups.append(
                 CanonicalTransactionGroup(
                     case_id=case_id,
                     order_id=p.order_id,
                     payment=p,
                     settlement=primary_settlement,
-                    settlements=matched_settlements,
+                    settlements=resolved_settlements,
                     ledger_entries=matched_ledger,
                     is_cross_customer_rejected=is_cross_customer,
                 )
@@ -155,11 +157,11 @@ class CandidateMatcher:
 
         # 4b. Fuzzy matching for unlinked payments
         for p in unlinked_payments:
-            matched_settlements = list(settlements_by_payment_id.get(p.payment_id, []))
-            for s in matched_settlements:
+            fuzzy_settlements = list(settlements_by_payment_id.get(p.payment_id, []))
+            for s in fuzzy_settlements:
                 used_settlement_ids.add(s.settlement_id)
 
-            if not matched_settlements:
+            if not fuzzy_settlements:
                 for s in unlinked_settlements:
                     if s.settlement_id in used_settlement_ids:
                         continue
@@ -171,7 +173,7 @@ class CandidateMatcher:
                     if time_diff > 72.0:
                         continue
                     if _levenshtein_distance(p.payment_id, s.payment_id) <= 3:
-                        matched_settlements.append(s)
+                        fuzzy_settlements.append(s)
                         used_settlement_ids.add(s.settlement_id)
                         break
 
@@ -235,14 +237,14 @@ class CandidateMatcher:
                     is_ambiguous = True
 
             case_id = self._generate_case_id(p.order_id, p.payment_id)
-            primary_settlement = matched_settlements[0] if matched_settlements else None
+            primary_settlement = fuzzy_settlements[0] if fuzzy_settlements else None
             groups.append(
                 CanonicalTransactionGroup(
                     case_id=case_id,
                     order_id=p.order_id,
                     payment=p,
                     settlement=primary_settlement,
-                    settlements=matched_settlements,
+                    settlements=fuzzy_settlements,
                     ledger_entries=matched_ledger,
                     is_ambiguous_candidate=is_ambiguous,
                     is_cross_customer_rejected=cross_customer_attempt,

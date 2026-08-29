@@ -1,7 +1,7 @@
 {
-  "benchmark_id": "bench_independent_generalization_benchmark_20260828_094431",
+  "benchmark_id": "bench_independent_generalization_benchmark_20260829_094621",
   "dataset_id": "independent_generalization_benchmark",
-  "timestamp": "2026-08-28T09:44:31Z",
+  "timestamp": "2026-08-29T09:46:21Z",
   "total_records": 31,
   "correct_classifications": 31,
   "overall_accuracy": 1.0,
@@ -227,9 +227,9 @@
     "total_records_processed": 31,
     "total_cases_reconciled": 31,
     "candidate_generation_time_ms": 0.0,
-    "evidence_and_classification_time_ms": 4.987100000107603,
-    "total_wall_clock_time_ms": 4.987100000107603,
-    "throughput_records_per_sec": 6216.04,
+    "evidence_and_classification_time_ms": 14.072999998461455,
+    "total_wall_clock_time_ms": 14.072999998461455,
+    "throughput_records_per_sec": 2202.8,
     "latency_p50_ms": 0.04,
     "latency_p95_ms": 0.08,
     "latency_p99_ms": 0.12

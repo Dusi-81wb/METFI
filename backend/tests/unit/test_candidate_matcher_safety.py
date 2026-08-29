@@ -7,7 +7,7 @@ Verifies:
 3. Multi-settlement evaluation without blind index-0 truncation.
 """
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
@@ -17,7 +17,13 @@ from app.domain.canonical import (
     CanonicalPayment,
     CanonicalSettlement,
 )
-from app.domain.enums import ExceptionType, LedgerAccount, LedgerStatus, PaymentStatus, SettlementStatus
+from app.domain.enums import (
+    ExceptionType,
+    LedgerAccount,
+    LedgerStatus,
+    PaymentStatus,
+    SettlementStatus,
+)
 from app.reconciliation.candidate_matcher import CandidateMatcher
 from app.reconciliation.engine import DeterministicReconciliationEngine
 
@@ -48,14 +54,14 @@ def test_customer_guard_rejects_cross_customer_fuzzy_match(
         amount=Decimal("1000.00"),
         currency="INR",
         status=PaymentStatus.SUCCESS,
-        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=timezone.utc),
+        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=UTC),
     )
     settle = CanonicalSettlement(
         settlement_id="set_cust_a",
         payment_id="pay_cust_a",
         settled_amount=Decimal("976.40"),
         currency="INR",
-        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=timezone.utc),
+        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=UTC),
         fee=Decimal("20.00"),
         fee_tax=Decimal("3.60"),
         status=SettlementStatus.SETTLED,
@@ -67,7 +73,7 @@ def test_customer_guard_rejects_cross_customer_fuzzy_match(
         debit=Decimal("1000.00"),
         credit=Decimal("0.00"),
         currency="INR",
-        entry_timestamp=datetime(2026, 8, 1, 10, 5, tzinfo=timezone.utc),
+        entry_timestamp=datetime(2026, 8, 1, 10, 5, tzinfo=UTC),
         account=LedgerAccount.PAYMENT_GATEWAY_CLEARING,
         status=LedgerStatus.POSTED,
         metadata={"customer_id": "customer_B"},  # Conflicting customer
@@ -99,14 +105,14 @@ def test_multi_candidate_tie_marks_ambiguity(
         amount=Decimal("1000.00"),
         currency="INR",
         status=PaymentStatus.SUCCESS,
-        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=timezone.utc),
+        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=UTC),
     )
     settle = CanonicalSettlement(
         settlement_id="set_tie_001",
         payment_id="pay_tie_001",
         settled_amount=Decimal("976.40"),
         currency="INR",
-        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=timezone.utc),
+        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=UTC),
         fee=Decimal("20.00"),
         fee_tax=Decimal("3.60"),
         status=SettlementStatus.SETTLED,
@@ -118,7 +124,7 @@ def test_multi_candidate_tie_marks_ambiguity(
         debit=Decimal("1000.00"),
         credit=Decimal("0.00"),
         currency="INR",
-        entry_timestamp=datetime(2026, 8, 1, 10, 5, tzinfo=timezone.utc),
+        entry_timestamp=datetime(2026, 8, 1, 10, 5, tzinfo=UTC),
         account=LedgerAccount.PAYMENT_GATEWAY_CLEARING,
         status=LedgerStatus.POSTED,
         metadata={"customer_id": "cust_tie"},
@@ -130,7 +136,7 @@ def test_multi_candidate_tie_marks_ambiguity(
         debit=Decimal("1000.00"),
         credit=Decimal("0.00"),
         currency="INR",
-        entry_timestamp=datetime(2026, 8, 1, 10, 5, tzinfo=timezone.utc),
+        entry_timestamp=datetime(2026, 8, 1, 10, 5, tzinfo=UTC),
         account=LedgerAccount.PAYMENT_GATEWAY_CLEARING,
         status=LedgerStatus.POSTED,
         metadata={"customer_id": "cust_tie"},

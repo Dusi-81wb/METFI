@@ -9,24 +9,37 @@ Supports distinct execution and reporting across:
 
 import argparse
 import json
-from decimal import Decimal
-from pathlib import Path
 import sys
 import time
+from decimal import Decimal
+from pathlib import Path
 
 # Ensure backend app is on sys.path
 backend_path = Path(__file__).resolve().parent.parent.parent / "backend"
 if str(backend_path) not in sys.path:
     sys.path.insert(0, str(backend_path))
 
-from app.domain.canonical import CanonicalLedgerEntry, CanonicalPayment, CanonicalSettlement
 from app.domain.enums import ExceptionType
 from app.domain.fee_policy import FeeTaxPolicy
-from app.domain.ground_truth import GroundTruthRecord, InjectedFaultDetails
-from app.domain.normalizer import normalize_ledger, normalize_payment, normalize_settlement
-from app.domain.raw_models import RawLedgerRecord, RawPaymentRecord, RawSettlementRecord
+from app.domain.ground_truth import (
+    GroundTruthRecord,
+    InjectedFaultDetails,
+)
+from app.domain.normalizer import (
+    normalize_ledger,
+    normalize_payment,
+    normalize_settlement,
+)
+from app.domain.raw_models import (
+    RawLedgerRecord,
+    RawPaymentRecord,
+    RawSettlementRecord,
+)
 from app.domain.reconciliation_result import BatchPerformanceMetrics
-from app.evaluation.evaluator import BenchmarkEvaluationReport, BenchmarkEvaluator
+from app.evaluation.evaluator import (
+    BenchmarkEvaluationReport,
+    BenchmarkEvaluator,
+)
 from app.reconciliation.engine import DeterministicReconciliationEngine
 from app.services.reconciliation_service import ReconciliationService
 
@@ -35,7 +48,13 @@ def _find_independent_fixtures_root() -> Path:
     candidates = [
         Path.cwd() / "backend" / "tests" / "fixtures" / "reconciliation_independent",
         Path.cwd().parent / "backend" / "tests" / "fixtures" / "reconciliation_independent",
-        Path(__file__).resolve().parent.parent.parent / "backend" / "tests" / "fixtures" / "reconciliation_independent",
+        (
+            Path(__file__).resolve().parent.parent.parent
+            / "backend"
+            / "tests"
+            / "fixtures"
+            / "reconciliation_independent"
+        ),
     ]
     for c in candidates:
         if c.exists():
@@ -48,7 +67,10 @@ def print_report_summary(title: str, report: BenchmarkEvaluationReport) -> None:
     print(f"BENCHMARK RESULTS: {title}")
     print("=" * 65)
     print(f"Dataset ID               : {report.dataset_id}")
-    print(f"Overall Accuracy         : {report.overall_accuracy * 100:.2f}% ({report.correct_classifications}/{report.total_records})")
+    print(
+        f"Overall Accuracy         : {report.overall_accuracy * 100:.2f}% "
+        f"({report.correct_classifications}/{report.total_records})"
+    )
     print(f"Macro-Averaged F1        : {report.macro_f1:.4f}")
     print(f"False-Match Rate (FMR)   : {report.false_match_rate * 100:.2f}% (Target: 0.0%)")
     print(f"False-Unresolved Rate    : {report.false_unresolved_rate * 100:.2f}%")
@@ -57,18 +79,26 @@ def print_report_summary(title: str, report: BenchmarkEvaluationReport) -> None:
     print("-" * 65)
     for c_name, c_met in report.per_class_metrics.items():
         if c_met.support > 0 or c_met.false_positives > 0:
-            print(f"{c_name:<22} | {c_met.precision * 100:>8.2f}% | {c_met.recall * 100:>8.2f}% | {c_met.f1_score:>10.4f} | {c_met.support:>8}")
+            print(
+                f"{c_name:<22} | {c_met.precision * 100:>8.2f}% | "
+                f"{c_met.recall * 100:>8.2f}% | {c_met.f1_score:>10.4f} | {c_met.support:>8}"
+            )
     print("=" * 65)
 
     if report.failures:
         print(f"\nMisclassifications ({len(report.failures)}):")
         for f in report.failures[:5]:
-            print(f"  - Case {f.case_id} (Order {f.order_id}): Actual={f.actual_class}, Predicted={f.predicted_class} [{f.reason_code}]")
+            print(
+                f"  - Case {f.case_id} (Order {f.order_id}): "
+                f"Actual={f.actual_class}, Predicted={f.predicted_class} [{f.reason_code}]"
+            )
         if len(report.failures) > 5:
             print(f"  ... and {len(report.failures) - 5} more.")
 
 
-def run_synthetic_benchmark(dataset_id: str, output_path: str | None = None) -> BenchmarkEvaluationReport:
+def run_synthetic_benchmark(
+    dataset_id: str, output_path: str | None = None
+) -> BenchmarkEvaluationReport:
     """Execute synthetic benchmark suite (historical generator-constrained baseline)."""
     title = f"{dataset_id} [Generator-constrained baseline — pre-generalization]"
     print(f"\n>>> Running Synthetic Benchmark: {title}")
@@ -97,7 +127,9 @@ def run_synthetic_benchmark(dataset_id: str, output_path: str | None = None) -> 
     return report
 
 
-def run_independent_benchmark(output_path: str | None = None) -> BenchmarkEvaluationReport:
+def run_independent_benchmark(
+    output_path: str | None = None,
+) -> BenchmarkEvaluationReport:
     """Execute independent generalization benchmark using hand-authored fixtures."""
     title = "Independent Generalization Benchmark (Zero Generator Access)"
     print(f"\n>>> Running Independent Benchmark: {title}")
@@ -130,23 +162,37 @@ def run_independent_benchmark(output_path: str | None = None) -> BenchmarkEvalua
             scenario_id = sc.get("scenario_id", f"sc_{len(all_results)}")
 
             # Parse payment
-            payment = normalize_payment(RawPaymentRecord.model_validate(p_data)) if p_data else None
+            payment = (
+                normalize_payment(RawPaymentRecord.model_validate(p_data))
+                if p_data
+                else None
+            )
 
             # Parse settlements
             settlements = []
             if s_list_data:
-                settlements = [normalize_settlement(RawSettlementRecord.model_validate(s)) for s in s_list_data]
+                settlements = [
+                    normalize_settlement(RawSettlementRecord.model_validate(s))
+                    for s in s_list_data
+                ]
             elif s_data:
-                settlements = [normalize_settlement(RawSettlementRecord.model_validate(s_data))]
+                settlements = [
+                    normalize_settlement(RawSettlementRecord.model_validate(s_data))
+                ]
 
             # Parse ledger entries
-            ledger_entries = [normalize_ledger(RawLedgerRecord.model_validate(le)) for le in led_list_data]
+            ledger_entries = [
+                normalize_ledger(RawLedgerRecord.model_validate(le))
+                for le in led_list_data
+            ]
 
             # Competing ledger orders for ambiguity
             if "competing_ledger_orders" in sc:
                 for clo in sc["competing_ledger_orders"]:
                     for ent in clo.get("entries", []):
-                        ledger_entries.append(normalize_ledger(RawLedgerRecord.model_validate(ent)))
+                        ledger_entries.append(
+                            normalize_ledger(RawLedgerRecord.model_validate(ent))
+                        )
 
             # Policy
             policy = (
@@ -169,7 +215,6 @@ def run_independent_benchmark(output_path: str | None = None) -> BenchmarkEvalua
             )
 
             # Find matching result
-            target_order_id = payment.order_id if payment else (settlements[0].payment_id if settlements else (ledger_entries[0].order_id if ledger_entries else scenario_id))
             target_res = None
             for r in res_batch.results:
                 if payment and r.order_id == payment.order_id:
@@ -180,13 +225,20 @@ def run_independent_benchmark(output_path: str | None = None) -> BenchmarkEvalua
 
             if target_res:
                 all_results.append(target_res)
+                settle_id = (
+                    target_res.settlement_ids[0]
+                    if target_res.settlement_ids
+                    else None
+                )
                 gt = GroundTruthRecord(
                     case_id=target_res.case_id,
                     order_id=target_res.order_id,
                     expected_classification=exp_cls,
-                    expected_policy_outcome=sc.get("expected_policy_outcome", "REVIEW_REQUIRED"),
+                    expected_policy_outcome=sc.get(
+                        "expected_policy_outcome", "REVIEW_REQUIRED"
+                    ),
                     payment_id=target_res.payment_id,
-                    settlement_id=target_res.settlement_ids[0] if target_res.settlement_ids else None,
+                    settlement_id=settle_id,
                     ledger_ids=target_res.ledger_ids,
                     injected_fault=InjectedFaultDetails(
                         exception_type=exp_cls,
@@ -239,28 +291,30 @@ def main() -> None:
         choices=["all", "synthetic", "independent", "dev_500", "stress_5000", "stress_10000"],
         help="Benchmark suite to execute (synthetic, independent, or all)",
     )
-    parser.add_argument("--dataset-id", default="dev_500", help="Dataset identifier for synthetic benchmark")
-    parser.add_argument("--output", default=None, help="Path to write JSON evaluation report")
+    parser.add_argument(
+        "--dataset-id",
+        default="dev_500",
+        help="Dataset identifier for synthetic benchmark",
+    )
+    parser.add_argument(
+        "--output",
+        default=None,
+        help="Path to write JSON evaluation report",
+    )
 
     args = parser.parse_args()
 
-    try:
-        if args.suite == "all":
-            print("================================================================")
-            print("   METFI RECONCILIATION BENCHMARK EVALUATION (PHASE 2)")
-            print("================================================================")
-            run_synthetic_benchmark("dev_500", "evaluation/reports/synthetic_dev_500_report.json")
-            run_independent_benchmark("evaluation/reports/independent_generalization_report.json")
-        elif args.suite in ["synthetic", "dev_500", "stress_5000", "stress_10000"]:
-            d_id = args.dataset_id if args.suite == "synthetic" else args.suite
-            run_synthetic_benchmark(d_id, args.output)
-        elif args.suite == "independent":
-            run_independent_benchmark(args.output)
-    except Exception as e:
-        print(f"ERROR: Benchmark execution failed: {e}", file=sys.stderr)
-        import traceback
-        traceback.print_exc()
-        sys.exit(1)
+    if args.suite == "all":
+        print("================================================================")
+        print("   METFI RECONCILIATION BENCHMARK EVALUATION (PHASE 2)")
+        print("================================================================")
+        run_synthetic_benchmark("dev_500", "evaluation/reports/synthetic_dev_500_report.json")
+        run_independent_benchmark("evaluation/reports/independent_generalization_report.json")
+    elif args.suite in ["synthetic", "dev_500", "stress_5000", "stress_10000"]:
+        d_id = args.dataset_id if args.suite == "synthetic" else args.suite
+        run_synthetic_benchmark(d_id, args.output)
+    elif args.suite == "independent":
+        run_independent_benchmark(args.output)
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@ from app.domain.canonical import (
     CanonicalPayment,
     CanonicalSettlement,
 )
-from app.domain.fee_policy import FeeTaxPolicy, UNSET_POLICY
+from app.domain.fee_policy import UNSET_POLICY, FeeTaxPolicy
 from app.domain.normalizer import (
     normalize_ledger,
     normalize_payment,

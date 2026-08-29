@@ -13,7 +13,7 @@ from app.domain.canonical import (
     CanonicalSettlement,
     CanonicalTransactionGroup,
 )
-from app.domain.fee_policy import FeeTaxPolicy, UNSET_POLICY
+from app.domain.fee_policy import UNSET_POLICY, FeeTaxPolicy
 from app.domain.reconciliation_result import (
     BatchPerformanceMetrics,
     BatchReconciliationResult,

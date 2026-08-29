@@ -1,9 +1,9 @@
 """CLI entrypoint for generating synthetic financial reconciliation datasets."""
 
 import argparse
-from pathlib import Path
 import sys
 import time
+from pathlib import Path
 
 # Ensure backend package is on sys.path
 backend_path = Path(__file__).resolve().parents[2] / "backend"
@@ -34,7 +34,7 @@ def main() -> None:
         print(f"Error: Invalid --dataset-id: {e}", file=sys.stderr)
         sys.exit(1)
 
-    print(f"=== METFI Synthetic Data Generator ===")
+    print("=== METFI Synthetic Data Generator ===")
     print(f"Dataset ID : {validated_dataset_id}")
     print(f"Size       : {args.size} transactions")
     print(f"Seed       : {args.seed}")
@@ -49,7 +49,7 @@ def main() -> None:
 
     print(f"\nGeneration completed in {gen_time:.4f}s ({args.size / gen_time:.1f} rec/s)")
     print(f"Total time with disk serialization: {total_time:.4f}s")
-    print(f"\nExported Files:")
+    print("\nExported Files:")
     print(f"  Payments       : {export_paths['payments']}")
     print(f"  Settlements    : {export_paths['settlements']}")
     print(f"  Ledger         : {export_paths['ledger']}")
@@ -57,7 +57,7 @@ def main() -> None:
     print(f"  Ground Truth   : {export_paths['ground_truth']}")
     print(f"  GT Manifest    : {export_paths['gt_manifest']}")
 
-    print(f"\nClass Distribution:")
+    print("\nClass Distribution:")
     for cls_name, count in result.manifest.class_distribution.items():
         pct = (count / args.size) * 100
         print(f"  {cls_name:<22} : {count:>5} ({pct:>5.1f}%)")

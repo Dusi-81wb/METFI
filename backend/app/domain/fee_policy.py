@@ -1,6 +1,7 @@
 """Configurable fee and tax policy model for deterministic financial reconciliation."""
 
 from decimal import Decimal
+
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.domain.money import quantize_money

@@ -15,7 +15,7 @@ from app.domain.evidence import (
     ReferenceEvidence,
     TimingEvidence,
 )
-from app.domain.fee_policy import FeeTaxPolicy, UNSET_POLICY
+from app.domain.fee_policy import UNSET_POLICY, FeeTaxPolicy
 from app.domain.money import quantize_money
 from app.domain.time import hours_between, to_iso_utc
 
@@ -86,7 +86,11 @@ class EvidenceExtractor:
         is_fee_policy_known = active_policy is not None
         is_fee_compliant = True
 
-        if active_policy is not None and isinstance(active_policy, FeeTaxPolicy) and gross is not None:
+        if (
+            active_policy is not None
+            and isinstance(active_policy, FeeTaxPolicy)
+            and gross is not None
+        ):
             # Active policy configured: derive deterministic contract expectations
             standard_fee, standard_tax, expected_total_deductions = (
                 active_policy.calculate_expected_deductions(gross)

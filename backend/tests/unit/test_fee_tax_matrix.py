@@ -6,7 +6,7 @@ Fee schedules: 1.5%, 2.0%, 2.5%, 3.0%, 3.5%
 Tax schedules: 0%, 5%, 10%, 18%, 25%
 """
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
@@ -22,8 +22,20 @@ def engine() -> DeterministicReconciliationEngine:
     return DeterministicReconciliationEngine()
 
 
-FEE_RATES = [Decimal("0.015"), Decimal("0.020"), Decimal("0.025"), Decimal("0.030"), Decimal("0.035")]
-TAX_RATES = [Decimal("0.00"), Decimal("0.05"), Decimal("0.10"), Decimal("0.18"), Decimal("0.25")]
+FEE_RATES = [
+    Decimal("0.015"),
+    Decimal("0.020"),
+    Decimal("0.025"),
+    Decimal("0.030"),
+    Decimal("0.035"),
+]
+TAX_RATES = [
+    Decimal("0.00"),
+    Decimal("0.05"),
+    Decimal("0.10"),
+    Decimal("0.18"),
+    Decimal("0.25"),
+]
 
 
 @pytest.mark.parametrize("fee_rate", FEE_RATES)
@@ -46,14 +58,14 @@ def test_fee_tax_matrix_exact_match(
         amount=gross,
         currency="INR",
         status=PaymentStatus.SUCCESS,
-        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=timezone.utc),
+        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=UTC),
     )
     settle = CanonicalSettlement(
         settlement_id=f"set_{fee_rate}_{tax_rate}",
         payment_id=f"pay_{fee_rate}_{tax_rate}",
         settled_amount=exp_net,
         currency="INR",
-        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=timezone.utc),
+        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=UTC),
         fee=exp_fee,
         fee_tax=exp_tax,
         status=SettlementStatus.SETTLED,
@@ -100,14 +112,14 @@ def test_fee_tax_matrix_tax_variance_detection(
         amount=gross,
         currency="INR",
         status=PaymentStatus.SUCCESS,
-        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=timezone.utc),
+        payment_timestamp=datetime(2026, 8, 1, 10, 0, tzinfo=UTC),
     )
     settle = CanonicalSettlement(
         settlement_id=f"set_taxvar_{fee_rate}_{tax_rate}",
         payment_id=f"pay_taxvar_{fee_rate}_{tax_rate}",
         settled_amount=settled_net,
         currency="INR",
-        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=timezone.utc),
+        settlement_timestamp=datetime(2026, 8, 2, 10, 0, tzinfo=UTC),
         fee=exp_fee,
         fee_tax=mutated_tax,
         status=SettlementStatus.SETTLED,
@@ -122,5 +134,8 @@ def test_fee_tax_matrix_tax_variance_detection(
 
     res = batch_res.results[0]
     assert res.classification == ExceptionType.FEE_DISCREPANCY
-    assert "TAX_VARIANCE_DETECTED" in res.evidence.flags or res.reason_code in ["TAX_VARIANCE_DETECTED", "FEE_TAX_VARIANCE_DETECTED"]
+    assert (
+        "TAX_VARIANCE_DETECTED" in res.evidence.flags
+        or res.reason_code in ["TAX_VARIANCE_DETECTED", "FEE_TAX_VARIANCE_DETECTED"]
+    )
     assert res.evidence.monetary.tax_variance != Decimal("0.00")

@@ -1,7 +1,7 @@
 {
-  "benchmark_id": "bench_dev_500_20260828_094431",
+  "benchmark_id": "bench_dev_500_20260829_094621",
   "dataset_id": "dev_500",
-  "timestamp": "2026-08-28T09:44:31Z",
+  "timestamp": "2026-08-29T09:46:21Z",
   "total_records": 500,
   "correct_classifications": 485,
   "overall_accuracy": 0.97,
@@ -407,12 +407,12 @@
   "performance_metrics": {
     "total_records_processed": 1995,
     "total_cases_reconciled": 500,
-    "candidate_generation_time_ms": 183.74019999987468,
-    "evidence_and_classification_time_ms": 21.26659999998992,
-    "total_wall_clock_time_ms": 205.00909999987016,
-    "throughput_records_per_sec": 9731.28,
-    "latency_p50_ms": 0.0397,
-    "latency_p95_ms": 0.052,
-    "latency_p99_ms": 0.1311
+    "candidate_generation_time_ms": 5.474699999467703,
+    "evidence_and_classification_time_ms": 37.14140000010957,
+    "total_wall_clock_time_ms": 42.61920000135433,
+    "throughput_records_per_sec": 46809.89,
+    "latency_p50_ms": 0.0677,
+    "latency_p95_ms": 0.1087,
+    "latency_p99_ms": 0.2047
   }
 }

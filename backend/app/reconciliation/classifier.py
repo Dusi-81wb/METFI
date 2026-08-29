@@ -33,7 +33,10 @@ class DeterministicClassifier:
             return (
                 ExceptionType.DUPLICATE_RECORD,
                 "CARDINALITY_DUPLICATE_PAYOUT",
-                f"Multiple settlements ({card.settlement_count}) recorded for payment {ref.payment_id}.",
+                (
+                    f"Multiple settlements ({card.settlement_count}) "
+                    f"recorded for payment {ref.payment_id}."
+                ),
             )
 
         if card.has_missing_settlement:
@@ -103,7 +106,7 @@ class DeterministicClassifier:
             )
 
         # 6. Fee and Tax Pricing Discrepancies (Precedence #7)
-        # Gross equals Settled plus Total Deductions (all funds accounted for), but rates deviate from policy
+        # Gross equals Settled plus Total Deductions, but rates deviate from policy
         if (
             mon.is_fee_policy_known
             and mon.payment_gross is not None
@@ -123,7 +126,8 @@ class DeterministicClassifier:
                         "TAX_VARIANCE_DETECTED",
                         (
                             f"Non-standard tax on fee: observed {mon.fee_tax_deducted} vs "
-                            f"policy {mon.standard_contract_fee_tax} (tax variance {mon.tax_variance})."
+                            f"policy {mon.standard_contract_fee_tax} "
+                            f"(tax variance {mon.tax_variance})."
                         ),
                     )
                 if (
@@ -135,7 +139,8 @@ class DeterministicClassifier:
                         "FEE_VARIANCE_DETECTED",
                         (
                             f"Non-standard gateway fee: observed {mon.fee_deducted} vs "
-                            f"policy {mon.standard_contract_fee} (fee variance {mon.fee_variance})."
+                            f"policy {mon.standard_contract_fee} "
+                            f"(fee variance {mon.fee_variance})."
                         ),
                     )
                 return (
@@ -177,8 +182,8 @@ class DeterministicClassifier:
                 ExceptionType.AMOUNT_MISMATCH,
                 "MONETARY_SETTLEMENT_DELTA",
                 (
-                    f"Settlement delta of {mon.settlement_amount_delta}: observed {mon.settled_net} vs "
-                    f"expected {mon.expected_settled_amount}."
+                    f"Settlement delta of {mon.settlement_amount_delta}: "
+                    f"observed {mon.settled_net} vs expected {mon.expected_settled_amount}."
                 ),
             )
 

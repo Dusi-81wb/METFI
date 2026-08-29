@@ -3,6 +3,7 @@
 import subprocess
 import sys
 import time
+
 import httpx
 
 
@@ -31,9 +32,8 @@ def test_live_server() -> None:
                     connected = True
                     data = resp.json()
                     print(f"Connection successful on attempt {i+1}!")
-                    break
-            except Exception:
-                pass
+            except httpx.RequestError:
+                continue
 
         if not connected:
             print("Failed to connect to backend server within timeout.")
@@ -63,7 +63,7 @@ def test_live_server() -> None:
         proc.terminate()
         try:
             proc.wait(timeout=3)
-        except Exception:
+        except subprocess.TimeoutExpired:
             proc.kill()
         print("Cleaned up server process.")
 
