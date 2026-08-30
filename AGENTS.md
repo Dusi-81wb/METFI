@@ -58,16 +58,44 @@ Every agent operating in this repository must enforce these 10 non-negotiable in
 
 ---
 
-## 4. Phase Transition & Handoff Protocol
+## 4. Phase Transition & Prime-Powered Review Protocol
 
-1. **Phase Execution:** The Principal Builder implements the phase requirements within the agreed scope.
-2. **Self-Review:** The Principal Builder runs the complete verification suite (tests, linter, type-checker, build).
-3. **Handoff Artifact:** The Principal Builder compiles `docs/reviews/PHASE_X_HANDOFF.md` containing:
-   - Summary of implemented components.
-   - Exact execution commands and outputs.
-   - Known limitations and explicit attack surfaces for the reviewer.
-4. **Adversarial Audit:** The Adversarial Reviewer audits the handoff, attempts to break the implementation, and outputs an audit report (`docs/reviews/PHASE_X_PRIME_REVIEW.md`).
-5. **Remediation & Sign-off:** CRITICAL/HIGH findings are remediated. The phase is marked PASS only when all criteria are satisfied.
+Every implementation phase must strictly follow the automated Prime review cycle:
+
+```text
+       IMPLEMENT
+           │
+           ▼
+       RUN TESTS (pytest, ruff, mypy, build)
+           │
+           ▼
+    RUN PRIME REVIEW (`python scripts/review/run_prime_review.py --phase <N>`)
+           │
+           ├──────────────────────────────┬─────────────────────────────┐
+           ▼                              ▼                             ▼
+       [BLOCKED]                [PASS WITH CONDITIONS]                [PASS]
+           │                              │                             │
+           ▼                              ▼                             ▼
+       Remediate                    Evaluate Conditions           Compile Handoff
+           │                              │                             │
+       Re-run Tests                       ▼                             ▼
+           │                        Fix Conditions                    STOP
+           │                              │                             │
+           └──────────────────────────────┴─────────────────────────────┘
+                                          │
+                                          ▼
+                                  Re-run Prime Review
+```
+
+### Review Rules & Invariants:
+1. **Active Working Tree:** Prime reviews the current working tree directly (`/mnt/c/Users/Samrat/OneDrive/Documents/Samrat-ai/METFI`). Do not clone a second repository or pull a fresh branch.
+2. **Review Command:**
+   ```bash
+   python scripts/review/run_prime_review.py --phase <PHASE_NUMBER> --verbose
+   ```
+3. **Artifact Persistence:** Every review generates an immutable, timestamped markdown report in `docs/reviews/prime/PHASE_<N>_REVIEW_<TIMESTAMP>.md`. Previous reviews are never overwritten.
+4. **Builder Report:** When findings exist, Antigravity classifies them into `FIX`, `ACCEPT AS RISK`, or `REQUEST CLARIFICATION`. No phase can be closed with unresolved `CRITICAL` or `HIGH` findings.
+5. **Phase Guard:** Antigravity must STOP after completing a phase and waiting for Prime's sign-off. Never automatically begin the next phase.
 
 ---
 

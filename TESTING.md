@@ -81,3 +81,12 @@ backend/tests/
 # Run all benchmark suites (Synthetic + Independent)
 uv run python evaluation/benchmarks/runner.py --suite all
 ```
+
+### 3.3 Prime-Powered Adversarial Review Runner
+```bash
+# Run review for specific phase (executed via WSL Prime)
+python scripts/review/run_prime_review.py --phase 2 --verbose
+
+# Run unit tests for review orchestrator
+uv run pytest tests/unit/test_prime_review_runner.py -v
+```

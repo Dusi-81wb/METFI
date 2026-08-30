@@ -74,3 +74,15 @@ cd frontend && npm run type-check && npm run build
 2. **Decimal-safe arithmetic:** Never use standard binary floats for monetary calculations; always use `Decimal`.
 3. **Isolate Ground Truth:** Do not write ground truth fixtures into ingestion folders or runtime inference code.
 4. **No dead code or unverified placeholders:** Every module must have clear responsibilities, explicit types, and automated test coverage.
+
+---
+
+## 5. Phase Review Protocol
+
+After completing an implementation phase, execute the Prime adversarial review runner before requesting sign-off:
+
+```bash
+# Execute Prime adversarial review against current working tree
+python scripts/review/run_prime_review.py --phase <PHASE_NUMBER> --verbose
+```
+Review artifacts are saved in `docs/reviews/prime/`. Address all CRITICAL and HIGH findings before closing the phase.
