@@ -73,3 +73,8 @@ data/generated/*
 evaluation/reports/*.tmp
 *.sqlite3
 *.db
+
+# Internal Review Artifacts
+docs/reviews/prime/*
+!docs/reviews/prime/.gitkeep
+scripts/review/.active_review_prompt.md

@@ -1,63 +1,82 @@
-# METFI Agent Operating Protocol & Governance
+# METFI System Agents & Operating Governance
 
-This document establishes the official operational rules, roles, safety boundaries, and collaboration protocols for AI and human contributors working on **METFI (Autonomous Finance Controller for Razorpay AI Buildathon, Track 04)**.
-
----
-
-## 1. Primary Agent Roles & Responsibilities
-
-### 1.1 Principal Implementation Agent
-- **Identifier:** Antigravity IDE / Gemini 3.7 High (or designated builder harness)
-- **Role:** Primary Architecture & Code Implementation
-- **Mandate:**
-  - Implement system layers strictly according to `METFI_MASTER_SPEC_v1.0.md` and approved architectural decisions (`DECISIONS.md`).
-  - Maintain absolute separation between deterministic financial verification and AI reasoning.
-  - Run all relevant automated tests (unit, integration, formatting, typing) before submitting any phase for review.
-  - Record any new design decisions or required adjustments in `DECISIONS.md` using the ADR format.
-  - Never silently modify frozen architectural boundaries or bypass deterministic policy gates.
-
-### 1.2 Principal Adversarial Reviewer (Primary Authority)
-- **Identifier:** Prime Agent / Nemotron 3 Ultra 550B (WSL/Ubuntu runtime)
-- **Role:** Independent Quality, Correctness, and Security Auditor (Primary Certification Authority)
-- **Mandate:**
-  - Inspect codebase, test coverage, and benchmark outputs adversarially.
-  - Attempt to falsify correctness, discover unhandled financial edge cases, and challenge evaluation integrity.
-  - Verify that ground truth remains strictly isolated and is never leaked to inference prompts.
-  - Issue structured review reports classified by severity.
-  - Does not unilaterally rewrite architecture; proposes actionable findings backed by test cases and evidence.
-
-### 1.3 Secondary & Specialist Reviewer (Specialist & Fallback Authority)
-- **Identifier:** Kilo Code CLI (`@kilocode/cli` with specialized agents)
-- **Role:** Secondary Adversarial Reviewer, Root-Cause Debugger, Test Validator, and Fallback Reviewer
-- **Specialized Roles:**
-  - **Reviewer (`ask`):** Evaluates contracts, magic constant removal, domain rules, and security.
-  - **Debugger (`debug`):** Investigates failure modes, traces edge-case regressions, and isolates bugs.
-  - **Tester (`tester`):** Assesses test coverage, boundary conditions, and matrix combinations.
-  - **Planner (`plan`):** Generates non-destructive remediation proposals.
-  - **Orchestrator (`orchestrator`):** Coordinates multi-agent findings aggregation.
-- **Authority Constraints:**
-  - Kilo can **NEVER** override a Prime `BLOCKED` status.
-  - If Prime infrastructure fails (`TIMEOUT`, `UNAVAILABLE`, `EXECUTION_FAILURE`), Kilo executes as a secondary fallback with status `FALLBACK_REVIEW`.
-  - Conflicts between Prime and Kilo are surfaced for developer adjudication.
+This document establishes the operational rules, roles, safety boundaries, and collaboration protocols for **METFI (Autonomous Finance Controller for Razorpay AI Buildathon, Track 04)**.
 
 ---
 
-## 2. Review Severity Levels & Action Gates
+## 1. METFI Core Intelligence Subsystem Roles
 
-When PRs or Phase handoffs are submitted, findings are triaged into four severity tiers:
+METFI operates a multi-stage, evidence-grounded reconciliation architecture where deterministic rules define financial truth and AI provides structured root-cause investigation.
 
-| Severity | Definition | Resolution Gate |
-|---|---|---|
-| **CRITICAL** | Violates deterministic financial correctness, leaks ground truth, allows un-gated financial mutations, or invalidates benchmark reproducibility. | **BLOCKING**: Must be resolved and verified before advancing to the next phase or merging code. |
-| **HIGH** | Significant business logic flaw, unhandled edge cases in reconciliation taxonomy, security exposure, or major test suite deficiency. | **BLOCKING**: Must be addressed before phase sign-off. |
-| **MEDIUM** | Performance bottleneck, code smell, incomplete error message, or missing non-critical validation. | Non-blocking for current phase if documented as technical debt in handoff. |
-| **LOW** | Minor style discrepancies, documentation formatting, or polish suggestions. | Non-blocking. |
+```
++-----------------------------------------------------------------------------------+
+|                        INFERENCE EXECUTION PIPELINE ARCHITECTURE                  |
+|                                                                                   |
+|  [Raw Sources] ➔ [Deterministic Reconciliation Engine] ➔ [ReconciliationResult]   |
+|                                                                   |               |
+|                                                                   v               |
+|                                                      [AI Context Builder]         |
+|                                                                   |               |
+|                                                                   v               |
+|                                                         [AI Investigator]         |
+|                                                                   |               |
+|                                                                   v               |
+|                                                           [AI Verifier]           |
+|                                                                   |               |
+|                                                                   v               |
+|                                                  [VerifiedInvestigationEnvelope]  |
+|                                                                   |               |
+|                                                                   v               |
+|                                                        [Deterministic Policy]     |
+|                                                                   |               |
+|                                                                   v               |
+|                                                            [Audit Trail]          |
++-----------------------------------------------------------------------------------+
+```
+
+### 1.1 Deterministic Reconciliation Engine
+- **Role:** Canonical Financial Truth Authority
+- **Responsibilities:**
+  - Evaluates normalized payment and settlement pairs across monetary, currency, timing, and reference dimensions.
+  - Classifies records into canonical exception classes (`EXACT_MATCH`, `AMOUNT_MISMATCH`, `CURRENCY_MISMATCH`, `DUPLICATE_RECORD`, etc.).
+  - Calculates exact fee, tax, and settlement variances using deterministic formulas.
+  - **Primacy Invariant:** Deterministic classification is immutable and cannot be overridden by AI opinions.
+
+### 1.2 AI Context Builder (Security Boundary)
+- **Role:** Safe Context Assembly & Ground-Truth Isolation
+- **Responsibilities:**
+  - Extracts minimized, relevant financial facts into structured prompt context.
+  - Sanitizes untrusted text and descriptions against prompt injection attacks.
+  - Generates verifiable citation whitelists (`[VALID CITATION FIELD PATHS]`).
+  - Strict zero-access isolation: Never exposes ground truth labels, corruption classes, or benchmark metadata.
+
+### 1.3 AI Investigator Agent
+- **Role:** Evidence-Grounded Exception Root Cause Analysis
+- **Responsibilities:**
+  - Analyzes reconciliation discrepancies using a standard 12-class taxonomy.
+  - Generates clear, non-technical primary and alternative explanations.
+  - Cites specific field-level evidence references against the context whitelist.
+  - Emits bounded operational recommendations (`AUTO_RECONCILE`, `REVIEW_REQUIRED`, `UNRESOLVED`).
+
+### 1.4 AI Verifier Agent
+- **Role:** Independent Controller & Audit Gate
+- **Responsibilities:**
+  - Audits AI investigation results against deterministic facts and context.
+  - Enforces hard deterministic gates rejecting hallucinated citations, truth contradictions, and unsafe recommendations.
+  - Emits structured `VerificationResult` (`VERIFIED`, `REJECTED`, `INSUFFICIENT_EVIDENCE`).
+
+### 1.5 Deterministic Policy Engine
+- **Role:** Automated Decision & Action Gatekeeper
+- **Responsibilities:**
+  - Evaluates verified investigation results against contract risk rules and variance tolerances.
+  - Authorizes bounded actions (`AUTO_RECONCILE`, `FLAG_MANUAL_REVIEW`, `ROUTE_TO_OPS`).
+  - Emits append-only immutable audit events for complete compliance.
 
 ---
 
-## 3. Core Operating Invariants (Non-Negotiables)
+## 2. Core Operating Invariants (Non-Negotiables)
 
-Every agent operating in this repository must enforce these 10 non-negotiable invariants:
+Every component operating in this repository must enforce these 10 non-negotiable invariants:
 
 1. **Deterministic Truth Primacy:** Deterministic financial rules own the canonical reconciliation truth. LLM inferences cannot override mathematical or transactional facts.
 2. **Bounded AI Capability:** AI agents can only investigate, explain, categorize, and recommend bounded actions (`AUTO_RECONCILE`, `REVIEW_REQUIRED`, `UNRESOLVED`). They cannot directly mutate source databases or ledger states.
@@ -72,52 +91,20 @@ Every agent operating in this repository must enforce these 10 non-negotiable in
 
 ---
 
-## 4. Phase Transition & Multi-Agent Review Protocol
+## 3. Severity Levels & Quality Gates
 
-Every implementation phase must strictly follow the automated review cycle:
+When changes are submitted, issues are triaged into four severity tiers:
 
-```text
-       IMPLEMENT
-           │
-           ▼
-       RUN TESTS (pytest, ruff, mypy, build)
-           │
-           ▼
-    RUN REVIEW (`python scripts/review/run_prime_review.py --phase <N>`)
-           │
-           ├──────────────────────────────┬─────────────────────────────┐
-           ▼                              ▼                             ▼
-       [BLOCKED]                [PASS WITH CONDITIONS]                [PASS]
-           │                              │                             │
-           ▼                              ▼                             ▼
-       Remediate                    Evaluate Conditions           Compile Handoff
-           │                              │                             │
-       Re-run Tests                       ▼                             ▼
-           │                        Fix Conditions                    STOP
-           │                              │                             │
-           └──────────────────────────────┴─────────────────────────────┘
-                                          │
-                                          ▼
-                                  Re-run Review
-```
-
-### Review Rules & Invariants:
-1. **Active Working Tree:** Reviewers inspect the current working tree directly (`C:\Users\Samrat\OneDrive\Documents\Samrat-ai\METFI` and WSL mount). Do not clone a second repository or pull a fresh branch.
-2. **Execution Commands:**
-   ```bash
-   # Prime primary + Kilo fallback
-   python scripts/review/run_prime_review.py --phase <N> --verbose
-
-   # Kilo specialist pipeline
-   python scripts/review/run_prime_review.py --phase <N> --engine kilo --kilo-pipeline --verbose
-   ```
-3. **Artifact Persistence:** Every review generates an immutable, timestamped markdown report in `docs/reviews/prime/`.
-4. **Builder Report:** When findings exist, Antigravity classifies them into `FIX`, `ACCEPT AS RISK`, or `REQUEST CLARIFICATION`. No phase can be closed with unresolved `CRITICAL` or `HIGH` findings.
-5. **Phase Guard:** Antigravity must STOP after completing a phase and waiting for sign-off. Never automatically begin the next phase.
+| Severity | Definition | Resolution Gate |
+|---|---|---|
+| **CRITICAL** | Violates deterministic financial correctness, leaks ground truth, allows un-gated financial mutations, or invalidates benchmark reproducibility. | **BLOCKING**: Must be resolved before merging code. |
+| **HIGH** | Significant business logic flaw, unhandled edge cases in reconciliation taxonomy, security exposure, or major test suite deficiency. | **BLOCKING**: Must be addressed before sign-off. |
+| **MEDIUM** | Performance bottleneck, code smell, incomplete error message, or missing non-critical validation. | Non-blocking if documented as technical debt. |
+| **LOW** | Minor style discrepancies, documentation formatting, or polish suggestions. | Non-blocking. |
 
 ---
 
-## 5. Development Phases Roadmap
+## 4. Development Phases Roadmap
 
 - **Phase 0:** Governance, Repository Initialization, Base Environment, Health Smoke Test
 - **Phase 1:** Domain Model, Normalization, Synthetic Data Generator & Ground Truth
@@ -126,5 +113,5 @@ Every implementation phase must strictly follow the automated review cycle:
 - **Phase 4:** Policy Engine, Bounded Decisioning & Audit Trail
 - **Phase 5:** Evaluation Engine, Metrics Harness & Stress Testing
 - **Phase 6:** Next.js Operations Dashboard & Interactive Case Inspector
-- **Phase 7:** Adversarial Hardening & Final Prime Security/Correctness Audit
+- **Phase 7:** Adversarial Hardening & Security/Correctness Audit
 - **Phase 8:** Demo Package, Benchmark Publication & Submission Assets

@@ -78,24 +78,9 @@ backend/tests/
 
 ### 3.2 Evaluation Benchmark CLI
 ```bash
-# Run all benchmark suites (Synthetic + Independent)
+# Run reconciliation benchmark suite (Synthetic + Independent)
 uv run python evaluation/benchmarks/runner.py --suite all
-```
 
-### 3.3 Multi-Agent Adversarial Review Runner (Prime + Kilo Code)
-```bash
-# Auto mode: Prime primary with Kilo fallback
-python scripts/review/run_prime_review.py --phase 2 --verbose
-
-# Run WSL Prime CLI exclusively
-python scripts/review/run_prime_review.py --phase 2 --engine prime --verbose
-
-# Run Kilo Code specialist agent
-python scripts/review/run_prime_review.py --phase 2 --engine kilo --kilo-agent reviewer --verbose
-
-# Run Kilo multi-agent pipeline (Reviewer + Debugger + Tester)
-python scripts/review/run_prime_review.py --phase 2 --engine kilo --kilo-pipeline --verbose
-
-# Run unit tests for review orchestrator
-uv run pytest tests/unit/test_prime_review_runner.py -v
+# Run AI investigation evaluation suite (Deterministic vs AI vs Verified AI)
+uv run python evaluation/benchmarks/ai_runner.py --provider mock
 ```
