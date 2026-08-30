@@ -7,12 +7,16 @@ from pathlib import Path
 
 
 def inspect(dataset_id: str, base_dir: Path | str | None = None) -> None:
-    root_dir = Path(base_dir) if base_dir else Path(__file__).resolve().parents[2] / "data"
+    root_dir = (
+        Path(base_dir) if base_dir else Path(__file__).resolve().parents[2] / "data"
+    )
     input_dir = root_dir / "generated" / dataset_id / "input"
     gt_dir = root_dir / "ground_truth" / dataset_id
 
     if not input_dir.exists():
-        print(f"Error: Input directory for dataset '{dataset_id}' not found at: {input_dir}")
+        print(
+            f"Error: Input directory for dataset '{dataset_id}' not found at: {input_dir}"
+        )
         sys.exit(1)
 
     print("\n=======================================================")
@@ -38,7 +42,9 @@ def inspect(dataset_id: str, base_dir: Path | str | None = None) -> None:
         if src_file.exists():
             with open(src_file, "r", encoding="utf-8") as f:
                 records = json.load(f)
-            print(f"  {source.capitalize():<18}: {len(records)} records ({src_file.stat().st_size / 1024:.1f} KB)")
+            print(
+                f"  {source.capitalize():<18}: {len(records)} records ({src_file.stat().st_size / 1024:.1f} KB)"
+            )
 
     # 3. Inspect Ground Truth Manifest
     gt_manifest_file = gt_dir / "manifest.json"
@@ -64,20 +70,33 @@ def inspect(dataset_id: str, base_dir: Path | str | None = None) -> None:
             gt_records = json.load(f)
         print("\n[SAMPLE GROUND TRUTH RECORDS (First 3)]")
         for sample in gt_records[:3]:
-            print(f"  Case ID: {sample.get('case_id')} | Order: {sample.get('order_id')}")
+            print(
+                f"  Case ID: {sample.get('case_id')} | Order: {sample.get('order_id')}"
+            )
             print(f"    Expected Class : {sample.get('expected_classification')}")
             print(f"    Expected Policy: {sample.get('expected_policy_outcome')}")
             if sample.get("injected_fault"):
-                print(f"    Fault Info     : {sample['injected_fault'].get('description')}")
+                print(
+                    f"    Fault Info     : {sample['injected_fault'].get('description')}"
+                )
             print()
 
     print("=======================================================\n")
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Inspect generated METFI dataset and ground truth.")
-    parser.add_argument("--dataset-id", type=str, default="dev_500", help="Dataset identifier to inspect")
-    parser.add_argument("--base-dir", type=str, default=None, help="Base data directory")
+    parser = argparse.ArgumentParser(
+        description="Inspect generated METFI dataset and ground truth."
+    )
+    parser.add_argument(
+        "--dataset-id",
+        type=str,
+        default="dev_500",
+        help="Dataset identifier to inspect",
+    )
+    parser.add_argument(
+        "--base-dir", type=str, default=None, help="Base data directory"
+    )
     args = parser.parse_args()
 
     inspect(args.dataset_id, base_dir=args.base_dir)

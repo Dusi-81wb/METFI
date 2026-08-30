@@ -113,14 +113,9 @@ class DeterministicClassifier:
             and mon.settled_net is not None
             and mon.total_deductions is not None
         ):
-            is_gross_balanced = (
-                mon.settled_net + mon.total_deductions == mon.payment_gross
-            )
+            is_gross_balanced = mon.settled_net + mon.total_deductions == mon.payment_gross
             if is_gross_balanced and not mon.is_fee_compliant:
-                if (
-                    mon.tax_variance != Decimal("0.00")
-                    and mon.fee_variance == Decimal("0.00")
-                ):
+                if mon.tax_variance != Decimal("0.00") and mon.fee_variance == Decimal("0.00"):
                     return (
                         ExceptionType.FEE_DISCREPANCY,
                         "TAX_VARIANCE_DETECTED",
@@ -130,10 +125,7 @@ class DeterministicClassifier:
                             f"(tax variance {mon.tax_variance})."
                         ),
                     )
-                if (
-                    mon.fee_variance != Decimal("0.00")
-                    and mon.tax_variance == Decimal("0.00")
-                ):
+                if mon.fee_variance != Decimal("0.00") and mon.tax_variance == Decimal("0.00"):
                     return (
                         ExceptionType.FEE_DISCREPANCY,
                         "FEE_VARIANCE_DETECTED",

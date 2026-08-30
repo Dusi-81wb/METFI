@@ -115,8 +115,8 @@ class EvidenceExtractor:
                         total_deductions - expected_total_deductions
                     )
 
-                is_fee_compliant = (
-                    fee_variance == Decimal("0.00") and tax_variance == Decimal("0.00")
+                is_fee_compliant = fee_variance == Decimal("0.00") and tax_variance == Decimal(
+                    "0.00"
                 )
                 if fee_variance != Decimal("0.00"):
                     flags.append("FEE_VARIANCE_DETECTED")
@@ -132,9 +132,7 @@ class EvidenceExtractor:
             is_fee_policy_known = False
             if gross is not None and primary_settlement is not None:
                 expected_settled = quantize_money(gross - primary_settlement.total_deductions)
-                amount_delta = quantize_money(
-                    primary_settlement.settled_amount - expected_settled
-                )
+                amount_delta = quantize_money(primary_settlement.settled_amount - expected_settled)
                 if primary_settlement.total_deductions > Decimal("0.00"):
                     flags.append("UNKNOWN_FEE_POLICY")
             elif gross is not None and has_missing_settlement:

@@ -208,9 +208,7 @@ def test_generator_deletion_regression(engine: DeterministicReconciliationEngine
                 exp_cls = ExceptionType(sc["expected_classification"])
 
                 payment = (
-                    normalize_payment(RawPaymentRecord.model_validate(p_data))
-                    if p_data
-                    else None
+                    normalize_payment(RawPaymentRecord.model_validate(p_data)) if p_data else None
                 )
                 settlements = []
                 if s_list_data:
@@ -219,13 +217,10 @@ def test_generator_deletion_regression(engine: DeterministicReconciliationEngine
                         for s in s_list_data
                     ]
                 elif s_data:
-                    settlements = [
-                        normalize_settlement(RawSettlementRecord.model_validate(s_data))
-                    ]
+                    settlements = [normalize_settlement(RawSettlementRecord.model_validate(s_data))]
 
                 ledger_entries = [
-                    normalize_ledger(RawLedgerRecord.model_validate(le))
-                    for le in led_list_data
+                    normalize_ledger(RawLedgerRecord.model_validate(le)) for le in led_list_data
                 ]
                 if "competing_ledger_orders" in sc:
                     for clo in sc["competing_ledger_orders"]:

@@ -96,12 +96,12 @@ def test_fee_tax_matrix_tax_variance_detection(
     policy = FeeTaxPolicy(fee_rate=fee_rate, tax_rate_on_fee=tax_rate)
     gross = Decimal("10000.00")
     exp_fee = policy.calculate_expected_fee(gross)
-    
+
     # Inject incorrect tax rate (e.g. tax is 15.00 different)
     mutated_tax = (exp_fee * Decimal("0.12")).quantize(Decimal("0.01"))
     if mutated_tax == policy.calculate_expected_tax(exp_fee):
         mutated_tax += Decimal("10.00")
-    
+
     observed_total_ded = exp_fee + mutated_tax
     settled_net = gross - observed_total_ded
 
@@ -134,8 +134,8 @@ def test_fee_tax_matrix_tax_variance_detection(
 
     res = batch_res.results[0]
     assert res.classification == ExceptionType.FEE_DISCREPANCY
-    assert (
-        "TAX_VARIANCE_DETECTED" in res.evidence.flags
-        or res.reason_code in ["TAX_VARIANCE_DETECTED", "FEE_TAX_VARIANCE_DETECTED"]
-    )
+    assert "TAX_VARIANCE_DETECTED" in res.evidence.flags or res.reason_code in [
+        "TAX_VARIANCE_DETECTED",
+        "FEE_TAX_VARIANCE_DETECTED",
+    ]
     assert res.evidence.monetary.tax_variance != Decimal("0.00")

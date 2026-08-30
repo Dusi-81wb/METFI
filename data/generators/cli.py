@@ -21,10 +21,27 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Generate synthetic financial datasets with isolated ground truth."
     )
-    parser.add_argument("--size", type=int, default=500, help="Number of logical transactions (default: 500)")
-    parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility (default: 42)")
-    parser.add_argument("--dataset-id", type=str, default="dev_500", help="Dataset identifier (default: dev_500)")
-    parser.add_argument("--output-dir", type=str, default=None, help="Base data output directory")
+    parser.add_argument(
+        "--size",
+        type=int,
+        default=500,
+        help="Number of logical transactions (default: 500)",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed for reproducibility (default: 42)",
+    )
+    parser.add_argument(
+        "--dataset-id",
+        type=str,
+        default="dev_500",
+        help="Dataset identifier (default: dev_500)",
+    )
+    parser.add_argument(
+        "--output-dir", type=str, default=None, help="Base data output directory"
+    )
 
     args = parser.parse_args()
 
@@ -47,7 +64,9 @@ def main() -> None:
     export_paths = export_dataset(result, base_dir=args.output_dir)
     total_time = time.perf_counter() - start_time
 
-    print(f"\nGeneration completed in {gen_time:.4f}s ({args.size / gen_time:.1f} rec/s)")
+    print(
+        f"\nGeneration completed in {gen_time:.4f}s ({args.size / gen_time:.1f} rec/s)"
+    )
     print(f"Total time with disk serialization: {total_time:.4f}s")
     print("\nExported Files:")
     print(f"  Payments       : {export_paths['payments']}")

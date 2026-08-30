@@ -1,55 +1,68 @@
-# METFI — Prime-Powered Phase Review System
+# METFI — Multi-Agent Adversarial Review System (Prime + Kilo Code)
 
-The METFI repository utilizes **Prime** (`prime-agent` powered by Nemotron 3 Ultra 550B, installed inside WSL Ubuntu) as the authoritative, adversarial code review engine.
+The METFI repository utilizes a multi-agent adversarial code review framework combining:
+1. **Prime (`prime-agent`)**: Powered by Nemotron 3 Ultra 550B inside WSL Ubuntu (**Primary Independent Certification Authority**).
+2. **Kilo Code CLI (`@kilocode/cli`)**: Specialized review agents (`reviewer`, `debugger`, `tester`, `planner`, `orchestrator`) operating on Windows (**Secondary / Specialist / Fallback Reviewer**).
 
 Antigravity operates in a strict pair-programming and review loop after every implementation phase:
 ```text
-IMPLEMENT ➔ TEST ➔ PRIME REVIEW ➔ FIX ➔ PRIME RE-REVIEW ➔ HANDOFF
+IMPLEMENT ➔ TEST ➔ PRIME REVIEW ➔ (OPTIONAL: KILO SPECIALIST) ➔ FIX ➔ PRIME RE-REVIEW ➔ HANDOFF
 ```
 
 ---
 
-## 1. Core Principles
+## 1. Authority Model & Conflict Rules
 
-1. **Active Working Tree Audit:** Prime inspects the current working directory in place (`/mnt/c/Users/Samrat/OneDrive/Documents/Samrat-ai/METFI`). It reviews uncommitted, staged, and untracked files without cloning, pulling from GitHub, or creating secondary working trees.
-2. **Real Prime Execution:** The Python runner acts strictly as an orchestration wrapper. The actual code review, reasoning, and adversarial audit are performed by Prime inside WSL Ubuntu.
-3. **Data Boundary Defense:** Repository files, transaction records, comments, and test fixtures are treated as untrusted data. Prompt injection defenses ensure embedded instructions cannot override Prime's audit protocol.
-4. **Verbatim Traceability:** Every review run produces an immutable, timestamped markdown report in `docs/reviews/prime/` capturing verbatim stdout, stderr, execution metadata, and parsed verdicts.
+- **Primary Certification Authority:** Prime / Nemotron 3 Ultra 550B.
+- **Authority Hierarchy:**
+  - `Prime: BLOCKED` + `Kilo: PASS` ➔ **Final Status: BLOCKED**. (Kilo can never override a Prime block).
+  - `Prime: PASS` + `Kilo: CRITICAL / BLOCK` ➔ **Final Status: CONFLICT** (Flagged for developer adjudication).
+  - `Prime: PASS` + `Kilo: PASS` ➔ **Final Status: PASS** (Dual-agent certified).
+  - **Infrastructure Failure Fallback:** If Prime fails due to infrastructure (`PRIME_TIMEOUT`, `PRIME_UNAVAILABLE`, `PRIME_EXECUTION_FAILURE`), Kilo executes as a secondary fallback. The final status is classified as **`FALLBACK_REVIEW`** (never disguised as a Prime certification).
 
 ---
 
-## 2. Prerequisites & Environment
+## 2. Kilo Specialized Agent Roles
 
-- **Host OS:** Windows 11 / 10
-- **WSL Distribution:** Ubuntu (WSL 2)
-- **Prime CLI:** `prime-agent` v0.8.1+ installed in WSL (`/home/samrat/.npm-global/bin/prime-agent`)
-- **Model / Provider:** `nvidia/nemotron-3-ultra-550b-a55b` configured via `~/.prime/agent/`
+Kilo Code provides specialized roles adapted to METFI review phases:
+- **`reviewer`** (Kilo `ask` agent): Architectural compliance, magic constant removal, contract generalization, and security checks.
+- **`debugger`** (Kilo `debug` agent): Failure reproduction, root-cause isolation, and regression tracing.
+- **`tester`** (Kilo `ask`/`debug` test evaluation): Test coverage validation, matrix combinations, and assertion depth.
+- **`planner`** (Kilo `plan` agent): Read-only remediation planning and architecture suggestions.
+- **`orchestrator`** (Kilo `orchestrator` agent): Coordinates multi-agent findings aggregation.
 
 ---
 
 ## 3. Usage & Command Reference
 
 ### Basic Usage
-```bash
-# Review a specific phase (e.g. Phase 2)
-python scripts/review/run_prime_review.py --phase 2
-
-# Verbose mode with progress output
+```powershell
+# Auto Mode: Prime primary + Kilo fallback on infrastructure issues
 python scripts/review/run_prime_review.py --phase 2 --verbose
 
-# Custom execution timeout
-python scripts/review/run_prime_review.py --phase 2 --timeout 600
+# Run WSL Prime CLI exclusively
+python scripts/review/run_prime_review.py --phase 2 --engine prime --verbose
 
-# Custom WSL distribution or Prime binary override
-python scripts/review/run_prime_review.py --phase 2 --distro Ubuntu --prime-path /custom/path/prime-agent
+# Run Kilo Reviewer Agent
+python scripts/review/run_prime_review.py --phase 2 --engine kilo --kilo-agent reviewer --verbose
+
+# Run Kilo Specialist Pipeline (Reviewer + Debugger + Tester)
+python scripts/review/run_prime_review.py --phase 2 --engine kilo --kilo-pipeline --verbose
+
+# Run Kilo capability discovery
+python scripts/review/kilo_capabilities.py
 ```
 
-### Available Phases
-- `--phase 0`: Foundations, domain data models, raw schemas, normalization, and configuration.
-- `--phase 1`: Synthetic generator, 10 corruption types, ground-truth isolation, determinism.
-- `--phase 2`: Deterministic reconciliation engine, 3-way matching, candidate grouping, evidence extraction, 10 exception classifications, `FeeTaxPolicy`, and independent benchmarks.
-- `--phase 3`: AI-powered exception investigation, provider abstraction, prompt injection defense, evidence grounding, and AI benchmarks.
-- `--phase generic`: General architectural, security, and code quality review.
+### Supported CLI Flags
+- `--phase`: Target implementation phase (`0`, `1`, `2`, `3`, `generic`).
+- `--engine`: `auto` (default), `prime`, `kilo`, `direct`.
+- `--kilo-agent`: `reviewer` (default), `debugger`, `tester`, `planner`, `orchestrator`.
+- `--kilo-pipeline`: Run full multi-agent specialist pipeline for phase.
+- `--kilo-model`: Custom AI model for Kilo CLI.
+- `--timeout`: Execution timeout in seconds (default: `600`).
+- `--distro`: WSL distribution hosting Prime (default: `Ubuntu`).
+- `--thinking`: Prime reasoning level (`off`, `minimal`, `low`, `medium`, `high`, `max`).
+- `--output-dir`: Custom directory for generated reports.
 
 ---
 
@@ -57,28 +70,26 @@ python scripts/review/run_prime_review.py --phase 2 --distro Ubuntu --prime-path
 
 | Status Classification | Exit Code | Description |
 |---|---|---|
-| `PRIME_REVIEW_PASS` | `0` | Prime issued an unqualified PASS. Phase is ready for handoff. |
-| `PRIME_REVIEW_PASS_WITH_CONDITIONS` | `2` | Prime passed with specific conditions to remediate. |
-| `PRIME_REVIEW_BLOCKED` | `3` | Prime found blocking issues. Remediation required. |
-| `PRIME_TIMEOUT` | `4` | Execution timed out before completion. |
-| `PRIME_EXECUTION_FAILURE` | `5` | WSL or Prime process failed to launch. |
+| `PRIME_REVIEW_PASS` | `0` | Prime issued an unqualified PASS. |
+| `FALLBACK_REVIEW` | `0` | Kilo secondary fallback passed when Prime was unavailable. |
+| `PRIME_REVIEW_PASS_WITH_CONDITIONS` | `2` | Review passed with minor conditions to remediate. |
+| `PRIME_REVIEW_BLOCKED` | `3` | Blocking findings or violations detected. |
+| `PRIME_TIMEOUT` | `4` | Prime CLI timed out. |
+| `PRIME_EXECUTION_FAILURE` | `5` | Infrastructure execution failure. |
+| `REVIEW_CONFLICT` | `7` | Multi-agent disagreement flagged for adjudication. |
 
 ---
 
-## 5. Review Artifact Output
+## 5. Review Artifact Output Format
 
-Artifacts are saved under `docs/reviews/prime/`:
-```text
-docs/reviews/prime/
-├── PHASE_0_REVIEW_20260830_101530.md
-├── PHASE_1_REVIEW_20260830_153201.md
-├── PHASE_2_REVIEW_20260830_184822.md
-└── PHASE_3_REVIEW_20260831_120000.md
-```
+All reports are saved under `docs/reviews/prime/`:
+- `PHASE_<N>_PRIME_REVIEW_<timestamp>.md`
+- `PHASE_<N>_KILO_REVIEW_<role>_<timestamp>.md`
+- `PHASE_<N>_COMBINED_REVIEW_<timestamp>.md`
+- `PHASE_<N>_FALLBACK_REVIEW_<role>_<timestamp>.md`
 
-Each artifact preserves:
-- Exact Git HEAD commit and branch
-- Working tree status (`git status --short`)
-- Exact WSL Prime command line and exit code
+Every artifact preserves:
+- Exact Git HEAD commit, branch, and working tree status
+- Exact command line executed and exit code
 - Verbatim captured stdout and stderr
 - Structured findings and recommendations

@@ -47,7 +47,11 @@ from app.services.reconciliation_service import ReconciliationService
 def _find_independent_fixtures_root() -> Path:
     candidates = [
         Path.cwd() / "backend" / "tests" / "fixtures" / "reconciliation_independent",
-        Path.cwd().parent / "backend" / "tests" / "fixtures" / "reconciliation_independent",
+        Path.cwd().parent
+        / "backend"
+        / "tests"
+        / "fixtures"
+        / "reconciliation_independent",
         (
             Path(__file__).resolve().parent.parent.parent
             / "backend"
@@ -72,10 +76,14 @@ def print_report_summary(title: str, report: BenchmarkEvaluationReport) -> None:
         f"({report.correct_classifications}/{report.total_records})"
     )
     print(f"Macro-Averaged F1        : {report.macro_f1:.4f}")
-    print(f"False-Match Rate (FMR)   : {report.false_match_rate * 100:.2f}% (Target: 0.0%)")
+    print(
+        f"False-Match Rate (FMR)   : {report.false_match_rate * 100:.2f}% (Target: 0.0%)"
+    )
     print(f"False-Unresolved Rate    : {report.false_unresolved_rate * 100:.2f}%")
     print("-" * 65)
-    print(f"{'Class':<22} | {'Precision':<10} | {'Recall':<10} | {'F1':<10} | {'Support':<8}")
+    print(
+        f"{'Class':<22} | {'Precision':<10} | {'Recall':<10} | {'F1':<10} | {'Support':<8}"
+    )
     print("-" * 65)
     for c_name, c_met in report.per_class_metrics.items():
         if c_met.support > 0 or c_met.false_positives > 0:
@@ -136,14 +144,16 @@ def run_independent_benchmark(
 
     fixtures_root = _find_independent_fixtures_root()
     if not fixtures_root.exists():
-        raise FileNotFoundError(f"Independent fixtures directory not found: {fixtures_root}")
+        raise FileNotFoundError(
+            f"Independent fixtures directory not found: {fixtures_root}"
+        )
 
     engine = DeterministicReconciliationEngine()
     evaluator = BenchmarkEvaluator()
 
     fixture_files = list(fixtures_root.glob("*.json"))
-    all_results = []
-    ground_truth_records = []
+    all_results: list[ReconciliationResult] = []
+    ground_truth_records: list[GroundTruthRecord] = []
 
     start_total = time.perf_counter()
 
@@ -198,7 +208,9 @@ def run_independent_benchmark(
             policy = (
                 FeeTaxPolicy(
                     fee_rate=Decimal(str(pol_data["fee_rate"])),
-                    tax_rate_on_fee=Decimal(str(pol_data.get("tax_rate_on_fee", "0.18"))),
+                    tax_rate_on_fee=Decimal(
+                        str(pol_data.get("tax_rate_on_fee", "0.18"))
+                    ),
                 )
                 if pol_data
                 else None
@@ -226,9 +238,7 @@ def run_independent_benchmark(
             if target_res:
                 all_results.append(target_res)
                 settle_id = (
-                    target_res.settlement_ids[0]
-                    if target_res.settlement_ids
-                    else None
+                    target_res.settlement_ids[0] if target_res.settlement_ids else None
                 )
                 gt = GroundTruthRecord(
                     case_id=target_res.case_id,
@@ -250,7 +260,9 @@ def run_independent_benchmark(
                 ground_truth_records.append(gt)
 
     total_time_ms = (time.perf_counter() - start_total) * 1000.0
-    throughput = (len(all_results) / (total_time_ms / 1000.0)) if total_time_ms > 0 else 0.0
+    throughput = (
+        (len(all_results) / (total_time_ms / 1000.0)) if total_time_ms > 0 else 0.0
+    )
 
     perf_metrics = BatchPerformanceMetrics(
         total_records_processed=len(all_results),
@@ -288,7 +300,14 @@ def main() -> None:
     parser.add_argument(
         "--suite",
         default="all",
-        choices=["all", "synthetic", "independent", "dev_500", "stress_5000", "stress_10000"],
+        choices=[
+            "all",
+            "synthetic",
+            "independent",
+            "dev_500",
+            "stress_5000",
+            "stress_10000",
+        ],
         help="Benchmark suite to execute (synthetic, independent, or all)",
     )
     parser.add_argument(
@@ -308,8 +327,12 @@ def main() -> None:
         print("================================================================")
         print("   METFI RECONCILIATION BENCHMARK EVALUATION (PHASE 2)")
         print("================================================================")
-        run_synthetic_benchmark("dev_500", "evaluation/reports/synthetic_dev_500_report.json")
-        run_independent_benchmark("evaluation/reports/independent_generalization_report.json")
+        run_synthetic_benchmark(
+            "dev_500", "evaluation/reports/synthetic_dev_500_report.json"
+        )
+        run_independent_benchmark(
+            "evaluation/reports/independent_generalization_report.json"
+        )
     elif args.suite in ["synthetic", "dev_500", "stress_5000", "stress_10000"]:
         d_id = args.dataset_id if args.suite == "synthetic" else args.suite
         run_synthetic_benchmark(d_id, args.output)

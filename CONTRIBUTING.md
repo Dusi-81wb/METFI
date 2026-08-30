@@ -77,12 +77,15 @@ cd frontend && npm run type-check && npm run build
 
 ---
 
-## 5. Phase Review Protocol
+## 5. Multi-Agent Phase Review Protocol
 
-After completing an implementation phase, execute the Prime adversarial review runner before requesting sign-off:
+After completing an implementation phase, execute the adversarial review runner against the active working tree:
 
 ```bash
-# Execute Prime adversarial review against current working tree
+# Auto mode (Prime primary with Kilo fallback)
 python scripts/review/run_prime_review.py --phase <PHASE_NUMBER> --verbose
+
+# Specialized Kilo Code pipeline review
+python scripts/review/run_prime_review.py --phase <PHASE_NUMBER> --engine kilo --kilo-pipeline --verbose
 ```
 Review artifacts are saved in `docs/reviews/prime/`. Address all CRITICAL and HIGH findings before closing the phase.

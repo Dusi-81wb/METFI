@@ -122,11 +122,11 @@ The reconciliation engine accepts an optional or configured `FeeTaxPolicy` objec
 
 ```python
 class FeeTaxPolicy(BaseModel):
-    fee_rate: Decimal = Decimal("0.02")          # e.g., 2.0% gateway fee
-    tax_rate_on_fee: Decimal = Decimal("0.18")   # e.g., 18.0% GST on fee
-    currency: str | None = None                  # Applicable ISO currency or None
-    provider: str | None = None                  # Gateway provider or None
-    rounding_rule: str = "ROUND_HALF_UP"         # Exact Decimal rounding
+    fee_rate: Decimal = Decimal("0.02")  # e.g., 2.0% gateway fee
+    tax_rate_on_fee: Decimal = Decimal("0.18")  # e.g., 18.0% GST on fee
+    currency: str | None = None  # Applicable ISO currency or None
+    provider: str | None = None  # Gateway provider or None
+    rounding_rule: str = "ROUND_HALF_UP"  # Exact Decimal rounding
 ```
 
 ### 5.1 Handling Unknown Policy

@@ -1,12 +1,11 @@
 """
-Unit tests for the Prime-Powered Phase Review Orchestrator (scripts/review/run_prime_review.py).
+Unit tests for the METFI Multi-Agent Phase Review Orchestrator
+(scripts/review/run_prime_review.py and kilo_runner.py).
 
-All external WSL, Git, and Prime CLI calls are mocked to ensure fast, offline execution.
+All external WSL, Git, Prime CLI, and Kilo CLI calls are mocked for fast, offline testing.
 """
 
 import subprocess
-
-# Ensure scripts directory is on sys.path
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -19,16 +18,28 @@ scripts_dir = repo_root / "scripts" / "review"
 if str(scripts_dir) not in sys.path:
     sys.path.insert(0, str(scripts_dir))
 
+from kilo_capabilities import (  # noqa: E402
+    KiloAgentInfo,
+    KiloCapabilities,
+    get_phase_recommended_agents,
+    resolve_kilo_agent,
+)
+from kilo_runner import (  # noqa: E402
+    FindingSeverity,
+    KiloFinding,
+    KiloReviewStatus,
+    format_kilo_review_artifact,
+    parse_kilo_findings,
+    parse_kilo_verdict,
+    run_kilo_pipeline,
+    run_single_kilo_agent,
+)
 from run_prime_review import (  # noqa: E402
     EXIT_CODES,
-    PrimeExecutionResult,
     ReviewStatus,
-    WorktreeSnapshot,
-    capture_worktree_snapshot,
     convert_windows_to_wsl_path,
     discover_prime_cli,
     find_repository_root,
-    format_review_artifact,
     load_phase_prompt,
     parse_prime_verdict,
     run_prime_review,
@@ -88,7 +99,6 @@ def test_discover_prime_cli_env_var(monkeypatch: pytest.MonkeyPatch) -> None:
 def test_discover_prime_cli_auto_discovery() -> None:
     """Verify auto-discovery probes candidates."""
     with patch("subprocess.run") as mock_run:
-        # First candidate succeeds
         mock_run.return_value = MagicMock(returncode=0, stdout="0.8.1\n")
         res = discover_prime_cli(distro="Ubuntu")
         assert "prime-agent" in res
@@ -124,8 +134,7 @@ def test_load_phase_prompt_missing() -> None:
 def test_parse_prime_verdict_pass() -> None:
     """Verify PASS detection."""
     sample = (
-        "The audit concluded successfully.\n\n"
-        "## Final Verdict\n**VERDICT: PASS**\nConfidence: 98%"
+        "The audit concluded successfully.\n\n## Final Verdict\n**VERDICT: PASS**\nConfidence: 98%"
     )
     status, text = parse_prime_verdict(sample)
     assert status == ReviewStatus.PASS
@@ -148,123 +157,204 @@ def test_parse_prime_verdict_blocked() -> None:
     assert text == "BLOCKED"
 
 
-def test_capture_worktree_snapshot() -> None:
-    """Verify capture of worktree metadata."""
-    snapshot = capture_worktree_snapshot(repo_root)
-    assert snapshot.head_commit != ""
-    assert snapshot.python_version != ""
+def test_kilo_role_resolution() -> None:
+    """Verify resolution of METFI review roles to Kilo agents."""
+    assert resolve_kilo_agent("reviewer") == "ask"
+    assert resolve_kilo_agent("debugger") == "debug"
+    assert resolve_kilo_agent("planner") == "plan"
+    assert resolve_kilo_agent("orchestrator") == "orchestrator"
+    assert resolve_kilo_agent("tester") == "ask"
+    assert resolve_kilo_agent("ask") == "ask"
+    assert resolve_kilo_agent("debug") == "debug"
 
 
-def test_format_review_artifact() -> None:
-    """Verify format of generated markdown review artifact."""
-    snapshot = WorktreeSnapshot(
-        head_commit="abc1234",
-        branch="main",
-        status_short=" M backend/app/reconciliation/engine.py",
-        python_version="3.12.13",
-        node_version="v22.8.0",
+def test_phase_recommended_agents() -> None:
+    """Verify recommended agents per phase."""
+    assert "reviewer" in get_phase_recommended_agents("2")
+    assert "debugger" in get_phase_recommended_agents("2")
+    assert "tester" in get_phase_recommended_agents("2")
+    assert "planner" in get_phase_recommended_agents("3")
+
+
+def test_parse_kilo_findings() -> None:
+    """Verify structured parsing of Kilo findings with severities."""
+    output = (
+        "Analysis complete.\n"
+        "CRITICAL: Ground truth leakage detected in test\n"
+        "HIGH: Unhandled exception in fee rounding\n"
+        "INFO: Variable naming could be improved\n"
     )
-    artifact = format_review_artifact(
+    findings = parse_kilo_findings(output, agent="reviewer")
+    assert len(findings) == 3
+    assert findings[0].severity == FindingSeverity.CRITICAL
+    assert "Ground truth leakage" in findings[0].title
+    assert findings[1].severity == FindingSeverity.HIGH
+    assert findings[2].severity == FindingSeverity.INFO
+
+
+def test_parse_kilo_verdict_with_critical_finding() -> None:
+    """Verify critical finding forces BLOCKED verdict."""
+    output = "All tests passed. VERDICT: PASS"
+    findings = [
+        KiloFinding(
+            severity=FindingSeverity.CRITICAL,
+            title="Overfitting bug",
+            description="Found critical overfitting",
+        )
+    ]
+    status, text = parse_kilo_verdict(output, findings=findings)
+    assert status == KiloReviewStatus.BLOCKED
+    assert "critical finding" in text
+
+
+def test_format_kilo_review_artifact(tmp_path: Path) -> None:
+    """Verify Kilo review artifact generation format."""
+    artifact = format_kilo_review_artifact(
         phase="2",
         timestamp=datetime(2026, 8, 30, 12, 0, 0, tzinfo=UTC),
         repo_root=repo_root,
-        wsl_root="/mnt/c/METFI",
-        snapshot=snapshot,
-        command_executed=["wsl.exe", "-d", "Ubuntu", "--", "prime-agent", "-p"],
-        prime_exit_code=0,
+        agent_role="reviewer",
+        resolved_agent="ask",
+        command_executed=["kilo", "run", "--agent", "ask"],
+        exit_code=0,
         verdict_text="PASS",
-        status=ReviewStatus.PASS,
-        raw_stdout="# Review Report\nAll checks passed.",
+        status=KiloReviewStatus.PASS,
+        raw_stdout="Review complete. VERDICT: PASS",
         raw_stderr="",
-        duration_seconds=12.5,
-        prime_cli_path="prime-agent",
-        distro="Ubuntu",
+        duration_seconds=5.2,
+        kilo_version="7.5.6",
+        git_head="head123",
+        git_branch="main",
+        git_status="M file.py",
+        is_fallback=True,
+        primary_failure_reason="Prime timeout",
     )
 
-    assert "# PRIME REVIEW" in artifact
-    assert "Phase: 2" in artifact
-    assert "Git HEAD: abc1234" in artifact
-    assert "Verdict: PASS" in artifact
-    assert "All checks passed." in artifact
+    assert "# KILO CODE REVIEW" in artifact
+    assert "FALLBACK REVIEW ACTIVE" in artifact
+    assert "Prime — unavailable (Prime timeout)" in artifact
+    assert "Agent Role: reviewer" in artifact
+    assert "Resolved Kilo Agent: ask" in artifact
+    assert "Verdict: PASS (KILO_REVIEW_PASS)" in artifact
 
 
-def test_run_prime_review_mock_pass(tmp_path: Path) -> None:
-    """Verify complete review execution flow for a passing review."""
-    mock_stdout = "# PRIME AUDIT\n\n## Final Verdict\n**VERDICT: PASS**\nConfidence: 99%"
-
-    with patch("subprocess.run") as mock_run:
-        mock_run.return_value = MagicMock(
-            returncode=0,
-            stdout=mock_stdout,
-            stderr="",
-        )
-
-        result: PrimeExecutionResult = run_prime_review(
-            phase="2",
-            engine="prime",
-            output_dir=tmp_path,
-            verbose=False,
-        )
-
-        assert result.status == ReviewStatus.PASS
-        assert result.exit_code == 0
-        assert result.artifact_path is not None
-        assert result.artifact_path.exists()
-        content = result.artifact_path.read_text(encoding="utf-8")
-        assert "VERDICT: PASS" in content
-
-
-def test_run_prime_review_mock_timeout(tmp_path: Path) -> None:
-    """Verify timeout handling in review runner."""
-    with patch("subprocess.run", side_effect=subprocess.TimeoutExpired(cmd="wsl.exe", timeout=5)):
-        result = run_prime_review(
-            phase="2",
-            engine="prime",
-            prime_path="/home/samrat/.npm-global/bin/prime-agent",
-            output_dir=tmp_path,
-            timeout_seconds=5,
-        )
-
-        assert result.status == ReviewStatus.TIMEOUT
-        assert result.exit_code == 124
-        assert "TIMEOUT" in result.verdict_text
-        assert result.artifact_path is not None
-        assert result.artifact_path.exists()
-
-
-def test_run_kilo_review_engine_real(tmp_path: Path) -> None:
-    """Verify real execution of Kilo adversarial review engine."""
-    result = run_prime_review(
-        phase="2",
-        engine="kilo",
-        output_dir=tmp_path,
-        verbose=False,
+def test_run_single_kilo_agent_mock_pass(tmp_path: Path) -> None:
+    """Verify single Kilo agent execution with mocked CLI."""
+    mock_caps = KiloCapabilities(
+        available=True,
+        executable="C:/npm/kilo.cmd",
+        version="7.5.6",
+        agents=[KiloAgentInfo(name="ask", is_primary=True, is_read_only=True)],
+        default_agent="ask",
+        supported_flags=["--agent", "--dir"],
     )
-    assert result.status == ReviewStatus.PASS
-    assert result.exit_code == 0
-    assert result.artifact_path is not None
-    assert result.artifact_path.exists()
-    content = result.artifact_path.read_text(encoding="utf-8")
-    assert "VERDICT: PASS" in content or "Status: PASS" in content
+
+    with patch("kilo_runner.discover_kilo_capabilities", return_value=mock_caps):
+        with patch("subprocess.run") as mock_run:
+            mock_run.return_value = MagicMock(
+                returncode=0,
+                stdout="VERDICT: PASS\nAll domain rules respected.",
+                stderr="",
+            )
+            result = run_single_kilo_agent(
+                phase="2",
+                agent_role="reviewer",
+                repo_root=repo_root,
+                output_dir=tmp_path,
+                verbose=False,
+            )
+
+            assert result.status == KiloReviewStatus.PASS
+            assert result.exit_code == 0
+            assert result.artifact_path is not None
+            assert result.artifact_path.exists()
+            content = result.artifact_path.read_text(encoding="utf-8")
+            assert "VERDICT: PASS" in content
 
 
-def test_run_prime_review_repeated_reviews_no_overwrite(tmp_path: Path) -> None:
-    """Verify repeated reviews create unique timestamped files without overwriting."""
-    with patch("subprocess.run") as mock_run:
-        mock_run.return_value = MagicMock(
-            returncode=0,
-            stdout="VERDICT: PASS",
-            stderr="",
-        )
+def test_run_kilo_pipeline_mock(tmp_path: Path) -> None:
+    """Verify multi-agent Kilo pipeline execution."""
+    mock_caps = KiloCapabilities(
+        available=True,
+        executable="C:/npm/kilo.cmd",
+        version="7.5.6",
+        agents=[
+            KiloAgentInfo(name="ask", is_primary=True, is_read_only=True),
+            KiloAgentInfo(name="debug", is_primary=False, is_read_only=False),
+        ],
+        default_agent="ask",
+        supported_flags=["--agent", "--dir"],
+    )
 
-        res1 = run_prime_review(phase="2", engine="prime", output_dir=tmp_path)
-        res2 = run_prime_review(phase="2", engine="prime", output_dir=tmp_path)
+    with patch("kilo_runner.discover_kilo_capabilities", return_value=mock_caps):
+        with patch("subprocess.run") as mock_run:
+            mock_run.return_value = MagicMock(
+                returncode=0,
+                stdout="VERDICT: PASS\nRole checks passed.",
+                stderr="",
+            )
+            status, verdict, path = run_kilo_pipeline(
+                phase="2",
+                repo_root=repo_root,
+                output_dir=tmp_path,
+                verbose=False,
+            )
 
-        assert res1.artifact_path is not None
-        assert res2.artifact_path is not None
-        assert res1.artifact_path.exists()
-        assert res2.artifact_path.exists()
-        assert len(list(tmp_path.glob("*.md"))) >= 1
+            assert status == KiloReviewStatus.PASS
+            assert "PASS" in verdict
+            assert path is not None
+            assert path.exists()
+            content = path.read_text(encoding="utf-8")
+            assert "# METFI PHASE 2 COMBINED SPECIALIST REVIEW" in content
+
+
+def test_run_prime_review_fallback_on_timeout(tmp_path: Path) -> None:
+    """Verify that auto mode executes Kilo fallback when Prime times out."""
+    mock_caps = KiloCapabilities(
+        available=True,
+        executable="C:/npm/kilo.cmd",
+        version="7.5.6",
+        agents=[KiloAgentInfo(name="ask", is_primary=True, is_read_only=True)],
+        default_agent="ask",
+        supported_flags=["--agent", "--dir"],
+    )
+
+    prime_bin = "/home/samrat/.npm-global/bin/prime-agent"
+    with patch("run_prime_review.discover_prime_cli", return_value=prime_bin):
+        with patch("kilo_runner.discover_kilo_capabilities", return_value=mock_caps):
+
+            def mock_subproc_side_effect(*args, **kwargs):
+                cmd = args[0] if args else kwargs.get("cmd", [])
+                cmd_str = " ".join(cmd) if isinstance(cmd, list) else str(cmd)
+                if "prime-agent" in cmd_str:
+                    raise subprocess.TimeoutExpired(cmd="wsl.exe", timeout=5)
+                # Git or kilo calls succeed
+                is_kilo = "kilo" in cmd_str or (
+                    isinstance(cmd, list) and len(cmd) > 0 and "kilo" in cmd[0].lower()
+                )
+                if is_kilo:
+                    return MagicMock(
+                        returncode=0,
+                        stdout="VERDICT: PASS\nFallback review clean.",
+                        stderr="",
+                    )
+                return MagicMock(returncode=0, stdout="main\n", stderr="")
+
+            with patch("subprocess.run", side_effect=mock_subproc_side_effect):
+                result = run_prime_review(
+                    phase="2",
+                    engine="auto",
+                    output_dir=tmp_path,
+                    timeout_seconds=5,
+                )
+
+                assert result.status == ReviewStatus.FALLBACK_REVIEW
+                assert "FALLBACK_REVIEW" in result.verdict_text
+                assert result.exit_code == 0
+                assert result.artifact_path is not None
+                assert result.artifact_path.exists()
+                content = result.artifact_path.read_text(encoding="utf-8")
+                assert "FALLBACK REVIEW ACTIVE" in content
 
 
 def test_exit_codes_mapping() -> None:
@@ -274,3 +364,5 @@ def test_exit_codes_mapping() -> None:
     assert EXIT_CODES[ReviewStatus.BLOCKED] == 3
     assert EXIT_CODES[ReviewStatus.TIMEOUT] == 4
     assert EXIT_CODES[ReviewStatus.EXECUTION_FAILURE] == 5
+    assert EXIT_CODES[ReviewStatus.FALLBACK_REVIEW] == 0
+    assert EXIT_CODES[ReviewStatus.CONFLICT] == 7

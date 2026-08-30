@@ -10,7 +10,16 @@ import httpx
 def test_live_server() -> None:
     print("Starting FastAPI backend server via uvicorn...")
     proc = subprocess.Popen(
-        [sys.executable, "-m", "uvicorn", "app.main:app", "--port", "8000", "--host", "127.0.0.1"],
+        [
+            sys.executable,
+            "-m",
+            "uvicorn",
+            "app.main:app",
+            "--port",
+            "8000",
+            "--host",
+            "127.0.0.1",
+        ],
         cwd="backend",
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -31,11 +40,11 @@ def test_live_server() -> None:
                 if resp.status_code == 200:
                     connected = True
                     data = resp.json()
-                    print(f"Connection successful on attempt {i+1}!")
+                    print(f"Connection successful on attempt {i + 1}!")
             except httpx.RequestError:
                 continue
 
-        if not connected:
+        if not connected or data is None:
             print("Failed to connect to backend server within timeout.")
             sys.exit(1)
 

@@ -82,10 +82,19 @@ backend/tests/
 uv run python evaluation/benchmarks/runner.py --suite all
 ```
 
-### 3.3 Prime-Powered Adversarial Review Runner
+### 3.3 Multi-Agent Adversarial Review Runner (Prime + Kilo Code)
 ```bash
-# Run review for specific phase (executed via WSL Prime)
+# Auto mode: Prime primary with Kilo fallback
 python scripts/review/run_prime_review.py --phase 2 --verbose
+
+# Run WSL Prime CLI exclusively
+python scripts/review/run_prime_review.py --phase 2 --engine prime --verbose
+
+# Run Kilo Code specialist agent
+python scripts/review/run_prime_review.py --phase 2 --engine kilo --kilo-agent reviewer --verbose
+
+# Run Kilo multi-agent pipeline (Reviewer + Debugger + Tester)
+python scripts/review/run_prime_review.py --phase 2 --engine kilo --kilo-pipeline --verbose
 
 # Run unit tests for review orchestrator
 uv run pytest tests/unit/test_prime_review_runner.py -v
