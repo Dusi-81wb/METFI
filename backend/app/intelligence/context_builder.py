@@ -31,11 +31,32 @@ class CaseContext(NamedTuple):
 def sanitize_untrusted_text(text: str | None, max_length: int = 256) -> str:
     """
     Sanitize untrusted financial strings and metadata to neutralize prompt injection attacks.
+
+    Neutralizes:
+    - Non-printable control characters and null bytes.
+    - System directive delimiter spoofing (===, ---, ```).
+    - Common adversarial jailbreak phrases (ignore previous instructions, system:, override:).
     """
     if not text:
         return ""
     # Strip null bytes and non-printable control characters (preserve normal space/newline)
     sanitized = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]", "", str(text))
+
+    # Neutralize prompt injection delimiter tokens
+    sanitized = re.sub(r"[=]{3,}|[-]{3,}|[`]{3,}", "---", sanitized)
+
+    # Neutralize command injection / role hijacking attempts
+    injection_patterns = [
+        re.compile(r"ignore\s+(all\s+)?previous\s+instructions", re.IGNORECASE),
+        re.compile(r"system\s*:\s*", re.IGNORECASE),
+        re.compile(r"human\s*:\s*", re.IGNORECASE),
+        re.compile(r"assistant\s*:\s*", re.IGNORECASE),
+        re.compile(r"override\s+(policy|status|classification)", re.IGNORECASE),
+        re.compile(r"<\|im_start\|>|<\|im_end\|>", re.IGNORECASE),
+    ]
+    for pattern in injection_patterns:
+        sanitized = pattern.sub("[FILTERED_PROMPT_INJECTION]", sanitized)
+
     # Cap length
     if len(sanitized) > max_length:
         sanitized = sanitized[:max_length] + " [TRUNCATED]"

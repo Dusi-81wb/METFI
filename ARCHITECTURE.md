@@ -1,154 +1,85 @@
-# METFI System Architecture
+# METFI System Architecture Specification
+**Production Modular Monolith with Strict Layer Boundaries**
 
-**Project:** METFI (Autonomous Finance Controller)  
-**Track:** Razorpay AI Buildathon, Track 04 — AI Finance Controller  
-**Architecture Style:** Modular Monolith with Strict Layer Boundaries  
+- **Project:** METFI (Autonomous Finance Controller)  
+- **Track:** Razorpay AI Buildathon, Track 04 — AI Finance Controller  
+- **Architecture Standard:** Separation of Deterministic Truth & Advisory Intelligence  
 
 ---
 
-## 1. Architectural Philosophy & Separation of Concerns
+## 1. Architectural Invariant
 
-The central thesis of METFI is:
-> **Financial truth is deterministic. AI provides investigation, explanation, and bounded recommendations.**
+> **Deterministic Financial Truth > Policy Engine > AI Recommendation > Action Executor.**
 
-Traditional spreadsheet or LLM-only approaches fail in financial control because LLMs can hallucinate calculations, skip reference constraints, and lack mathematical guarantees. Conversely, pure rule-based engines fail when dealing with complex, multi-party discrepancies, ambiguous ledger entries, or settlement timing skews.
+In METFI, deterministic code owns mathematical calculation, candidate matching, exception categorization, policy gating, and ledger state transitions. AI reasoning models provide advisory anomaly investigations and causal explanations—subject to independent automated challenge and policy authorization.
 
-METFI bridges this by strictly delineating responsibilities:
+```mermaid
+flowchart TD
+    subgraph DataPlane ["1. Data Plane (Deterministic)"]
+        A1[Synthetic Generator] --> A2[Golden Fixtures]
+        A3[Ground Truth Isolator]
+    end
 
-```text
-+-------------------------------------------------------------------------+
-|                        METFI SYSTEM ARCHITECTURE                         |
-+-------------------------------------------------------------------------+
-|                                                                         |
-|  [ LAYER A: Data Plane ]                                                |
-|  Synthetic Generator | Ground Truth Isolator | Fixtures                 |
-|                               |                                         |
-|                               v                                         |
-|  [ LAYER B: Ingestion ]                                                 |
-|  Raw Payments (CSV/JSON) | Settlements (CSV/JSON) | Ledger (CSV/JSON)   |
-|                               |                                         |
-|                               v                                         |
-|  [ LAYER C: Normalization ]                                             |
-|  Canonical Schemas | Decimal Monetary Units | ISO Timestamps            |
-|                               |                                         |
-|                               v                                         |
-|  [ LAYER D: Deterministic Reconciliation Engine ]                       |
-|  Candidate Matcher | Exact Rule Evaluator | Hard Invariants             |
-|                               |                                         |
-|               +---------------+---------------+                         |
-|               |                               |                         |
-|      (Exact Match / Rules Pass)        (Ambiguous / Mismatch)           |
-|               |                               |                         |
-|               |                               v                         |
-|               |                 [ LAYER E: Intelligence Layer ]         |
-|               |                 AI Investigator | Structured Evidence   |
-|               |                 Bounded Resolver Recommendation         |
-|               |                               |                         |
-|               +---------------+---------------+                         |
-|                               |                                         |
-|                               v                                         |
-|  [ LAYER F: Policy Engine ]                                             |
-|  Hard Constraint Verifier | AUTO_RECONCILE / REVIEW_REQUIRED / UNRESOLVED|
-|                               |                                         |
-|                               v                                         |
-|  [ LAYER G: Audit Layer ]                                               |
-|  Append-Only Event Store | Evidence Links | Decision Proofs             |
-|                               |                                         |
-|                               v                                         |
-|  [ LAYER H: Evaluation Engine ]                                         |
-|  Hidden Ground-Truth Evaluator | Metrics Harness | Latency & Accuracy   |
-|                               |                                         |
-|                               v                                         |
-|  [ LAYER I: Presentation Layer (Next.js) ]                              |
-|  Operations Dashboard | Case Inspector | Realtime Benchmark Stream      |
-+-------------------------------------------------------------------------+
+    subgraph IngestionNormalization ["2. Ingestion & Normalization (Deterministic)"]
+        B1[Payment Gateway Feeds] --> C1[Canonical Schemas]
+        B2[Bank Settlement Files] --> C1
+        B3[General Ledger Records] --> C1
+        C1 --> C2[Decimal Monetary & UTC ISO 8601]
+    end
+
+    subgraph DeterministicEngine ["3. Deterministic Reconciliation Engine (Deterministic)"]
+        C2 --> D1[Candidate Matcher]
+        D1 --> D2[10-Rule Classification Precedence]
+        D2 --> D3[Evidence Matrix Extraction]
+    end
+
+    D2 -->|Exact Matches| F1[Policy Outcome: AUTO_RECONCILE]
+    D2 -->|Exceptions & Discrepancies| E1
+
+    subgraph AdvisoryIntelligence ["4. Advisory Intelligence Layer (AI-Assisted)"]
+        E1[AI Investigator] -->|Structured Hypothesis| E2[Evidence References]
+        E2 --> E3[Independent AI Verifier Gate]
+    end
+
+    E3 -->|Verified Envelope| F2
+
+    subgraph Governance ["5. Policy & Controlled Execution (Deterministic)"]
+        F1 --> F2[Deterministic Policy Engine]
+        F2 -->|Within Tolerances| G1[Action Authorization Token]
+        F2 -->|Exceeds Tolerances / Tie| G2[Human Operations Review Queue]
+        G1 --> G3[Controlled Action Executor]
+        G3 -->|SHA-256 Idempotency Check| G4[Simulation Journal Mutation]
+    end
+
+    subgraph AuditObservability ["6. Audit & Observability (Deterministic)"]
+        G4 --> H1[SHA-256 Event Hash Chaining]
+        G2 --> H1
+        H1 --> H2[AuditIntegrityVerifier]
+        H2 --> H3[Live Operations Console & Dashboard]
+    end
 ```
 
 ---
 
-## 2. Nine-Layer System Design
+## 2. Delineation of Layer Responsibilities
 
-### Layer A — Data Plane
-- **Purpose:** Generates synthetic, realistic 3-way financial records with known corruption distributions and paired ground-truth labels.
-- **Components:** Generator modules, seed controllers, golden fixtures.
-- **Boundary Rule:** Ground truth is strictly segregated into `data/ground_truth/` and is never passed to Layer B, C, D, E, or F.
-
-### Layer B — Ingestion
-- **Purpose:** Ingests raw multi-source financial feeds (Payment gateway logs, Bank settlement files, Merchant general ledger entries).
-- **Validation:** Pydantic schema validation at entry; rejects unparseable records with structured errors.
-
-### Layer C — Normalization
-- **Purpose:** Transforms disparate raw data into canonical internal data structures.
-- **Rules:**
-  - Amounts represented via `Decimal` (no floating-point rounding errors).
-  - Currency codes normalized to ISO 4217 uppercase strings.
-  - Timestamps normalized to UTC ISO 8601.
-  - Identifiers and references cleaned and trimmed.
-
-### Layer D — Deterministic Reconciliation Engine
-- **Purpose:** High-speed candidate matching and rule evaluation across the normalized tri-source records.
-- **Responsibilities:**
-  - Identifies candidate matches across Order IDs, Payment IDs, and Settlement IDs.
-  - Evaluates hard financial rules: Exact amount matching, settlement window verification, currency compatibility, duplicate detection.
-  - Labels cases that satisfy all deterministic rules as `EXACT_MATCH`.
-  - Emits exception cases into the Intelligence pipeline.
-
-### Layer E — Intelligence Layer (AI Investigation & Bounded Reasoning)
-- **Purpose:** Analyzes discrepancies, correlates cross-record evidence, and explains anomalies.
-- **Agents/Roles:**
-  - **Investigator:** Extracts evidence from payment metadata, settlement fee breakdowns, and ledger balance deltas; identifies root causes (e.g., unexpected fee deductions, timing mismatch, partial capture).
-  - **Resolver:** Proposes bounded recommendation (`AUTO_RECONCILE`, `REVIEW_REQUIRED`, `UNRESOLVED`).
-  - **Verifier:** Performs self-consistency check on AI findings against deterministic inputs.
-- **Contract:** Outputs validated Pydantic JSON structures with explicit citations to record fields. Cannot directly mutate database records.
-
-### Layer F — Policy Engine
-- **Purpose:** The deterministic gatekeeper that evaluates AI recommendations against organizational financial policy.
-- **Decision Outcomes:**
-  - `AUTO_RECONCILE`: Discrepancy is within strict automated tolerance (e.g., fee schedule matches known contract variance, all hard constraints verified).
-  - `REVIEW_REQUIRED`: Discrepancy requires human controller review (e.g., large amount variance, customer reference typo).
-  - `UNRESOLVED`: Insufficient evidence or conflicting signals.
-
-### Layer G — Audit Trail
-- **Purpose:** Complete, immutable, append-only traceability of all reconciliation decisions.
-- **Payload:** Case ID, deterministic findings, AI reasoning transcript, policy outcome, confidence score, timestamps, software version.
-
-### Layer H — Evaluation Engine
-- **Purpose:** Quantitative assessment of METFI's performance against hidden ground truth.
-- **Metrics:** Accuracy, Precision, Recall, F1, False-Match Rate (must be 0 on golden sets), False-Unresolved Rate, Processing Throughput (records/sec), Latency percentiles (P50, P95, P99).
-
-### Layer I — Presentation Layer
-- **Purpose:** Real-time web interface for finance operations controllers and hackathon evaluators.
-- **Stack:** Next.js, TypeScript, Tailwind CSS, shadcn/ui.
-- **Views:** Executive Metrics Summary, Reconciliation Batch Runner, Deep-Dive Case Inspector with side-by-side evidence diffs, Audit Log Explorer.
+| Layer | Component | Execution Nature | Authority Level | Can Mutate State? |
+|---|---|---|---|---|
+| **Layer 1** | Data Plane & Ingestion | Deterministic | Input Validator | No |
+| **Layer 2** | Canonical Normalization | Deterministic | Mathematical Standardizer | No |
+| **Layer 3** | Reconciliation Matcher | Deterministic | Authoritative Truth | No |
+| **Layer 4** | AI Investigator | **AI-Assisted (Advisory)** | Structured Hypothesis | **NO** |
+| **Layer 5** | AI Verifier Gate | **AI-Assisted / Rule Hybrid** | Factual Challenge Gate | **NO** |
+| **Layer 6** | Policy Engine | Deterministic | Authorization Authority | No |
+| **Layer 7** | Action Executor | Deterministic | Controlled Executor | **YES (Policy Gated)** |
+| **Layer 8** | Cryptographic Audit Ledger | Deterministic | Immutable Recorder | Append-Only |
+| **Layer 9** | Operations Dashboard & Benchmarks | UI / Evaluator | Presentation & Reporting | No |
 
 ---
 
-## 3. Technology Stack Baseline
+## 3. Technology Stack
 
-- **Backend:** Python 3.12+, FastAPI, Pydantic v2, SQLAlchemy 2.x, Alembic, PostgreSQL 16
-- **Data Processing:** Polars (high-speed tabular analysis) + Python Standard Library (Decimal, datetime)
-- **Frontend:** Next.js (App Router), TypeScript, Tailwind CSS, Lucide React
-- **Testing & Quality:** Pytest, pytest-asyncio, HTTPX, Ruff (linting & formatting), Mypy (strict type checking)
-- **Infrastructure:** Docker, Docker Compose
-
----
-
-## 4. API Surface Contract
-
-| Method | Route | Description |
-|---|---|---|
-| `GET` | `/api/v1/health` | Subsystem readiness and health check |
-| `POST` | `/api/v1/datasets/generate` | Trigger synthetic dataset generation with seed |
-| `POST` | `/api/v1/reconciliation/run` | Execute batch reconciliation run |
-| `GET` | `/api/v1/runs/{run_id}` | Retrieve status and summary of reconciliation run |
-| `GET` | `/api/v1/cases/{case_id}` | Retrieve deep-dive case details and evidence |
-| `GET` | `/api/v1/cases/{case_id}/audit` | Retrieve complete audit trail for a case |
-| `GET` | `/api/v1/metrics/{run_id}` | Retrieve ground-truth evaluation metrics |
-
----
-
-## 5. Security & Isolation Architecture
-
-1. **Model Isolation:** AI models interact exclusively through structured API contracts; no database write connections or execution privileges are granted to LLM runtimes.
-2. **Environment Configuration:** All credentials and secrets are managed via environment variables (`.env`).
-3. **Audit Immutability:** Audit records are write-only from the operational application layer.
+- **Backend**: Python 3.12, FastAPI 0.111, Pydantic v2, SQLAlchemy 2.x (asyncpg), PostgreSQL 16
+- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS, Lucide React
+- **Containerization**: Multi-stage Dockerfiles, Docker Compose (3-tier stack)
+- **Quality Assurance**: Pytest (311+ tests), Ruff, Mypy, Playwright/httpx

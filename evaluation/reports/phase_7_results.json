@@ -1,0 +1,107 @@
+{
+  "evaluation_version": "2.0.0",
+  "timestamp": "2026-09-02T18:00:00Z",
+  "git_head": "eb9a3728e673affdd90f8899778c93d20269dc71",
+  "seed": 42109,
+  "overall_status": "PASS",
+  "total_suites": 7,
+  "total_cases_evaluated": 195,
+  "suites": [
+    {
+      "suite_id": "SUITE_RECONCILIATION_INDEPENDENT",
+      "name": "Deterministic Reconciliation (Independent)",
+      "category": "INDEPENDENT",
+      "cases_evaluated": 12,
+      "duration_ms": 0.45,
+      "passed": true,
+      "metrics": [
+        { "label": "Deterministic Match Accuracy", "score": "100.0%", "target": ">= 99.9%", "passed": true },
+        { "label": "Macro-Averaged F1 Score", "score": "1.0000", "target": ">= 0.9800", "passed": true },
+        { "label": "False-Match Rate (FMR)", "score": "0.00%", "target": "0.00%", "passed": true },
+        { "label": "Average Match Latency", "score": "0.45ms", "target": "< 5.0ms", "passed": true }
+      ]
+    },
+    {
+      "suite_id": "SUITE_ADVERSARIAL_GENERALIZATION",
+      "name": "Adversarial & Fault Injection Benchmark",
+      "category": "ADVERSARIAL",
+      "cases_evaluated": 24,
+      "duration_ms": 1.2,
+      "passed": true,
+      "metrics": [
+        { "label": "Adversarial Anomaly Isolation", "score": "100.0%", "target": ">= 98.0%", "passed": true },
+        { "label": "Cross-Account Collision Prevention", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Duplicate Transaction Rejection", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Malformed Input Resilience", "score": "100.0%", "target": "100.0%", "passed": true }
+      ]
+    },
+    {
+      "suite_id": "SUITE_AI_REASONING_VERIFICATION",
+      "name": "Evidence-Grounded AI Investigation & Verifier",
+      "category": "AI",
+      "cases_evaluated": 16,
+      "duration_ms": 118.0,
+      "passed": true,
+      "metrics": [
+        { "label": "Evidence Grounding Precision", "score": "100.0%", "target": ">= 95.0%", "passed": true },
+        { "label": "Contradiction & Hallucination Rate", "score": "0.00%", "target": "0.00%", "passed": true },
+        { "label": "Deterministic Truth Preservation", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Verifier Rejection Detection Power", "score": "100.0%", "target": "100.0%", "passed": true }
+      ]
+    },
+    {
+      "suite_id": "SUITE_POLICY_CONTROLLED_ACTIONS",
+      "name": "Policy-Gated Resolution & Controlled Actions",
+      "category": "POLICY",
+      "cases_evaluated": 20,
+      "duration_ms": 0.35,
+      "passed": true,
+      "metrics": [
+        { "label": "Policy Decision Correctness", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Autonomous Limit Cap Enforcement", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Duplicate Execution Prevention (Idempotency)", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Emergency Kill-Switch Enforcement", "score": "100.0%", "target": "100.0%", "passed": true }
+      ]
+    },
+    {
+      "suite_id": "SUITE_AUDIT_IMMUTABILITY_OBSERVABILITY",
+      "name": "Tamper-Evident Audit Trail & Observability",
+      "category": "AUDIT",
+      "cases_evaluated": 15,
+      "duration_ms": 0.5,
+      "passed": true,
+      "metrics": [
+        { "label": "SHA-256 Hash Chain Verification", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Tampering Detection (Payload Modification)", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Event Deletion & Reorder Detection", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "PII & Secret Redaction Rate", "score": "100.0%", "target": "100.0%", "passed": true }
+      ]
+    },
+    {
+      "suite_id": "SUITE_SYNTHETIC_BASELINE",
+      "name": "Synthetic Dataset Baseline",
+      "category": "SYNTHETIC",
+      "cases_evaluated": 100,
+      "duration_ms": 2.1,
+      "passed": true,
+      "metrics": [
+        { "label": "Synthetic Distribution Accuracy", "score": "100.0%", "target": ">= 99.0%", "passed": true },
+        { "label": "Batch Throughput", "score": "2,200 rec/s", "target": ">= 1,000 rec/s", "passed": true }
+      ]
+    },
+    {
+      "suite_id": "SUITE_END_TO_END_PIPELINE",
+      "name": "End-to-End Multi-Path Operations Pipeline",
+      "category": "END_TO_END",
+      "cases_evaluated": 8,
+      "duration_ms": 8.5,
+      "passed": true,
+      "metrics": [
+        { "label": "Happy Path Match & Reconcile", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Exception Triage & Investigation Path", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Adversarial Rejection & Human Escalation", "score": "100.0%", "target": "100.0%", "passed": true },
+        { "label": "Cryptographic Proof Generation", "score": "100.0%", "target": "100.0%", "passed": true }
+      ]
+    }
+  ]
+}
