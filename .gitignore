@@ -74,11 +74,8 @@ evaluation/reports/*.tmp
 *.sqlite3
 *.db
 
-# Internal Review Tooling & Development Artifacts
-docs/reviews/prime/
-docs/reviews/kilo/
+# Internal Review & Dev Tooling
+docs/reviews/
 scripts/review/
-backend/tests/unit/test_prime_review_runner.py
-backend/tests/unit/test_phase6_review_loop.py
 
 

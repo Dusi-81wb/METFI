@@ -3,6 +3,8 @@ from fastapi import APIRouter
 from app.api.v1.actions import actions_router
 from app.api.v1.audit import audit_router
 from app.api.v1.benchmarks import benchmarks_router
+from app.api.v1.controller import controller_router
+from app.api.v1.data import data_router
 from app.api.v1.health import router as health_router
 from app.api.v1.investigation import router as investigation_router
 from app.api.v1.policy import policy_router
@@ -30,3 +32,9 @@ api_v1_router.include_router(audit_router)
 
 # Include benchmarks router
 api_v1_router.include_router(benchmarks_router)
+
+# Include sample data and randomizer router
+api_v1_router.include_router(data_router)
+
+# Include Track 04 AI Finance Controller router
+api_v1_router.include_router(controller_router)

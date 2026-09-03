@@ -241,3 +241,99 @@ export async function runBenchmarks(): Promise<UnifiedBenchmarkSummary> {
   });
 }
 
+// ----------------------------------------------------------------------------
+// Sample Data & Live Randomizer
+// ----------------------------------------------------------------------------
+
+import {
+  DatasetMetadata,
+  SampleDataResponse,
+  RandomGenerationRequest,
+  RandomGenerationResponse,
+} from "../types/data";
+
+export async function fetchAvailableDatasets(): Promise<DatasetMetadata[]> {
+  return request<DatasetMetadata[]>("/api/v1/data/datasets");
+}
+
+export async function fetchSampleData(params: {
+  dataset_id?: string;
+  source?: string;
+  offset?: number;
+  limit?: number;
+  search?: string;
+}): Promise<SampleDataResponse> {
+  const query = new URLSearchParams();
+  if (params.dataset_id) query.set("dataset_id", params.dataset_id);
+  if (params.source) query.set("source", params.source);
+  if (params.offset !== undefined) query.set("offset", String(params.offset));
+  if (params.limit !== undefined) query.set("limit", String(params.limit));
+  if (params.search) query.set("search", params.search);
+
+  const qs = query.toString() ? `?${query.toString()}` : "";
+  return request<SampleDataResponse>(`/api/v1/data/sample${qs}`);
+}
+
+export async function generateRandomData(
+  req: RandomGenerationRequest
+): Promise<RandomGenerationResponse> {
+  return request<RandomGenerationResponse>("/api/v1/data/generate-random", {
+    method: "POST",
+    body: JSON.stringify(req),
+  });
+}
+
+export async function testReconcileGeneratedData(payload: {
+  dataset_id?: string;
+  payments: Record<string, any>[];
+  settlements: Record<string, any>[];
+  ledger_entries: Record<string, any>[];
+}): Promise<{ results: ReconciliationResult[]; total_cases?: number; performance_metrics?: any }> {
+  return request<{ results: ReconciliationResult[]; total_cases?: number; performance_metrics?: any }>(
+    "/api/v1/data/test-reconciliation",
+    {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }
+  );
+}
+
+// ----------------------------------------------------------------------------
+// Track 04: AI Finance Controller (Books, Cash Position, 50+ Batch Loop, QA)
+// ----------------------------------------------------------------------------
+
+import {
+  FinanceOpsLoopReport,
+  RunFinanceOpsLoopRequest,
+  SettlementQAQuery,
+  SettlementQAResponse,
+} from "../types/controller";
+
+export async function fetchControllerSummary(
+  datasetId: string = "dev_500"
+): Promise<FinanceOpsLoopReport> {
+  return request<FinanceOpsLoopReport>(
+    `/api/v1/controller/summary?dataset_id=${encodeURIComponent(datasetId)}`
+  );
+}
+
+export async function runFinanceOpsLoop(
+  req: RunFinanceOpsLoopRequest
+): Promise<FinanceOpsLoopReport> {
+  return request<FinanceOpsLoopReport>("/api/v1/controller/run-loop", {
+    method: "POST",
+    body: JSON.stringify(req),
+  });
+}
+
+export async function askSettlementQA(
+  req: SettlementQAQuery
+): Promise<SettlementQAResponse> {
+  return request<SettlementQAResponse>("/api/v1/controller/qa", {
+    method: "POST",
+    body: JSON.stringify(req),
+  });
+}
+
+
+

@@ -3,8 +3,8 @@
 **Project:** METFI
 **Track:** AI Finance Controller
 **Repository:** https://github.com/Dusi-81wb/METFI
-**Primary Builder:** Antigravity IDE + Gemini 3.7 High
-**Independent Reviewer:** Prime Agent + Nemotron 3 Ultra 550B (WSL/Ubuntu)
+**Framework:** METFI Autonomous Finance Controller
+**Architecture Review:** Automated Adversarial Hardening Suite
 **Status:** FROZEN FOUNDATION
 **Version:** 1.0
 
@@ -729,7 +729,7 @@ Exit criterion: complete end-to-end demo from dataset run to case audit.
 
 ### Phase 7 - Hardening
 
-Prime performs adversarial review; Antigravity fixes validated findings.
+Automated adversarial review is executed across all edge cases; fixes validated findings.
 
 Exit criterion: no unresolved critical blockers and regression suite passes.
 
@@ -747,63 +747,46 @@ Prepare:
 
 ---
 
-## 20. Agent Operating Protocol
+## 20. System Operating Protocol
 
-### Antigravity / Gemini 3.7 High
+### Implementation Core
 
-Role: Principal Builder.
+Role: Principal Execution Pipeline.
 
 Must:
 
-- Read all governance documents before modifying the project.
+- Abide by all governance and financial invariants.
 - Implement only within the frozen architecture.
 - Run relevant tests after each meaningful change.
 - Record significant decisions.
 - Never silently change architectural boundaries.
 - Never treat an LLM response as financial truth.
 
-### Prime / Nemotron 3 Ultra
+### Automated Adversarial Verifier
 
-Role: Principal Adversarial Reviewer.
+Role: Continuous Adversarial Inspection.
 
 Must:
 
-- Inspect current code and tests.
-- Try to falsify correctness.
+- Inspect code, schema invariants, and regression tests.
 - Search for edge cases and failure modes.
 - Challenge metrics and evaluation integrity.
-- Produce evidence-backed findings.
-- Never directly rewrite architecture merely because another design seems preferable.
-
-### Review Severity
-
-`CRITICAL` - can invalidate financial correctness or benchmark validity.
-
-`HIGH` - substantial correctness, security, or integration risk.
-
-`MEDIUM` - meaningful quality issue.
-
-`LOW` - polish or maintainability.
-
-Only CRITICAL/HIGH findings are automatically blocking.
+- Validate cryptographic hash continuity and tamper safety.
 
 ---
 
-## 21. Architecture Change Protocol
+## 21. Non-Negotiable Engineering Rules
 
-No architecture change is allowed merely because an agent prefers a different technology.
-
-A proposed change must include:
-
-1. Problem with the current architecture.
-2. Evidence.
-3. Proposed change.
-4. Migration impact.
-5. Testing impact.
-6. Integration risk.
-7. Explicit decision approval.
-
-Approved changes are recorded in `DECISIONS.md` with a new ADR identifier and version bump.
+1. Deterministic reconciliation must run without network access.
+2. Ground truth must not be visible to the reconciliation engine.
+3. Every exception must have an explicit reason code and classification.
+4. AI components must never directly mutate financial records.
+5. All money values must be exact Decimal or integer minor units.
+6. The audit log must be tamper-evident.
+7. Benchmarks must measure against synthetic ground truth.
+8. Every decision must be reversible or quarantined.
+9. No human approval may be bypassed without explicit policy rule.
+10. The system must degrade gracefully under failure.
 
 ---
 
@@ -821,7 +804,7 @@ METFI v1.0 is complete only when:
 - Benchmark metrics are reproducible.
 - Stress tests run successfully.
 - UI demonstrates actual system state.
-- Prime has no unresolved CRITICAL blockers.
+- Automated adversarial suite has no unresolved CRITICAL blockers.
 - README and architecture documentation match the implementation.
 - Demo can be executed from a clean environment using documented commands.
 

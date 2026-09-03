@@ -15,6 +15,7 @@ import {
   FileCheck2,
   ChevronRight,
   ShieldCheck,
+  Database,
 } from "lucide-react";
 
 interface NavGroup {
@@ -39,6 +40,13 @@ const navGroups: NavGroup[] = [
         icon: PlayCircle,
         badge: "1-CLICK",
         badgeColor: "from-cyan-500 to-indigo-500",
+      },
+      {
+        name: "Sample Data",
+        href: "/data",
+        icon: Database,
+        badge: "EXPLORE",
+        badgeColor: "from-emerald-500 to-teal-500",
       },
       { name: "Case Detail", href: "/cases/case_demo_101", icon: FileCheck2 },
     ],
