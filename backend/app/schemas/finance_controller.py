@@ -134,6 +134,14 @@ class FinanceOpsLoopReport(BaseModel):
     honest_exception_list: list[HonestExceptionItem] = Field(
         description="Explicit list of unresolvable exceptions requiring controller review"
     )
+    rule_hits: dict[str, int] = Field(
+        default_factory=dict,
+        description="Execution frequency count for active rules across the batch",
+    )
+    logic_trace: list[str] = Field(
+        default_factory=list,
+        description="Step-by-step internal logic execution trace of the evaluation pipeline",
+    )
     engine_verdict: str = Field(
         description="Overall operational verdict (e.g. BOOKS_BALANCED_REVIEW_ACTIVE)"
     )

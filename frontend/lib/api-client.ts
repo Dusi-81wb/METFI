@@ -335,5 +335,86 @@ export async function askSettlementQA(
   });
 }
 
+// ----------------------------------------------------------------------------
+// Microsoft Purview-style Rule Studio & Governance Center
+// ----------------------------------------------------------------------------
+
+import {
+  CustomRule,
+  CreateRuleRequest,
+  ToggleRuleRequest,
+} from "../types/rules";
+
+export async function fetchRules(
+  ruleType?: string,
+  isEnabled?: boolean
+): Promise<CustomRule[]> {
+  const params = new URLSearchParams();
+  if (ruleType) params.append("rule_type", ruleType);
+  if (isEnabled !== undefined) params.append("is_enabled", String(isEnabled));
+  const qs = params.toString() ? `?${params.toString()}` : "";
+  return request<CustomRule[]>(`/api/v1/rules${qs}`);
+}
+
+export async function createCustomRule(
+  req: CreateRuleRequest
+): Promise<CustomRule> {
+  return request<CustomRule>("/api/v1/rules", {
+    method: "POST",
+    body: JSON.stringify(req),
+  });
+}
+
+export async function toggleRule(
+  ruleId: string,
+  isEnabled: boolean
+): Promise<CustomRule> {
+  return request<CustomRule>(`/api/v1/rules/${encodeURIComponent(ruleId)}/toggle`, {
+    method: "PATCH",
+    body: JSON.stringify({ is_enabled: isEnabled }),
+  });
+}
+
+export async function deleteCustomRule(
+  ruleId: string
+): Promise<{ status: string; rule_id: string }> {
+  return request<{ status: string; rule_id: string }>(
+    `/api/v1/rules/${encodeURIComponent(ruleId)}`,
+    { method: "DELETE" }
+  );
+}
+
+export async function resetRules(): Promise<CustomRule[]> {
+  return request<CustomRule[]>("/api/v1/rules/reset", {
+    method: "POST",
+  });
+}
+
+// ----------------------------------------------------------------------------
+// Live Case Detail & Honest Exceptions (Track 04)
+// ----------------------------------------------------------------------------
+
+import { CaseDetailFullResponse, HonestExceptionItem } from "../types/case_detail";
+
+export async function fetchCaseDetail(
+  caseId: string,
+  datasetId: string = "dev_500"
+): Promise<CaseDetailFullResponse> {
+  return request<CaseDetailFullResponse>(
+    `/api/v1/reconciliation/cases/${encodeURIComponent(caseId)}?dataset_id=${encodeURIComponent(datasetId)}`
+  );
+}
+
+export async function fetchHonestExceptions(
+  datasetId: string = "dev_500",
+  limit: number = 50
+): Promise<HonestExceptionItem[]> {
+  return request<HonestExceptionItem[]>(
+    `/api/v1/reconciliation/exceptions?dataset_id=${encodeURIComponent(datasetId)}&limit=${limit}`
+  );
+}
+
+
+
 
 

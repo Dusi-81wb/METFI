@@ -9,6 +9,7 @@ from app.api.v1.health import router as health_router
 from app.api.v1.investigation import router as investigation_router
 from app.api.v1.policy import policy_router
 from app.api.v1.reconciliation import router as reconciliation_router
+from app.api.v1.rules import rules_router
 
 api_v1_router = APIRouter()
 
@@ -38,3 +39,6 @@ api_v1_router.include_router(data_router)
 
 # Include Track 04 AI Finance Controller router
 api_v1_router.include_router(controller_router)
+
+# Include Rule Studio router
+api_v1_router.include_router(rules_router)

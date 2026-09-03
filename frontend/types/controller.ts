@@ -57,6 +57,8 @@ export interface FinanceOpsLoopReport {
   cash_position: CashPosition;
   books_status: BooksStatus;
   honest_exception_list: HonestExceptionItem[];
+  rule_hits?: Record<string, number>;
+  logic_trace?: string[];
   engine_verdict: string;
 }
 

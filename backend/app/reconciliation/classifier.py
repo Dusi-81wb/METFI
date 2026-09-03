@@ -4,6 +4,7 @@ from decimal import Decimal
 
 from app.domain.enums import ExceptionType
 from app.domain.evidence import ReconciliationEvidence
+from app.services.rule_service import RuleService
 
 
 class DeterministicClassifier:
@@ -55,6 +56,17 @@ class DeterministicClassifier:
                     f"Currency conflict across feeds: pay={curr.payment_currency}, "
                     f"set={curr.settlement_currency}, led={curr.ledger_currency}."
                 ),
+            )
+
+        # 3. Purview Custom Classification Rule Evaluation
+        # Check user-configured custom classification rules if enabled
+        custom_rule_result = RuleService.get_instance().evaluate_custom_classification(evidence)
+        if custom_rule_result is not None:
+            c_rule, c_target_cls, c_reason = custom_rule_result
+            return (
+                c_target_cls,
+                c_reason,
+                f"Custom Rule '{c_rule.name}' applied: {c_rule.description}",
             )
 
         # 3. Identity & Reference Linkage (Precedence #4)

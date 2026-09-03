@@ -38,7 +38,7 @@ The primary demonstration screen (`/cases/[caseId]`) exposes the complete financ
    ↓
 3. Visual Boundary (DETERMINISTIC FACT vs. AI INTERPRETATION)
    ↓
-4. AI Investigation (Root Cause Analysis, Provider: Gemini 1.5 Pro)
+4. AI Investigation (Root Cause Analysis, Autonomous Agent Engine)
    ↓
 5. AI Verifier Safety Gate (100% Grounded, No Contradictions)
    ↓

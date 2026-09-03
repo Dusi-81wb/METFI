@@ -16,6 +16,7 @@ import {
   ChevronRight,
   ShieldCheck,
   Database,
+  SlidersHorizontal,
 } from "lucide-react";
 
 interface NavGroup {
@@ -55,6 +56,13 @@ const navGroups: NavGroup[] = [
     label: "Operations & Triage",
     items: [
       { name: "Reconciliation", href: "/reconciliation", icon: Layers },
+      {
+        name: "Rule Studio",
+        href: "/rules",
+        icon: SlidersHorizontal,
+        badge: "PURVIEW",
+        badgeColor: "from-purple-500 to-indigo-500",
+      },
       { name: "Exceptions", href: "/exceptions", icon: AlertTriangle },
       { name: "Review Queue", href: "/review-queue", icon: ListTodo },
       { name: "Controlled Actions", href: "/actions", icon: Zap },

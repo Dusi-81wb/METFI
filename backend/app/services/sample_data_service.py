@@ -54,20 +54,49 @@ class SampleDataService:
                 )
             )
 
-        # 2. Showcase Primary Case Fixture (case_demo_101)
+        # 2. Showcase Primary Case Fixtures
         datasets.append(
             DatasetMetadata(
                 dataset_id="case_demo_101",
-                name="Interactive Showcase Fixture (case_demo_101)",
+                name="Fee Discrepancy Case (case_demo_101)",
                 description=(
-                    "Multi-source exception case used in 1-Click Showcase Demo "
-                    "(-₹50.00 fee discrepancy)."
+                    "Multi-source fee variance case (-₹50.00 fee discrepancy, 0.5% schedule)."
                 ),
                 payments_count=1,
                 settlements_count=1,
                 ledger_count=2,
                 total_records=4,
                 file_size_kb=3.2,
+                is_live_fixture=True,
+            )
+        )
+        datasets.append(
+            DatasetMetadata(
+                dataset_id="case_demo_102",
+                name="Timing SLA Breach Case (case_demo_102)",
+                description=(
+                    "Settlement payout delayed beyond 48-hour SLA window (58h transit lag)."
+                ),
+                payments_count=1,
+                settlements_count=1,
+                ledger_count=2,
+                total_records=4,
+                file_size_kb=3.1,
+                is_live_fixture=True,
+            )
+        )
+        datasets.append(
+            DatasetMetadata(
+                dataset_id="case_demo_103",
+                name="Missing Settlement Case (case_demo_103)",
+                description=(
+                    "Unsettled gateway payment with zero bank payout record (-₹18,200.00 leakage)."
+                ),
+                payments_count=1,
+                settlements_count=0,
+                ledger_count=2,
+                total_records=3,
+                file_size_kb=2.8,
                 is_live_fixture=True,
             )
         )
@@ -124,6 +153,10 @@ class SampleDataService:
 
         if dataset_id == "case_demo_101":
             payments, settlements, ledger = self._get_showcase_case_records()
+        elif dataset_id == "case_demo_102":
+            payments, settlements, ledger = self._get_case_demo_102_records()
+        elif dataset_id == "case_demo_103":
+            payments, settlements, ledger = self._get_case_demo_103_records()
         else:
             input_dir = self.generated_dir / dataset_id / "input"
             if not input_dir.exists():
@@ -653,55 +686,168 @@ class SampleDataService:
             {
                 "payment_id": "pay_live_demo_101",
                 "order_id": "ord_live_2026_0902",
-                "merchant_id": "mer_cloud_scale_in",
+                "customer_id": "cust_live_demo_101",
                 "amount": "10000.00",
                 "currency": "INR",
                 "fee": "200.00",
                 "tax": "36.00",
                 "net": "9764.00",
-                "status": "CAPTURED",
-                "payment_method": "CARD",
-                "created_at": "2026-09-02T10:15:00Z",
-                "settled_at": "2026-09-02T12:30:00Z",
-                "gateway_reference": "gw_ref_demo_101",
+                "status": "SUCCESS",
+                "payment_timestamp": "2026-09-02T10:15:00Z",
+                "metadata": {
+                    "payment_method": "CARD",
+                    "merchant_id": "mer_cloud_scale_in",
+                    "gateway_reference": "gw_ref_demo_101",
+                },
             }
         ]
         settlements = [
             {
                 "settlement_id": "set_live_demo_101",
-                "utr": "UTR20260902998811",
-                "amount": "9714.00",
+                "payment_id": "pay_live_demo_101",
+                "settled_amount": "9714.00",
                 "fee": "250.00",
-                "tax": "36.00",
-                "net": "9714.00",
+                "fee_tax": "36.00",
                 "currency": "INR",
-                "settlement_date": "2026-09-02",
+                "settlement_timestamp": "2026-09-02T12:30:00Z",
                 "status": "SETTLED",
-                "payment_ids": ["pay_live_demo_101"],
+                "metadata": {"utr": "UTR20260902998811"},
             }
         ]
         ledger = [
             {
-                "entry_id": "led_demo_101_deb",
-                "account": "GATEWAY_RECEIVABLE",
-                "direction": "DEBIT",
-                "amount": "10000.00",
+                "ledger_id": "led_demo_101_deb",
+                "order_id": "ord_live_2026_0902",
+                "account": "PAYMENT_GATEWAY_CLEARING",
+                "debit": "10000.00",
+                "credit": "0.00",
                 "currency": "INR",
-                "timestamp": "2026-09-02T10:15:00Z",
-                "reference_id": "pay_live_demo_101",
+                "entry_timestamp": "2026-09-02T10:15:00Z",
                 "status": "POSTED",
-                "metadata": {"order_id": "ord_live_2026_0902", "case_id": "case_demo_101"},
+                "metadata": {"case_id": "case_demo_101", "reference_id": "pay_live_demo_101"},
             },
             {
-                "entry_id": "led_demo_101_crd",
-                "account": "MERCHANT_PAYABLE",
-                "direction": "CREDIT",
-                "amount": "10000.00",
+                "ledger_id": "led_demo_101_crd",
+                "order_id": "ord_live_2026_0902",
+                "account": "SALES_REVENUE",
+                "debit": "0.00",
+                "credit": "10000.00",
                 "currency": "INR",
-                "timestamp": "2026-09-02T10:15:00Z",
-                "reference_id": "pay_live_demo_101",
+                "entry_timestamp": "2026-09-02T10:15:00Z",
                 "status": "POSTED",
-                "metadata": {"order_id": "ord_live_2026_0902", "case_id": "case_demo_101"},
+                "metadata": {"case_id": "case_demo_101", "reference_id": "pay_live_demo_101"},
+            },
+        ]
+        return payments, settlements, ledger
+
+    def _get_case_demo_102_records(
+        self,
+    ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+        """Return the exact multi-source records for showcase case_demo_102 (Timing SLA breach)."""
+        payments = [
+            {
+                "payment_id": "pay_live_demo_102",
+                "order_id": "ORD-99813-IN",
+                "customer_id": "cust_live_demo_102",
+                "amount": "4500.00",
+                "currency": "INR",
+                "fee": "90.00",
+                "tax": "16.20",
+                "net": "4393.80",
+                "status": "SUCCESS",
+                "payment_timestamp": "2026-09-01T08:00:00Z",
+                "metadata": {
+                    "payment_method": "UPI",
+                    "merchant_id": "mer_cloud_scale_in",
+                    "gateway_reference": "gw_ref_demo_102",
+                },
+            }
+        ]
+        settlements = [
+            {
+                "settlement_id": "set_live_demo_102",
+                "payment_id": "pay_live_demo_102",
+                "settled_amount": "4393.80",
+                "fee": "90.00",
+                "fee_tax": "16.20",
+                "currency": "INR",
+                "settlement_timestamp": "2026-08-30T10:00:00Z",
+                "status": "SETTLED",
+                "metadata": {"utr": "UTR20260903887722"},
+            }
+        ]
+        ledger = [
+            {
+                "ledger_id": "led_demo_102_deb",
+                "order_id": "ORD-99813-IN",
+                "account": "PAYMENT_GATEWAY_CLEARING",
+                "debit": "4500.00",
+                "credit": "0.00",
+                "currency": "INR",
+                "entry_timestamp": "2026-09-01T08:00:00Z",
+                "status": "POSTED",
+                "metadata": {"case_id": "case_demo_102", "reference_id": "pay_live_demo_102"},
+            },
+            {
+                "ledger_id": "led_demo_102_crd",
+                "order_id": "ORD-99813-IN",
+                "account": "SALES_REVENUE",
+                "debit": "0.00",
+                "credit": "4500.00",
+                "currency": "INR",
+                "entry_timestamp": "2026-09-01T08:00:00Z",
+                "status": "POSTED",
+                "metadata": {"case_id": "case_demo_102", "reference_id": "pay_live_demo_102"},
+            },
+        ]
+        return payments, settlements, ledger
+
+    def _get_case_demo_103_records(
+        self,
+    ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+        """Return the exact multi-source records for showcase case_demo_103 (Missing settlement)."""
+        payments = [
+            {
+                "payment_id": "pay_live_demo_103",
+                "order_id": "ORD-99814-IN",
+                "customer_id": "cust_live_demo_103",
+                "amount": "18200.00",
+                "currency": "INR",
+                "fee": "364.00",
+                "tax": "65.52",
+                "net": "17770.48",
+                "status": "SUCCESS",
+                "payment_timestamp": "2026-09-02T05:20:00Z",
+                "metadata": {
+                    "payment_method": "NETBANKING",
+                    "merchant_id": "mer_cloud_scale_in",
+                    "gateway_reference": "gw_ref_demo_103",
+                },
+            }
+        ]
+        settlements: list[dict[str, Any]] = []
+        ledger = [
+            {
+                "ledger_id": "led_demo_103_deb",
+                "order_id": "ORD-99814-IN",
+                "account": "PAYMENT_GATEWAY_CLEARING",
+                "debit": "18200.00",
+                "credit": "0.00",
+                "currency": "INR",
+                "entry_timestamp": "2026-09-02T05:20:00Z",
+                "status": "POSTED",
+                "metadata": {"case_id": "case_demo_103", "reference_id": "pay_live_demo_103"},
+            },
+            {
+                "ledger_id": "led_demo_103_crd",
+                "order_id": "ORD-99814-IN",
+                "account": "SALES_REVENUE",
+                "debit": "0.00",
+                "credit": "18200.00",
+                "currency": "INR",
+                "entry_timestamp": "2026-09-02T05:20:00Z",
+                "status": "POSTED",
+                "metadata": {"case_id": "case_demo_103", "reference_id": "pay_live_demo_103"},
             },
         ]
         return payments, settlements, ledger

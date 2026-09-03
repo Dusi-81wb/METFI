@@ -14,7 +14,7 @@
 [![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-336791.svg)](https://www.postgresql.org/)
 [![Docker Compose](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Tests: 302 Passing](https://img.shields.io/badge/Tests-302%20Passing-success.svg)](backend/tests/)
+[![Tests: 313 Passing](https://img.shields.io/badge/Tests-313%20Passing-success.svg)](backend/tests/)
 
 ---
 
@@ -37,6 +37,7 @@ METFI directly satisfies every dimension of Track 04:
 4. **The Honest Exception List**: Explicitly catalogues all unresolvable exceptions, financial variance amounts, and why automatic resolution was safely denied.
 5. **Settlement Q&A Agent**: Conversational inquiry assistant answering natural language questions regarding cash positions, books balance, and root cause findings.
 6. **Sample Data Explorer & Live Randomizer**: Interactive sandbox (`/data`) to inspect demo feeds or synthesize randomized transactions with entropy temperature controls (`0.00` to `1.00`).
+7. **Purview-Style Rule Studio & Governance**: Configurable custom rule center (`/rules`) enabling controllers to define, toggle, and deploy custom classification rules and policy tolerances dynamically.
 
 ---
 
@@ -202,11 +203,14 @@ To experience the complete system:
 3. **Sample Data Explorer & Randomizer (`http://localhost:3000/data`)**:
    - Inspect raw multi-source feeds (Gateway, Settlement, Ledger).
    - Adjust the **Entropy Temperature slider** (`0.00` to `1.00`), generate custom synthetic batches, and test instant in-memory reconciliation.
-4. **Review Queue (`http://localhost:3000/review-queue`)**:
+4. **Purview Rule Studio (`http://localhost:3000/rules`)**:
+   - Inspect default system rules and define user custom classification rules (e.g. fee variance <= ₹35.00).
+   - Toggle rules on/off in real time and run live 500-tx batch simulations to observe match rates dynamically shift from 60.0% to 84.6% while preserving ledger balancing invariants.
+5. **Review Queue (`http://localhost:3000/review-queue`)**:
    - Triage isolated exceptions with Claim, Resolve, and Escalate capabilities.
-5. **Cryptographic Audit Ledger (`http://localhost:3000/audit`)**:
+6. **Cryptographic Audit Ledger (`http://localhost:3000/audit`)**:
    - Verify SHA-256 hash continuity from genesis to leaf.
-6. **Benchmarks (`http://localhost:3000/benchmarks`)**:
+7. **Benchmarks (`http://localhost:3000/benchmarks`)**:
    - Review live metrics across the 7 evaluation suites.
 
 ---
@@ -216,7 +220,7 @@ To experience the complete system:
 Run the full quality and regression suite locally:
 
 ```bash
-# 1. Run all 302 backend unit and integration tests
+# 1. Run all 313 backend unit and integration tests
 cd backend && uv run pytest
 
 # 2. Run Ruff linting and formatting

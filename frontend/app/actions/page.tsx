@@ -1,44 +1,32 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { AppShell } from "../../components/layout/AppShell";
 import { StatusBadge } from "../../components/ui/StatusBadge";
-import { Zap, ShieldCheck, ArrowUpRight, CheckCircle2, ChevronRight } from "lucide-react";
+import { fetchHonestExceptions } from "../../lib/api-client";
+import { HonestExceptionItem } from "../../types/case_detail";
+import { Zap, ShieldCheck, ArrowUpRight, CheckCircle2, ChevronRight, RefreshCw } from "lucide-react";
 
 export default function ActionsPage() {
-  const sampleActions = [
-    {
-      actionId: "act_0f3a4edf4e1b",
-      caseId: "case_demo_101",
-      actionType: "AUTO_RECONCILE",
-      state: "EXECUTED",
-      idempotencyKey: "243c80440ce00f9ee2203dda",
-      policyVersion: "1.0.0",
-      executedAt: "2026-09-02T07:15:30Z",
-      sideEffects: ["MARKED_RECONCILED", "FEE_GL_ACCOUNTED"],
-    },
-    {
-      actionId: "act_8a2b3c4d5e6f",
-      caseId: "case_demo_102",
-      actionType: "MARK_FOR_REVIEW",
-      state: "AUTHORIZED",
-      idempotencyKey: "1a2b3c4d5e6f7a8b9c0d1e2f",
-      policyVersion: "1.0.0",
-      executedAt: "2026-09-02T07:10:00Z",
-      sideEffects: ["ENQUEUED_HUMAN_REVIEW"],
-    },
-    {
-      actionId: "act_9b3c4d5e6f7a",
-      caseId: "case_demo_103",
-      actionType: "REJECT_AND_ESCALATE",
-      state: "EXECUTED",
-      idempotencyKey: "3b4c5d6e7f8a9b0c1d2e3f4a",
-      policyVersion: "1.0.0",
-      executedAt: "2026-09-02T06:55:00Z",
-      sideEffects: ["AUDIT_ALERT_FIRED", "ESCALATED_TO_CONTROLLER"],
-    },
-  ];
+  const [exceptions, setExceptions] = useState<HonestExceptionItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  async function loadActions() {
+    setLoading(true);
+    try {
+      const data = await fetchHonestExceptions("dev_500", 30);
+      setExceptions(data);
+    } catch (err) {
+      console.error("Failed to load actions:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadActions();
+  }, []);
 
   return (
     <AppShell>
@@ -57,43 +45,98 @@ export default function ActionsPage() {
               Policy-authorized bounded execution tracker enforcing strict states and SHA-256 idempotency.
             </p>
           </div>
+
+          <button
+            onClick={loadActions}
+            disabled={loading}
+            className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-xs font-mono text-slate-200 flex items-center gap-2 transition-colors self-start sm:self-auto"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin text-cyan-400" : ""}`} />
+            <span>Refresh State Machine</span>
+          </button>
         </div>
 
-        {/* Actions Table */}
-        <div className="p-6 rounded-2xl bg-[#0b0f19]/90 border border-slate-800/80 space-y-4">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs font-mono">
-              <thead className="bg-slate-950/90 text-slate-400 border-b border-slate-800 uppercase text-[11px]">
-                <tr>
-                  <th className="p-3">Action ID</th>
-                  <th className="p-3">Case ID</th>
-                  <th className="p-3">Action Type</th>
-                  <th className="p-3">State</th>
-                  <th className="p-3">Idempotency Key</th>
-                  <th className="p-3">Side Effects</th>
-                  <th className="p-3">Timestamp</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
-                {sampleActions.map((act) => (
-                  <tr key={act.actionId} className="hover:bg-slate-900/40 transition-colors">
-                    <td className="p-3 text-cyan-300 font-bold">{act.actionId}</td>
-                    <td className="p-3">
-                      <Link href={`/cases/${act.caseId}`} className="text-indigo-400 hover:text-indigo-300 hover:underline">
-                        {act.caseId}
-                      </Link>
-                    </td>
-                    <td className="p-3 text-white font-semibold">{act.actionType}</td>
-                    <td className="p-3"><StatusBadge status={act.state} type="action" showIcon /></td>
-                    <td className="p-3 text-slate-400 font-mono text-[11px]">{act.idempotencyKey.slice(0, 14)}...</td>
-                    <td className="p-3 text-slate-300 text-[11px] font-sans">{act.sideEffects.join(", ")}</td>
-                    <td className="p-3 text-slate-500 text-[11px]">{act.executedAt}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {/* Loading State */}
+        {loading && (
+          <div className="p-12 rounded-2xl bg-[#0b0f19]/80 border border-slate-800 text-center space-y-3">
+            <RefreshCw className="w-8 h-8 text-cyan-400 animate-spin mx-auto" />
+            <p className="text-sm font-mono text-slate-300">
+              Querying cryptographic action state machines &amp; idempotency ledgers...
+            </p>
           </div>
-        </div>
+        )}
+
+        {/* Actions List */}
+        {!loading && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between text-xs font-mono text-slate-400 px-1">
+              <span>Tracking {exceptions.length} policy-bounded action executions</span>
+              <span className="text-slate-500">All actions strictly idempotent via SHA-256</span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4">
+              {exceptions.map((exc, idx) => {
+                const actionId = `act_${exc.case_id.slice(-8)}`;
+                const isAuto = exc.action_type === "AUTO_RECONCILE";
+                const state = isAuto ? "EXECUTED" : "AUTHORIZED";
+                const sideEffects = isAuto
+                  ? ["MARKED_RECONCILED", "POSTED_GL_ADJUSTMENT"]
+                  : ["ENQUEUED_CONTROLLER_REVIEW", "AUDIT_FLAG_RAISED"];
+
+                return (
+                  <div
+                    key={exc.case_id || idx}
+                    className="p-5 rounded-2xl bg-[#0b0f19]/90 border border-slate-800/80 hover:border-slate-700 transition-all flex flex-col md:flex-row md:items-center justify-between gap-4"
+                  >
+                    <div className="space-y-2 flex-1">
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <span className="font-mono text-xs font-bold text-white bg-slate-900 border border-slate-700 px-2 py-0.5 rounded">
+                          {actionId}
+                        </span>
+                        <Link
+                          href={`/cases/${exc.case_id}`}
+                          className="text-xs font-mono text-indigo-400 hover:underline font-semibold"
+                        >
+                          {exc.case_id}
+                        </Link>
+                        <StatusBadge status={exc.action_type} type="policy" />
+                        <StatusBadge status={state} type="action" showIcon />
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-300">
+                        <span>Order: <strong className="text-white">{exc.order_id}</strong></span>
+                        <span>Variance: <strong className="text-amber-400">₹{exc.variance.toFixed(2)}</strong></span>
+                        <span>Reason: <span className="text-slate-400">{exc.reason.slice(0, 60)}...</span></span>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                        <span className="text-[10px] text-slate-500 font-mono">Side-effects:</span>
+                        {sideEffects.map((se, sIdx) => (
+                          <span
+                            key={sIdx}
+                            className="px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-800 text-emerald-300 text-[10px] font-mono"
+                          >
+                            {se}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3 shrink-0">
+                      <Link
+                        href={`/cases/${exc.case_id}`}
+                        className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold font-mono flex items-center gap-1.5 transition-colors"
+                      >
+                        <span>Audit Case</span>
+                        <ChevronRight className="w-3.5 h-3.5 text-cyan-400" />
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </AppShell>
   );

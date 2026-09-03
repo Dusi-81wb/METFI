@@ -58,6 +58,22 @@ class ReconciliationService:
         - Validates dataset_id to prevent path traversal.
         """
         valid_id = validate_dataset_id(dataset_id)
+        if valid_id.startswith("case_demo_"):
+            from app.services.sample_data_service import SampleDataService
+
+            sample_res = SampleDataService().get_sample_data(
+                dataset_id=valid_id, source="all", limit=100
+            )
+            raw_payments = sample_res.payments or []
+            raw_settlements = sample_res.settlements or []
+            raw_ledger = sample_res.ledger_entries or []
+            return self.reconcile_records(
+                raw_payments=raw_payments,
+                raw_settlements=raw_settlements,
+                raw_ledger=raw_ledger,
+                dataset_id=valid_id,
+            )
+
         root = Path(base_dir) if base_dir else _find_generated_root()
         input_dir = root / valid_id / "input"
 

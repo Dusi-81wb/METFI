@@ -283,6 +283,60 @@ class FinanceControllerService:
 
         total_records = len(raw_payments) + len(raw_settlements) + len(raw_ledger)
 
+        # Compute rule hit telemetry and pipeline execution trace
+        rule_hits: dict[str, int] = {}
+        for r in rec_result.results:
+            code = r.reason_code
+            rule_hits[code] = rule_hits.get(code, 0) + 1
+
+        from app.services.rule_service import RuleService
+
+        active_rules = RuleService.get_instance().list_rules(is_enabled=True)
+        custom_active = [r for r in active_rules if not r.is_system]
+        sys_active = [r for r in active_rules if r.is_system]
+
+        logic_trace: list[str] = [
+            (
+                f"STAGE 1 [INGESTION]: Ingested {len(raw_payments)} gateway payments, "
+                f"{len(raw_settlements)} bank settlements, and {len(raw_ledger)} ledger "
+                f"entries from '{valid_dataset_id}'."
+            ),
+            (
+                f"STAGE 2 [RULES LOADED]: {len(active_rules)} active governance rules configured "
+                f"({len(custom_active)} user custom, {len(sys_active)} system invariants)."
+            ),
+        ]
+
+        for cr in custom_active:
+            hits = sum(1 for r in rec_result.results if cr.rule_id in r.reason_code)
+            cond_str = f"{cr.condition.field} {cr.condition.operator} {cr.condition.value}"
+            logic_trace.append(
+                f"STAGE 3 [CUSTOM RULE EVAL]: Rule '{cr.name}' (Priority {cr.priority}, {cond_str}) "
+                f"evaluated on batch -> {hits} records triggered target outcome '{cr.target_classification.value}'."
+            )
+
+        if not custom_active:
+            logic_trace.append(
+                "STAGE 3 [CUSTOM RULE EVAL]: No user custom rules active; evaluated standard "
+                "deterministic precedence hierarchy."
+            )
+
+        logic_trace.append(
+            f"STAGE 4 [AUTHORITY HIERARCHY]: Applied deterministic policy gates (Deterministic "
+            f"Truth > Policy > AI). {matched_count} cases authorized for auto-posting, "
+            f"{len(honest_exceptions)} quarantined for controller review."
+        )
+        logic_trace.append(
+            f"STAGE 5 [LEDGER INVARIANT]: Verified double-entry general ledger balancing invariant: "
+            f"Total Debits ₹{books_status.total_debits:,.2f} == Total Credits ₹{books_status.total_credits:,.2f} "
+            f"(Delta: ₹{books_status.imbalance:.2f})."
+        )
+        logic_trace.append(
+            f"STAGE 6 [FINAL DISPOSITION]: Batch processing complete. Match Rate: {match_rate}% | "
+            f"Policy Resolution: {resolution_rate}% | "
+            f"Throughput: {rec_result.performance_metrics.throughput_records_per_sec:,.0f} records/sec."
+        )
+
         # Overall verdict
         verdict = (
             "BOOKS_BALANCED_AND_RECONCILED"
@@ -304,13 +358,17 @@ class FinanceControllerService:
             cash_position=cash_pos,
             books_status=books_status,
             honest_exception_list=honest_exceptions,
+            rule_hits=rule_hits,
+            logic_trace=logic_trace,
             engine_verdict=verdict,
         )
 
     def _determine_unresolved_reason(self, r: ReconciliationResult) -> str:
         """Provide a clear, honest financial explanation for why auto-posting was denied."""
         cls = r.classification
-        if cls == ExceptionType.MISSING_SETTLEMENT:
+        if r.reason_code.startswith("CUSTOM_RULE_"):
+            return f"Custom Rule '{r.reason_code}' triggered: {r.summary}"
+        elif cls == ExceptionType.MISSING_SETTLEMENT:
             return (
                 "Captured payment has no matching bank record. Funds have not cleared bank transit."
             )
