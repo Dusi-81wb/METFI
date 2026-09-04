@@ -561,7 +561,7 @@ export default function RuleStudioPage() {
                     </button>
                   </div>
                   <div className="text-slate-400 text-[11px] leading-relaxed">
-                    Custom and system rules were evaluated in priority order. If your custom rule's target outcome is configured as{" "}
+                    Custom and system rules were evaluated in priority order. If your custom rule&apos;s target outcome is configured as{" "}
                     <strong className="text-purple-300 font-mono">FEE_DISCREPANCY</strong> (or any discrepancy type), all matching records are intentionally flagged as financial exceptions and sent to review quarantine. To auto-reconcile matching records instead, set the Target Outcome to{" "}
                     <strong className="text-emerald-300 font-mono">EXACT_MATCH</strong> and Policy Action to{" "}
                     <strong className="text-emerald-300 font-mono">AUTO_RECONCILE</strong>.

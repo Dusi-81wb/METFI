@@ -61,19 +61,19 @@ export default function ExceptionsPage() {
 
   return (
     <AppShell>
-      <div className="space-y-8 max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-6">
+      <div className="space-y-6">
+        {/* Top Header Banner */}
+        <div className="p-6 rounded-2xl bg-white border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xs">
           <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-950/80 border border-amber-700/60 text-amber-300 text-[11px] font-mono font-semibold mb-2">
-              <AlertTriangle className="w-3.5 h-3.5" />
-              <span>HONEST EXCEPTION LIST (TRACK 04 REQUIREMENT)</span>
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-[10px] font-mono font-bold mb-1.5">
+              <AlertTriangle className="w-3 h-3 text-rose-600" />
+              <span>HONEST EXCEPTION LIST (TRACK 04)</span>
             </div>
-            <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+            <h1 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">
               Financial Exceptions Manager
             </h1>
-            <p className="text-xs text-slate-400 mt-1 font-sans">
-              Non-cherry-picked triage dashboard displaying live unresolvable discrepancies, fee leakages, and timing delays.
+            <p className="text-xs text-slate-500 mt-0.5">
+              Non-cherry-picked triage board displaying unresolvable discrepancies, fee leakages, and timing cut-offs.
             </p>
           </div>
 
@@ -81,10 +81,10 @@ export default function ExceptionsPage() {
             <button
               onClick={loadExceptions}
               disabled={loading}
-              className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-xs font-mono text-slate-200 flex items-center gap-2 transition-colors"
+              className="px-3.5 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-xs font-mono text-slate-700 flex items-center gap-2 transition-colors shadow-xs"
             >
-              <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin text-indigo-400" : ""}`} />
-              <span>Refresh Batch</span>
+              <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin text-indigo-600" : ""}`} />
+              <span>Refresh Feed</span>
             </button>
           </div>
         </div>
@@ -92,23 +92,23 @@ export default function ExceptionsPage() {
         {/* Filters */}
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search by Case ID, Order ID, or reason keyword..."
+              placeholder="Search by Case ID, Order ID, or reason..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-[#0b0f19] border border-slate-800 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-mono"
+              className="w-full pl-9 pr-4 py-2 rounded-xl bg-white border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-400 font-mono shadow-xs"
             />
           </div>
 
           <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-            <div className="flex items-center gap-1.5 bg-[#0b0f19] border border-slate-800 rounded-xl px-3 py-1">
-              <Filter className="w-3.5 h-3.5 text-slate-500" />
+            <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-3 py-1 shadow-xs">
+              <Filter className="w-3.5 h-3.5 text-slate-400" />
               <select
                 value={severityFilter}
                 onChange={(e) => setSeverityFilter(e.target.value)}
-                className="bg-transparent text-xs text-slate-300 font-mono focus:outline-none py-1.5"
+                className="bg-transparent text-xs text-slate-700 font-mono focus:outline-none py-1.5"
               >
                 <option value="ALL">All Severities</option>
                 <option value="CRITICAL">Critical</option>
@@ -117,12 +117,12 @@ export default function ExceptionsPage() {
               </select>
             </div>
 
-            <div className="flex items-center gap-1.5 bg-[#0b0f19] border border-slate-800 rounded-xl px-3 py-1">
-              <Layers className="w-3.5 h-3.5 text-slate-500" />
+            <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-3 py-1 shadow-xs">
+              <Layers className="w-3.5 h-3.5 text-slate-400" />
               <select
                 value={classFilter}
                 onChange={(e) => setClassFilter(e.target.value)}
-                className="bg-transparent text-xs text-slate-300 font-mono focus:outline-none py-1.5"
+                className="bg-transparent text-xs text-slate-700 font-mono focus:outline-none py-1.5"
               >
                 <option value="ALL">All Exception Types</option>
                 <option value="FEE_DISCREPANCY">Fee Discrepancy</option>
@@ -137,9 +137,9 @@ export default function ExceptionsPage() {
 
         {/* Loading State */}
         {loading && (
-          <div className="p-12 rounded-2xl bg-[#0b0f19]/80 border border-slate-800 text-center space-y-3">
+          <div className="p-12 rounded-2xl bg-white border border-slate-200 text-center space-y-3 shadow-xs">
             <RefreshCw className="w-8 h-8 text-indigo-400 animate-spin mx-auto" />
-            <p className="text-sm font-mono text-slate-300">
+            <p className="text-sm font-mono text-slate-800">
               Running 3-way multi-source reconciliation across 500 transactions...
             </p>
             <p className="text-xs text-slate-500 font-sans">
@@ -167,59 +167,59 @@ export default function ExceptionsPage() {
 
         {/* Exceptions List */}
         {!loading && !error && (
-          <div className="space-y-3.5">
-            <div className="flex items-center justify-between text-xs font-mono text-slate-400 px-1">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-xs font-mono text-slate-500 px-1">
               <span>Showing {filtered.length} of {exceptions.length} honest exceptions</span>
-              <span className="text-slate-500">Click any card to inspect full agent story</span>
+              <span className="text-slate-400">Click any card to inspect full agent story</span>
             </div>
 
             {filtered.map((exc) => (
               <div
                 key={exc.case_id}
-                className="p-5 rounded-2xl bg-[#0b0f19]/90 border border-slate-800/80 hover:border-indigo-700/60 transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm"
+                className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xs"
               >
                 <div className="space-y-2 flex-1">
                   <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="font-mono text-sm font-extrabold text-white">{exc.case_id}</span>
-                    <span className="text-xs font-mono text-indigo-400 font-semibold">{exc.order_id}</span>
+                    <span className="font-mono text-sm font-bold text-slate-900">{exc.case_id}</span>
+                    <span className="text-xs font-mono text-indigo-600 font-semibold">{exc.order_id}</span>
                     <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${
                       exc.severity === "CRITICAL"
-                        ? "bg-rose-950/80 text-rose-300 border-rose-700/60"
+                        ? "bg-rose-50 text-rose-700 border-rose-200"
                         : exc.severity === "HIGH"
-                        ? "bg-amber-950/80 text-amber-300 border-amber-700/60"
-                        : "bg-blue-950/80 text-blue-300 border-blue-700/60"
+                        ? "bg-amber-50 text-amber-700 border-amber-200"
+                        : "bg-blue-50 text-blue-700 border-blue-200"
                     }`}>
                       {exc.severity}
                     </span>
                     <StatusBadge status={exc.classification} type="priority" />
-                    <span className="text-[10px] font-mono text-slate-400 px-2 py-0.5 rounded bg-slate-900 border border-slate-800">
+                    <span className="text-[10px] font-mono text-slate-600 px-2 py-0.5 rounded bg-slate-100 border border-slate-200">
                       Action: {exc.action_type}
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-300 font-sans leading-relaxed">{exc.reason}</p>
+                  <p className="text-xs text-slate-600 font-sans leading-relaxed">{exc.reason}</p>
 
-                  <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono text-slate-400 pt-1">
-                    <span>Gross Volume: <strong className="text-white">{formatINR(exc.amount)}</strong></span>
-                    <span>Discrepancy: <strong className="text-amber-400">{formatINR(exc.variance)}</strong></span>
-                    <span>Reconciled: <span className="text-slate-500">{exc.reconciled_at}</span></span>
+                  <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono text-slate-500 pt-1">
+                    <span>Gross Volume: <strong className="text-slate-900">{formatINR(exc.amount)}</strong></span>
+                    <span>Discrepancy: <strong className="text-rose-600">{formatINR(exc.variance)}</strong></span>
+                    <span>Reconciled: <span className="text-slate-400">{exc.reconciled_at}</span></span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3 shrink-0">
                   <Link
                     href={`/cases/${exc.case_id}`}
-                    className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-indigo-950/80 border border-slate-700 hover:border-indigo-600 text-slate-200 hover:text-white text-xs font-semibold font-mono flex items-center gap-2 transition-all shadow-sm"
+                    className="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 text-slate-700 hover:text-indigo-600 text-xs font-semibold font-mono flex items-center gap-2 transition-all shadow-xs"
                   >
                     <span>Inspect Story</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-indigo-400" />
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                   </Link>
                 </div>
               </div>
             ))}
 
             {filtered.length === 0 && (
-              <div className="p-12 rounded-2xl bg-[#0b0f19]/40 border border-slate-800 text-center text-xs font-mono text-slate-500">
+              <div className="p-12 rounded-2xl bg-white border border-slate-200 text-center text-xs font-mono text-slate-400 shadow-xs">
                 No exceptions match the selected filter criteria.
               </div>
             )}

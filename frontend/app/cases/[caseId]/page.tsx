@@ -63,6 +63,7 @@ export default function CaseDetailPage() {
 
   useEffect(() => {
     loadCaseData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [caseId]);
 
   function copyToClipboard(text: string) {
